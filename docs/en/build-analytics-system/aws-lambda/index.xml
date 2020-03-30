@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AWS Lambda on </title>
-    <link>analytics-on-aws/en/build-analytics-system/aws-lambda/</link>
+    <link>/en/build-analytics-system/aws-lambda/</link>
     <description>Recent content in AWS Lambda on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="analytics-on-aws/en/build-analytics-system/aws-lambda/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/en/build-analytics-system/aws-lambda/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

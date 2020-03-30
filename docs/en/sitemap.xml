@@ -3,325 +3,325 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>analytics-on-aws/en/</loc>
+    <loc>/en/</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/"
+                href="/ko/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/"
+                href="/en/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/introduction/</loc>
+    <loc>/en/introduction/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/introduction/"
+                href="/ko/introduction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/introduction/"
+                href="/en/introduction/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/lab-setup/</loc>
+    <loc>/en/lab-setup/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/lab-setup/"
+                href="/ko/lab-setup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/lab-setup/"
+                href="/en/lab-setup/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/lab-setup/iam-user/</loc>
+    <loc>/en/lab-setup/iam-user/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/lab-setup/iam-user/"
+                href="/ko/lab-setup/iam-user/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/lab-setup/iam-user/"
+                href="/en/lab-setup/iam-user/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/lab-setup/ec2-security-group/</loc>
+    <loc>/en/lab-setup/ec2-security-group/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/lab-setup/ec2-security-group/"
+                href="/ko/lab-setup/ec2-security-group/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/lab-setup/ec2-security-group/"
+                href="/en/lab-setup/ec2-security-group/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/lab-setup/ec2-launch/</loc>
+    <loc>/en/lab-setup/ec2-launch/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/lab-setup/ec2-launch/"
+                href="/ko/lab-setup/ec2-launch/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/lab-setup/ec2-launch/"
+                href="/en/lab-setup/ec2-launch/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/lab-setup/ec2-user-configuration/</loc>
+    <loc>/en/lab-setup/ec2-user-configuration/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/lab-setup/ec2-user-configuration/"
+                href="/ko/lab-setup/ec2-user-configuration/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/lab-setup/ec2-user-configuration/"
+                href="/en/lab-setup/ec2-user-configuration/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/</loc>
+    <loc>/en/build-analytics-system/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/"
+                href="/ko/build-analytics-system/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/"
+                href="/en/build-analytics-system/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/kinesis-data-streams/</loc>
+    <loc>/en/build-analytics-system/kinesis-data-streams/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/kinesis-data-streams/"
+                href="/ko/build-analytics-system/kinesis-data-streams/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/kinesis-data-streams/"
+                href="/en/build-analytics-system/kinesis-data-streams/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/kinesis-data-firehose/</loc>
+    <loc>/en/build-analytics-system/kinesis-data-firehose/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/kinesis-data-firehose/"
+                href="/ko/build-analytics-system/kinesis-data-firehose/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/kinesis-data-firehose/"
+                href="/en/build-analytics-system/kinesis-data-firehose/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/verify/</loc>
+    <loc>/en/build-analytics-system/verify/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/verify/"
+                href="/ko/build-analytics-system/verify/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/verify/"
+                href="/en/build-analytics-system/verify/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/athena/</loc>
+    <loc>/en/build-analytics-system/athena/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/athena/"
+                href="/ko/build-analytics-system/athena/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/athena/"
+                href="/en/build-analytics-system/athena/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/quicksight/</loc>
+    <loc>/en/build-analytics-system/quicksight/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/quicksight/"
+                href="/ko/build-analytics-system/quicksight/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/quicksight/"
+                href="/en/build-analytics-system/quicksight/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/athena-ctas/</loc>
+    <loc>/en/build-analytics-system/athena-ctas/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/athena-ctas/"
+                href="/ko/build-analytics-system/athena-ctas/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/athena-ctas/"
+                href="/en/build-analytics-system/athena-ctas/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/amazon-es/</loc>
+    <loc>/en/build-analytics-system/amazon-es/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/amazon-es/"
+                href="/ko/build-analytics-system/amazon-es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/amazon-es/"
+                href="/en/build-analytics-system/amazon-es/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/aws-lambda/</loc>
+    <loc>/en/build-analytics-system/aws-lambda/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/aws-lambda/"
+                href="/ko/build-analytics-system/aws-lambda/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/aws-lambda/"
+                href="/en/build-analytics-system/aws-lambda/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/build-analytics-system/kibana/</loc>
+    <loc>/en/build-analytics-system/kibana/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/build-analytics-system/kibana/"
+                href="/ko/build-analytics-system/kibana/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/build-analytics-system/kibana/"
+                href="/en/build-analytics-system/kibana/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/recap/</loc>
+    <loc>/en/recap/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/recap/"
+                href="/ko/recap/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/recap/"
+                href="/en/recap/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/resources/</loc>
+    <loc>/en/resources/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/resources/"
+                href="/ko/resources/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/resources/"
+                href="/en/resources/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/reference/</loc>
+    <loc>/en/reference/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/reference/"
+                href="/ko/reference/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/reference/"
+                href="/en/reference/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/categories/</loc>
+    <loc>/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/categories/"
+                href="/ko/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/categories/"
+                href="/en/categories/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/tags/</loc>
+    <loc>/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/tags/"
+                href="/ko/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/tags/"
+                href="/en/tags/"
                 />
   </url>
   
   <url>
-    <loc>analytics-on-aws/en/credits/</loc>
+    <loc>/en/credits/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="analytics-on-aws/ko/credits/"
+                href="/ko/credits/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="analytics-on-aws/en/credits/"
+                href="/en/credits/"
                 />
   </url>
   
