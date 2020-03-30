@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lab setup on </title>
-    <link>/en/lab-setup/</link>
+    <link>analytics-on-aws/en/lab-setup/</link>
     <description>Recent content in Lab setup on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="/en/lab-setup/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="analytics-on-aws/en/lab-setup/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
