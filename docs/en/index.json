@@ -1,0 +1,162 @@
+[
+{
+	"uri": "/en/",
+	"title": "Analytics on AWS",
+	"tags": [],
+	"description": "",
+	"content": "Analytics on AWS 이 실습의 목적은 Businesss Intelligence System을 aws의 analytics 서비스를 활용해서 구현해 보는 것 입니다. 이 실습을 통해서 데이터 수집 -\u0026gt; 저장 -\u0026gt; 분석/처리 -\u0026gt; 시각화 단계를 aws의 analytics 서비스를 이용해서 어떻게 구축할 수 있는지 경험할 수 있습니다.\n"
+},
+{
+	"uri": "/en/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Analytics on AWS 이 실습을 통해서 데이터 수집 -\u0026gt; 저장 -\u0026gt; 분석/처리 -\u0026gt; 시각화 단계를 aws의 analytics 서비스를 이용해서 어떻게 구축할 수 있는지 경험할 수 있습니다.\n이 실습에서는 다음과 같은 Businesss Intelligence System(BI System)을 aws의 analytics 서비스를 활용해서 구현할 예정 입니다.\n"
+},
+{
+	"uri": "/en/lab-setup/",
+	"title": "Lab setup",
+	"tags": [],
+	"description": "",
+	"content": " 이미 AWS 계정을 가지고 있다면 즉시 이 실습의 가이드를 따라 진행할 수 있으나, 계정이 없다면 먼저 AWS 계정을 만들어야 합니다.\n AWS 계정 생성 및 활성화 가이드는 다음 링크 를 참조하시기 바랍니다.\n 2-1. Creating an IAM User  2-2. Creating Security Groups  2-3. Launch an EC2 Instance  2-4. Configuring your EC2 Instance   "
+},
+{
+	"uri": "/en/lab-setup/iam-user/",
+	"title": "Creating an IAM User",
+	"tags": [],
+	"description": "",
+	"content": " 실습 하는 동안 사용할 IAM User를 생성합니다.\n  AWS Management Console에 로그인 한 뒤 IAM 서비스에 접속합니다. 왼쪽 메뉴에서 Users를 선택합니다. Add user 버튼을 클릭하여 사용자 추가 페이지로 들어갑니다. User name에 \u0026lt;사용자 이름\u0026gt; 을 입력하고, Access type에 Programmatic access와 AWS Management Console access 둘 모두를 선택합니다. Console password에 \u0026lt;패스워드\u0026gt; 를 입력하고, 마지막 Require password reset의 체크는 해제합니다. [Next: Permissions] 버튼을 클릭하고 Attach existing policies directly를 선택한 뒤 AdministratorAccess 권한을 추가해줍니다. [Next: Review] 버튼을 클릭하고 정보를 확인한 뒤 Create user 버튼을 클릭하여 사용자 생성을 완료합니다. Download.csv 버튼을 클릭하여 생성한 사용자의 정보를 다운 받습니다. EC2 설정에 꼭 필요한 파일이므로 기억하기 쉬운 위치에 저장합니다.  "
+},
+{
+	"uri": "/en/lab-setup/ec2-security-group/",
+	"title": "Creating Security Groups",
+	"tags": [],
+	"description": "",
+	"content": "bastion host로 사용할 EC2 인스턴스를 위한 Security Groups 생성 실습용 EC2 인스턴에서 사용할 security group을 생성하고 구성합니다.\n  AWS Management Console에서 EC2 서비스에 접속합니다.\n  NETWORK \u0026amp; SECURITY 메뉴에서 Security Groups 항목을 선택합니다.\n  [Create Security Group] 을 클릭합니다.\n  Create Security Group 화면에서 Security Group에 필요한 정보를 입력한 후, 새로운 security group을 [Create] 합니다.\n Security group name : bastion Description : security group for bastion  Security group rules의 Inbound 에 아래 내용을 입력합니다.\n Type : SSH Protocol : TCP Port Range : 22 Source : 0.0.0.0/0    Elasicsearch Service에서 사용할 Security Groups 생성 Elasticsearch Service을 위한 security group을 생성하고 구성합니다.\n  AWS Management Console에서 EC2 서비스에 접속합니다.\n  NETWORK \u0026amp; SECURITY 메뉴에서 Security Groups 항목을 선택합니다.\n  [Create Security Group] 을 클릭합니다.\n  Create Security Group 화면에서 Security Group에 필요한 정보를 입력한 후, 새로운 security group을 [Create] 합니다.\n Security group name : use-es-cluster-sg Description : security group for an es client  Security group rules의 Inbound 은 아무것도 입력하지 않습니다.\n  다시 [Create Security Group] 클릭해서 Create Security Group 화면으로 이동합니다. Security Group에 필요한 정보를 입력한 후, 새로운 security group을 [Create] 합니다.\n Security group name : es-cluster-sg Description : security group for an es cluster  Security group rules의 Inbound 에 아래 내용을 입력합니다.\n Type : All TCP Protocol : TCP Port Range : 0-65535 Source : use-es-cluster-sg 의 security group id ex) sg-038b632ef1825cb7f    "
+},
+{
+	"uri": "/en/lab-setup/ec2-launch/",
+	"title": "Launch an EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": " 실습은 us-west-1 (오레곤) 리전을 선택합니다.\n 실습에 필요한 데이터를 실시간으로 발생시킬 EC2 인스턴스를 생성합니다.\n AWS Management Console에서 EC2 서비스에 접속합니다. 우측 상단에서 Region은 US West (Oregon)를 선택합니다. 좌측 INSTANCES 메뉴에서 Instances 를 선택한 후, [Launch Instance] 를 클릭 해서 새로운 인스턴스 생성을 시작합니다.  Step 1: Choose an Amazon Machine Image (AMI) 화면에서 Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type 을 선택합니다.  Step 2 : Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. [Next: Configure Instance Details] 을 클릭합니다.  Step 3: Configure Instance Details 화면에서 [Next: Add Storage] 을 클릭합니다. Step 4: Add Storage 화면에서 기본값을 그대로 두고 [Next: Add Tags] 를 클릭합니다. Step 5: Add Tags 화면에서 [Next: Configure Security Group] 을 클릭합니다. Step 6: Configure Security Group 화면에서 Assign a security group 에서 Select an existing security group를 선택하고, Security Group 중에서 Name이 bastion과 use-es-cluster-sg 를 선택 한 후 [Review and Launch] 를 클릭합니다.  Step 7: Review Instance Launch 화면에서 [Launch] 를 클릭합니다. EC2 Instance에 접속하기 위한 Key pair를 생성합니다. Create a new key pair를 선택하고 Key pair name은 analytics-hol 을 입력한 후 Download Key Pair를 클릭합니다. Key Pair를 PC의 임의 위치에 저장한 후 [Launch Instances] 를 클릭합니다. (인스턴스 기동에 몇 분이 소요될 수 있습니다.)  (MacOS 사용자) 다운로드 받은 Key Pair 파일의 File Permission을 400으로 변경합니다. $ chmod 400 ./analytics-hol.pem $ ls -lat analytics-hol.pem -r-------- 1 ****** ****** 1692 Jun 25 11:49 analytics-hol.pem Windows OS 사용자의 경우, PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결 를 참고하십시요.\n  "
+},
+{
+	"uri": "/en/lab-setup/ec2-user-configuration/",
+	"title": "Configuring your EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": "생성한 EC2 인스턴스가 다른 AWS 리소스에 접근 및 제어할 수 있도록 다음과 같이 구성합니다.\n  생성한 인스턴스의 Public IP로 SSH 접속을 합니다.\nssh -i \u0026#34;\u0026lt;Key pair name\u0026gt;\u0026#34; ec2-user@\u0026lt;Public IP\u0026gt;   ssh로 접속한 EC2 인스턴스에서 다음 작업을 순서대로 수행 합니다.\n(1) 소소 코드를 다운로드 받는다.\nwget \u0026#39;https://github.com/ksmin23/aws-analytics-immersion-day/archive/master.zip\u0026#39; (2) 다운로드 받은 소스 코드의 압축을 해제한다.\nunzip -u master.zip (3) 실습 환경 설정 스크립트에 실행 권한을 부여한다.\nchmod +x ./aws-analytics-immersion-day-master/set-up-hands-on-lab.sh (4) 실습 환경 설정 스크립트를 실행한다.\n./aws-analytics-immersion-day-master/set-up-hands-on-lab.sh (5) 실습 환경 설정 스크립트 실행 후, 실습에 필요한 파일들이 정상적으로 생성되었는지 확인한다. 예를 들어 아래와 같이 소스 코드와 필요한 파일들이 존재하는지 확인하다.\n  AWS의 다른 리소스 접근을 위해 AWS Configure를 진행합니다. 이때 앞서 생성한 IAM User 데이터를 활용합니다. 이전에 다운로드 받은 .csv 파일을 열어 Access key ID와 Secret access key를 확인하고 입력합니다.\n$ aws configure AWS Access Key ID [None]: \u0026lt;Access key ID\u0026gt; AWS Secret Access Key [None]: \u0026lt;Secret access key\u0026gt; Default region name [None]: us-west-2 Default output format [None]:   설정이 완료 되었다면 다음과 같이 입력하신 정보가 마스킹 되어 보이게 됩니다.\n$ aws configure AWS Access Key ID [****************EETA]: AWS Secret Access Key [****************CixY]: Default region name [None]: us-west-2 Default output format [None]:   "
+},
+{
+	"uri": "/en/build-analytics-system/",
+	"title": "Build up Data Analytics System",
+	"tags": [],
+	"description": "",
+	"content": " 이번 실습에서는 Lake Formation의 기본 기능과 서로 다른 구성 요소들을 결합하여 AWS에서 데이터 레이크를 생성하는 방법, 엑세스를 제공하기 위해 다양한 보안 정책을 구성하는 방법 등을 설명하기 위해 다음 단계를 수행합니다.\n  3-1. 입력 데이터를 수신할 Kinesis Data Streams 생성하기  3-2. 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기  3-3. 데이터 파이프라인 동작 확인 하기  3-4. Athena를 이용해서 데이터 분석 하기  3-5. QuickSight를 이용한 데이터 시각화  3-6. (Optional) AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기  3-7. 실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기  3-8. AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기  3-8. Kibana를 이용한 데이터 시각화   "
+},
+{
+	"uri": "/en/build-analytics-system/kinesis-data-streams/",
+	"title": "Kinesis Data Streams",
+	"tags": [],
+	"description": "",
+	"content": "AWS Management Console에서 Kinesis 서비스를 선택합니다.\n Get Started 버튼을 클릭합니다. [Create data stream] 버튼을 클릭합니다. Kinesis stream name 에 원하는 이름(예: retail-trans)을 입력합니다. Number of shards 에 원하는 shards 수(예: 1)를 입력합니다. [Create data stream] 버튼을 클릭 후, 생성된 kinesis stream의 status가 active가 될 때까지 기다립니다.  "
+},
+{
+	"uri": "/en/build-analytics-system/kinesis-data-firehose/",
+	"title": "Kinesis Data Firehose",
+	"tags": [],
+	"description": "",
+	"content": "Kinesis Data Firehose를 이용해서 실시간으로 데이터를 S3, Redshift, ElasticSearch 등의 목적지에 수집할 수 있습니다.\n AWS Management Console에서 Kinesis 서비스를 선택합니다.\n  Get Started 버튼을 클릭합니다.\n  Deliver streaming data with Kinesis Firehose delivery streams 메뉴의 [Create delivery stream] 을 클릭하여 새로운 Firehose 전송 스트림 생성을 시작합니다.\n  (Step 1: Name and source) Delivery stream name에 원하는 이름(예: retail-trans)를 입력합니다.\n  Choose a source 에서 Kinesis Data Stream 를 선택하고, 앞서 생성한 Kinesis Data Stream(예: retail-trans)을 선택 한 후, Next를 클릭합니다.\n  (Step 2: Process records) Transform source records with AWS Lambda / Convert record format 은 둘다 default 옵션 Disabled를 선택하고 Next를 클릭합니다.\n  (Step 3: Choose a destination) Destination은 Amazon S3를 선택하고, Create new 를 클릭해서 S3 bucket을 생성합니다. S3 bucket 이름은 이번 실습에서는 aws-analytics-immersion-day-xxxxxxxx 형식으로 xxxxxxxx 는 bucket 이름이 겹치지 않도록 임의의 숫자나 문자를 입력 합니다.\nS3 prefix를 입력합니다. 예를 들어서 다음과 같이 입력 합니다.\njson-data/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/ S3 error prefix를 입력합니다. 예를 들어서 다음과 같이 입력 합니다.\nerror-json/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type} S3 prefix와 3 error prefix 입력을 완료한 후에, Next를 클릭합니다. (참고: https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html )\n  (Step 4: Configure settings) S3 buffer conditions에서 Buffer size는 1MB, Buffer interval은 60 seconds로 설정합니다.\n  아래 IAM role에서 [Create new, or Choose] 버튼을 클릭합니다.\n  새로 열린 탭에서 필요한 정책이 포함된 IAM 역할 firehose_delivery_role을 자동으로 생성합니다. Allow 버튼을 클릭하여 진행합니다.   새롭게 생성된 역할이 추가된 것을 확인한 뒤 Next 버튼을 클릭합니다.\n  (Step 5: Review) Review에서 입력한 정보를 확인한 뒤 틀린 부분이 없다면, [Create delivery stream] 버튼을 클릭하여 Firehose 생성을 완료합니다.\n  "
+},
+{
+	"uri": "/en/build-analytics-system/verify/",
+	"title": "Verify",
+	"tags": [],
+	"description": "",
+	"content": "데이터 파이프라인 동작 확인 하기 샘플 데이터를 이용해서 Kinesis Data Streams -\u0026gt; Kinesis Data Firehose -\u0026gt; S3 로 데이터가 정상적으로 수집되는지 확인합니다.\n 앞서 생성한 E2 인스턴스에 SSH 접속을 합니다. gen_kinesis_data.py을 실행합니다. $ python3 gen_kinesis_data.py --help usage: gen_kinesis_data.py [-h] [-I INPUT_FILE] [--out-format {csv,tsv,json}] [--service-name {kinesis,firehose}] [--stream-name STREAM_NAME] [--max-count MAX_COUNT] [--dry-run] optional arguments: -h, --help show this help message and exit -I INPUT_FILE, --input-file INPUT_FILE The input file path ex) ./resources/online_retail.csv --out-format {csv,tsv,json} --service-name {kinesis,firehose} --stream-name STREAM_NAME The name of the stream to put the data record into. --max-count MAX_COUNT The max number of records to put. --dry-run $ python3 gen_kinesis_data.py -I resources/online_retail.csv \\ --service-name kinesis \\ --out-format json \\ --stream-name retail-trans  매 초 데이터가 발생하는 것을 확인합니다. 충분한 데이터 수집을 위해 실행 중인 상태로 다음 단계를 진행합니다. 몇 분 뒤 생성한 S3 bucket을 확인해 보면, 생성된 원본 데이터가 Kinesis Data Firehose를 통해 S3에 저장되는 것을 확인할 수 있습니다.  "
+},
+{
+	"uri": "/en/build-analytics-system/athena/",
+	"title": "Athena",
+	"tags": [],
+	"description": "",
+	"content": "Athena를 이용해서 데이터 분석 하기 Amazon Athena를 이용해서 S3에 저장된 데이터를 기반으로 테이블을 만들고, 테이블을 쿼리한 다음 쿼리 결과를 확인할 수 있습니다. 먼저 데이터를 쿼리하기 위해서 데이터베이스를 생성합니다.\n1단계: 데이터베이스 생성  Athena 콘솔을 엽니다. Athena 콘솔을 처음 방문하면 시작하기 페이지로 이동합니다. [Get Started] 를 선택해 쿼리 편집기를 엽니다. 처음 방문 하는 경우라면, set up a query result location in Amazon S3 를 클릭해서 Athena의 쿼리 결과를 저장할 s3 위치를 설정합니다. 이번 실습에서는 Kinesis Data Firehose 설정 단계에서 생성한 s3 bucket에 Athena의 쿼리 결과를 저장할 디렉터리를 생성합니다. 예를 들어, s3://aws-analytics-immersion-day-xxxxxxxx/athena-query-results/ (xxxxxxxx 는 bucket 이름이 겹치지 않도록 입력한 임의의 숫자나 문자열 입니다.) 처음 방문하는 경우가 아니라면, Athena 쿼리 편집기가 열립니다. Athena 쿼리 편집기에서 예제 쿼리가 있는 쿼리 창을 볼 수 있습니다. 쿼리 창의 아무 곳에나 쿼리를 입력하기 시작합니다. mydatabase 라는 데이터베이스를 생성하려면 다음 CREATE DATABASE 문을 입력한 다음, [Run Query] 를 선택합니다. CREATE DATABASE mydatabase  카탈로그 디스플레이가 새로 고쳐지고 왼쪽 [Catalog] 대시보드의 [DATABASE] 목록에 mydatabase가 표시되는지 확인합니다.  2단계: 테이블 생성  [DATABASE] 에 mydatabase가 선택되었는지 확인한 후 [New Query] 를 선택합니다. 쿼리 창에 다음 CREATE TABLE 문을 입력한 후 [Run Query] 를 선택합니다. CREATE EXTERNAL TABLE `mydatabase.retail_trans_json`( `invoice` string COMMENT 'Invoice number', `stockcode` string COMMENT 'Product (item) code', `description` string COMMENT 'Product (item) name', `quantity` int COMMENT 'The quantities of each product (item) per transaction', `invoicedate` timestamp COMMENT 'Invoice date and time', `price` float COMMENT 'Unit price', `customer_id` string COMMENT 'Customer number', `country` string COMMENT 'Country name') PARTITIONED BY ( `year` int, `month` int, `day` int, `hour` int) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.IgnoreKeyTextOutputFormat' LOCATION 's3://aws-analytics-immersion-day-xxxxxxxx/json-data' 테이블 retail_trans_json가 생성되고 데이터베이스의 [Catalog] 대시보드에 표시됩니다.\n 테이블을 생성한 이후 [New Query] 를 선택하고 다음을 실행해서, 파티션의 데이터를 로드합니다. MSCK REPAIR TABLE mydatabase.retail_trans_json   3단계: 데이터 쿼리  [New Query] 를 선택하고 쿼리 창의 아무 곳에나 다음 문을 입력한 다음 [Run Query] 를 선택합니다. SELECT * FROM retail_trans_json LIMIT 10   다음과 같은 형식의 결과가 반환됩니다. "
+},
+{
+	"uri": "/en/build-analytics-system/quicksight/",
+	"title": "QuickSight",
+	"tags": [],
+	"description": "",
+	"content": "QuickSight를 이용한 데이터 시각화 이번에는 Amazon QuickSight를 통해 데이터 시각화 작업을 합니다.\n QuickSight 콘솔 로 이동합니다. QuickSight에 가입하기 위해 [Sign up for QuickSight] 버튼을 클릭합니다. Standard Edition을 선택한 후 [Continue] 버튼을 클릭합니다. QuickSight account name은 임의로 지정(중복될 경우 계정이 생성되지 않습니다) 하고, Notification email address는 개인 Email 주소를 입력합니다. QuckSight가 S3에 Access해야 하므로, [Choose S3 buckets] 를 클릭하여, aws-analytics-immersion-day-xxxxxxxx 를 선택한 후 [Finish] 를 클릭합니다. 계정이 생성된 후 [Go to Amazon QuickSight] 버튼을 클릭합니다. 우측 상단에 region이 데이터를 저장하고 있는 S3 bucket의 region과 동일하게 설정한 후, 좌측 상단 [New Analysis] 를 클릭합니다. [New Data Set] 버튼을 클릭합니다.  Athena 를 클릭하고 팝업 창의 Data source name에 retail-quicksight 를 입력(임의의 값 입력 가능)하고, [Validate connection] 을 클릭 해서 Validated 상태로 변경되면, [Create data source] 버튼을 클릭합니다.  Choose your table 화면에서 Database는 mydatabase (앞서 생성한 Athena 데이터베이스), Tables 에서 retail_trans_json 를 선택하고 Select 버튼을 클릭합니다.  Finish data set creation 화면에서 [Visualize] 버튼을 클릭 합니다. retail_trans_json 테이블 데이터가 QuickSight SPICE 엔진에 로딩 되었는지 확인합니다. InvoicdDate 별 Quantity, Price를 시각화 해 보겠습니다. 좌측 Fields list에서 invoicedate, price, quantity field를 차례대로 선택합니다. Visual types는 세로 막대 그래프를 선택합니다.  방금 만든 Dashboard를 다른 사용자에게 공유해 보겠습니다. 좌측 상단 유저 아이콘을 클릭하고 [Manage QuickSight] 를 클릭합니다. Invite users 버튼을 클릭한 후 임의의 사용자 계정명(BI_user01)을 입력한 후 우측 [+] 버튼을 클릭합니다. Email은 다른 사용자의 Email 주소를 입력하고 Role은 AUTHOR, IAM User는 NO를 선택한 후 Invite 버튼을 클릭합니다.  사용자는 다음과 같은 Invitation Email을 받고 Click to accept invitation을 클릭하면 계정 생성 메뉴에서 비밀번호를 변경할 수 있습니다.  QuickSight 화면으로 돌아가서 우측 상단의 Share \u0026gt; Share analysis 를 클릭합니다.  BI_user01을 선택한 후 Share 버튼을 클릭합니다.  사용자는 다음과 같은 Email을 수신합니다. [Click to View] 를 클릭하여 분석결과를 확인할 수 있습니다.   "
+},
+{
+	"uri": "/en/build-analytics-system/athena-ctas/",
+	"title": "Athena CTAS",
+	"tags": [],
+	"description": "",
+	"content": "AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기 실시간으로 들어오는 데이터를 Kinesis Data Firehose를 이용해서 S3에 저장할 경우, 데이터 사이즈가 작은 파일들이 생성됩니다. Amazon Athena의 쿼리 성능 향상을 위해서 작은 파일들을 하나의 큰 파일로 합쳐주는 것이 좋습니다. 이러한 작업을 주기적으로 실행하기 위해서Athena의 CTAS(Create Table As Select) 쿼리를 실행하는 AWS Lambda function 함수를 생성하고자 합니다.\n AWS Lambda 콘솔 을 엽니다. [Create a function] 을 선택합니다. Function name(함수 이름)에 MergeSmallFiles 을 입력합니다. Runtime 에서 Python 3.8 을 선택합니다. [Create a function] 을 선택합니다.  Designer 탭에 [Add trigger] 를 선택합니다. Trigger configuration 의 Select a trigger 에서 CloudWatch Events/EventBridge 를 선택 합니다. Rule에서 Create a new rule 선택하고, Rule name에 적절한 rule name(예: MergeSmallFilesEvent)을 입력 합니다. Rule type으로 Schedule expression을 선택하고, Schedule expression에 매시각 5분 마다 작업이 실행되도록, cron(5 * * * *) 입력합니다.  Trigger configuration 에서 [Add] 를 클릭합니다. Function code의 코드 편집기에 athena_ctas.py 파일의 코드를 복사해서 붙여넣습니다. [Add environment variables] 를 클릭해서 다음 Environment variables을 등록합니다. OLD_DATABASE=\u0026lt;source database\u0026gt; OLD_TABLE_NAME=\u0026lt;source table\u0026gt; NEW_DATABASE=\u0026lt;destination database\u0026gt; NEW_TABLE_NAME=\u0026lt;destination table\u0026gt; WORK_GROUP=\u0026lt;athena workgroup\u0026gt; OUTPUT_PREFIX=\u0026lt;destination s3 prefix\u0026gt; STAGING_OUTPUT_PREFIX=\u0026lt;staging s3 prefix used by athena\u0026gt; COLUMN_NAMES=\u0026lt;columns of source table excluding partition keys\u0026gt; 예를 들어, 다음과 같이 Environment variables을 설정합니다.\nOLD_DATABASE=mydatabase OLD_TABLE_NAME=retail_trans_json NEW_DATABASE=mydatabase NEW_TABLE_NAME=ctas_retail_trans_parquet WORK_GROUP=primary OUTPUT_PREFIX=s3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans STAGING_OUTPUT_PREFIX=s3://aws-analytics-immersion-day-xxxxxxxx/tmp COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_id,country  Athena 쿼리를 수행하는데 필요한 IAM Policy를 추가하기 위해서 Execution role에서 View the MergeSmallFiles-role-XXXXXXXX role on the IAM console. 을 클릭 해서 IAM Role을 수정합니다.  IAM Role의 [Permissions] 탭에서 [Attach policies] 버튼을 클릭 후, AmazonAthenaFullAccess, AmazonS3FullAccess 를 차례로 추가 합니다.  Basic settings에서 [Edit] 선택합니다. Memory와 Timeout을 알맞게 조정합니다. 이 실습에서는 Timout을 5 min 으로 설정합니다.  "
+},
+{
+	"uri": "/en/build-analytics-system/amazon-es/",
+	"title": "Amazon Elasticsearch Service",
+	"tags": [],
+	"description": "",
+	"content": "실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기 실시간으로 데이터를 저장하고, 분석하기 위해서 Elasticsearch cluster를 생성합니다. Amazon ES 도메인은 Elasticsearch 클러스터와 동의어입니다. 도메인은 설정, 인스턴스 유형, 인스턴스 수, 스토리지 리소스를 지정한 설정입니다.\n AWS Management Console에서 Analytics의 Elasticsearch 서비스를 선택합니다. (Step 1: Choose deployment type) Create a new domain(새 도메인 생성) 을 선택합니다. Elasticsearch 도메인 생성 페이지에서 Deployment type(배포 유형) 에 대해 Production(프로덕션) 을 선택합니다. 버전에서 해당 도메인의 Elasticsearch 버전을 선택합니다. 지원되는 최신 버전을 선택하는 것이 좋습니다. 자세한 내용은 지원되는 Elasticsearch 버전 단원을 참조하십시오. [Next] 를 선택합니다. (Step 2: Configure domain) 도메인의 이름을 입력합니다. 이 실에서는 이후에 다룰 retail를 예제 도메인 이름으로 사용합니다. 인스턴스 유형 에서 Amazon ES 도메인의 인스턴스 유형을 선택합니다. 이 실습에서는 테스트 목적에 적합한 소용량의 경제적인 인스턴스 유형 t2.medium.elasticsearch를 사용하는 것이 좋습니다. 인스턴스 수 에 원하는 인스턴스 수를 입력합니다. 이 실습에서는 기본값 1을 사용합니다. 스토리지 유형에서 EBS를 선택합니다.  a. EBS volume type(EBS 볼륨 유형)에 일반용(SSD)을 선택합니다. 자세한 내용은 Amazon EBS 볼륨 유형을 참조하십시오. b. EBS volume size(EBS 볼륨 크기)에 각 데이터 노드용 외부 스토리지의 크기를 GiB 단위로 입력합니다. 이 실습에서는 기본값 10을 사용합니다.   지금은 Dedicated master nodes(전용 마스터 노드), Snapshot configuration(스냅샷 구성) 및 Optional Elasticsearch cluster settings(선택적 Elasticsearch 클러스터 설정) 섹션을 무시할 수 있습니다. [Next] 를 선택합니다. (Step 3: Configure access and security) Network configuration(네트워크 구성) 의 경우 VPC access 를 선택합니다. 적절한 VPC와 subnet을 선택합니다. Security Groups으로 준비 단계에서 생성한 es-cluster-sg를 선택합니다. 지금은 Amazon Cognito Authentication(Amazon Cognito 인증) 과 Fine–grained access control 을 disable 합니다. Access policy(액세스 정책) 의 경우 Domain access policy(도메인 액세스 정책) 에서 JSON defined access policy(JSON 정의 액세스 정책) 선택한 다음, Add or edit the access policy(액세스 정책 추가 또는 편집) 에 다음 템플릿을 이용해서 JSON defined access policy 를 생성해서 입력 합니다.  JSON defined access policy Template - \u0026lt;DOMAIN-NAME\u0026gt; 에 (Step 2: Configure domain) 에서 입력한 도메인 이름을 일력합니다. { \u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;, \u0026#34;Statement\u0026#34;: [ { \u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;, \u0026#34;Principal\u0026#34;: { \u0026#34;AWS\u0026#34;: \u0026#34;*\u0026#34; }, \u0026#34;Action\u0026#34;: [ \u0026#34;es:Describe*\u0026#34;, \u0026#34;es:List*\u0026#34;, \u0026#34;es:Get*\u0026#34;, \u0026#34;es:ESHttp*\u0026#34; ], \u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:es:\u0026lt;region-id\u0026gt;:\u0026lt;account-id\u0026gt;:domain/\u0026lt;DOMAIN-NAME\u0026gt;/*\u0026#34; } ] }  예) 이번 실습에서는 retail 을 도메인 이름으로 사용했기 때문에, 아래와 같이 JSON defined access policy 를 생성합니다. { \u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;, \u0026#34;Statement\u0026#34;: [ { \u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;, \u0026#34;Principal\u0026#34;: { \u0026#34;AWS\u0026#34;: \u0026#34;*\u0026#34; }, \u0026#34;Action\u0026#34;: [ \u0026#34;es:Describe*\u0026#34;, \u0026#34;es:List*\u0026#34;, \u0026#34;es:Get*\u0026#34;, \u0026#34;es:ESHttp*\u0026#34; ], \u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:es:us-west-2:109624076471:domain/retail/*\u0026#34; } ] }    Encryption(암호화) 에서 Require HTTPS for all traffic to the domain 만 허용하고, 다른 항목은 disable 합니다. Encryption(암호화) 의 모든 기본값을 유지합니다. [Next] 를 선택합니다. Review 페이지에서 도메인 구성을 검토한 다음 확인을 선택합니다.  "
+},
+{
+	"uri": "/en/build-analytics-system/aws-lambda/",
+	"title": "AWS Lambda",
+	"tags": [],
+	"description": "",
+	"content": "AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기 Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인할 수 있습니다. 이번 실습에서는 AWS Lambda 콘솔을 사용하여 Lambda 함수를 생성합니다.\nLambda 함수에서 사용할 공통 라이브러를 Layers에 추가하려면,  AWS Lambda 콘솔 을 엽니다. Layers 메뉴에 들어가서 [Create layer] 을 선택합니다. Name에 es-lib 를 입력합니다. Upload a file from Amazon S3 를 선택하고, 라이브러리 코드가 저장된 s3 link url 또는 압축한 라이브러리 코드 파일을 입력합니다. 이번 실습에서는 resources/es-lib.zip 파일을 사용합니다. es-lib.zip 생성 방법은 AWS Lambda Layer에 등록할 Python 패키지 생성 예제 를 참고하세요. Compatible runtimes 에서 Python 3.8 을 선택합니다.   Lambda 함수를 생성하려면,  AWS Lambda 콘솔 을 엽니다. [Create a function] 을 선택합니다. Function name(함수 이름)에 UpsertToES 을 입력합니다. Runtime 에서 Python 3.8 을 선택합니다. [Create a function] 을 선택합니다.  Designer(디자이너) 에서 layers를 선택합니다. Layers에서 Add a layer를 선택합니다. Layer selection에서 Select from list of runtime compatible layers을 클릭하고, Compatiable layers에서 Name과 Version으로 앞서 생성한 layer의 Name과 Version을 선택합니다. Layer의 runtime 버전과 Lambda function의 runtime이 버전이 다른 경우, Layer selection의 Compatiable layers에 필요한 layer가 목록에 보이지 않을 수 있습니다. 이러한 경우, Layer selection에서 Provide a layer version ARN을 클릭하고, layer의 arn을 직접 입력하면 됩니다.  [Add] 클릭합니다. Designer(디자이너) 에서 UpsertToES 을 선택하여 함수의 코드 및 구성으로 돌아갑니다. Function code의 코드 편집기에 upsert_to_es.py 파일의 코드를 복사해서 붙여넣습니다. Environment variables 에서 [Edit] 를 클릭합니다. [Add environment variables] 를 클릭해서 아래 4개의 Environment variables을 등록합니다. ES_HOST=\u0026lt;elasticsearch service domain\u0026gt; REQUIRED_FIELDS=\u0026lt;primary key로 사용될 column 목록\u0026gt; REGION_NAME=\u0026lt;region-name\u0026gt; DATE_TYPE_FIELDS=\u0026lt;column 중, date 또는 timestamp 데이터 타입의 column\u0026gt; 예를 들어, 다음과 같이 Environment variables을 설정합니다.\nES_HOST=vpc-retail-xkl5jpog76d5abzhg4kyfilymq.us-west-1.es.amazonaws.com REQUIRED_FIELDS=Invoice,StockCode,Customer_ID REGION_NAME=us-west-2 DATE_TYPE_FIELDS=InvoiceDate  [Save] 선택합니다. lambda 함수를 VPC 내에서 실행 하고, Kinesis Data Streams에서 데이터를 읽기 위해서, lamba 함수 실행에 필요한 Execution role에 필요한 IAM Policy를 추가햐야 합니다. IAM Role 수정을 위해서 View the UpsertToES-role-XXXXXXXX role on the IAM console. 을 클릭 합니다.  IAM Role의 [Permissions] 탭에서 [Attach policies] 버튼을 클릭 후, AWSLambdaVPCAccessExecutionRole, AmazonKinesisReadOnlyAccess 를 차례로 추가 합니다.  VPC 항목에서 [Edit] 버튼을 클릭해서 Edit VPC 화면으로 이동 한다. VPC connection 에서 Custom VPC 를 선택합니다. Elasticsearch service의 도메인을 생성한 VPC와 subnets을 선택하고, Elasticsearch service 도메인에 접근이 허용된 security groups을 선택합니다. Basic settings에서 [Edit] 선택합니다. Memory와 Timeout을 알맞게 조정합니다. 이 실습에서는 Timout을 5 min 으로 설정합니다. 다시 Designer 탭으로 돌아가서 [Add trigger] 를 선택합니다. Trigger configuration 의 Select a trigger 에서 Kinesis 를 선택 합니다. Kinesis stream 에서 앞서 생성한 Kinesis Data Stream(retail-trans)을 선택합니다. [Add] 를 선택합니다.   "
+},
+{
+	"uri": "/en/build-analytics-system/kibana/",
+	"title": "Kibana",
+	"tags": [],
+	"description": "",
+	"content": "Kibana를 이용한 데이터 시각화 Amazon Elasticsearch Service에서 수집된 데이터를 Kibana를 이용해서 시각화 작업을 합니다.\n Elasticsearch Cluster에 접속하기 위해서 ssh config에 ssh 설정을 한다. # Elasticsearch Tunnel Host estunnel HostName \u0026lt;EC2 Public IP\u0026gt; User ec2-user IdentitiesOnly yes IdentityFile ~/.ssh/analytics-hol.pem LocalForward 9200 \u0026lt;Elasticsearch Endpoint\u0026gt;:443  Terminal 에서 ssh -N estunnel 를 실행합니다. Web browser에서 https://localhost:9200/_plugin/kibana/ 으로 접속합니다. (Home) Add Data to Kibana 에서 [Use Elasticsearch data / Connect to your Elasticsearch index] 클릭한다.  (Management / Create index pattern) Create index pattern의 Step 1 of 2: Define index pattern 에서 Index pattern에 retail* 을 입력합니다.  (Management / Create index pattern) [\u0026gt; Next step] 을 선택합니다. (Management / Create index pattern) Create index pattern의 Step 2 of 2: Configure settings 에서 Time Filter field name에 InvoiceDate 를 선택합니다.  (Management / Create index pattern) [Create index pattern] 을 클릭합니다.  (Discover) Index pattern 생성을 완료 후, Discover를 선택해서 Elasticsearch 수집된 데이터를 확인합니다.  (Discover) InvoicdDate 별 Quantity를 시각화 해 보겠습니다. 좌측의 Available fields에서 invoicdDate를 선택하고, 하단에 있는 Visualize를 클릭합니다.  (Visualize) 아래와 같이 Data 탭의 Metrics에서 Y-Axis를 Aggregation은 Sum, Field는 Quantity를 선택 후 적용 합니다.  (Visualize) 좌측 상단의 [Save] 를 클릭하고, 저장한 그래프의 이름을 적은 후에 [Confirm Save] 를 클릭합니다.  (Dashboards) 좌측의 Dashboard 아이콘을 클릭 후, [Create new dashboard] 버튼을 클릭 합니다.  (Dashboards) 좌측 상단의 [Add] 를 클릭해서, Add Panels 에 이전 단계에서 생성한 그래프를 선택 합니다.  (Dashboards) 좌측 상단의 [Save] 를 클릭 한 후, Save dashboard에서 Title을 입력한 이후, [Confirm Save] 를 클릭 합니다.  (Dashboards) 아래와 같은 Dashboard를 확인할 수 있습니다.   "
+},
+{
+	"uri": "/en/recap/",
+	"title": "Recap and Review",
+	"tags": [],
+	"description": "",
+	"content": " 이 실습을 마치면 사용한 AWS 계정에 비용이 추가로 발생하지 않도록 사용한 리소스를 삭제해야 합니다.\n 이 실습을 통해서 데이터 파이프라인을 만들어서 실시간 데이터 처리와 배치 데이터 처리 layer로 구성된 Lambda Architecture 구조의 Business Intelligent System을 구축해 보셨습니다.\n"
+},
+{
+	"uri": "/en/resources/",
+	"title": "Resources",
+	"tags": [],
+	"description": "",
+	"content": " https://github.com/ksmin23/aws-analytics-immersion-day   "
+},
+{
+	"uri": "/en/reference/",
+	"title": "Reference",
+	"tags": [],
+	"description": "",
+	"content": "AWS Developer Guide By Services  Amazon Simple Storage Service (Amazon S3)  Amazon Athena  Amazon Elasticsearch Service  AWS Lambda  Amazon Kinesis Data Firehose  Amazon Kinesis Data Streams  Amazon QuickSight  AWS Lambda Layers  AWS Lambda Layer에 등록할 Python 패키지 생성 예제: elasticsearch  $ python3 -m venv es-lib # virtual environments을 생성함\r$ cd es-lib\r$ source bin/activate\r$ mkdir -p python_modules # 필요한 패키지를 저장할 디렉터리 생성\r$ pip install elasticsearch -t python_modules # 필요한 패키지를 사용자가 지정한 패키지 디렉터리에 저장함\r$ mv python_modules python # 사용자가 지정한 패키지 디렉터리 이름을 python으로 변경함 (python 디렉터리에 패키지를 설치할 경우 에러가 나기 때문에 다른 이름의 디렉터리에 패키지를 설치 후, 디렉터리 이름을 변경함)\r$ zip -r es-lib.zip python/ # 필요한 패키지가 설치된 디렉터리를 압축함\r$ aws s3 cp es-lib.zip s3://my-lambda-layer-packages/python/ # 압축한 패키지를 s3에 업로드 한 후, lambda layer에 패키지를 등록할 때, s3 위치를 등록하면 됨\r  Further readings Amazon S3  New – Automatic Cost Optimization for Amazon S3 via Intelligent Tiering   Amazon Athena  Top 10 Performance Tuning Tips for Amazon Athena  Extract, Transform and Load data into S3 data lake using CTAS and INSERT INTO statements in Amazon Athena  Query Amazon S3 analytics data with Amazon Athena   Amazon Elasticsearch Service  Elasticsearch tutorial: a quick start guide  Run a petabyte scale cluster in Amazon Elasticsearch Service  Analyze user behavior using Amazon Elasticsearch Service, Amazon Kinesis Data Firehose and Kibana   AWS Lambda  Introduction to Messaging for Modern Cloud Architecture  Understanding the Different Ways to Invoke Lambda Functions   Amazon Kinesis Data Firehose  Amazon Kinesis Data Firehose custom prefixes for Amazon S3 objects  Amazon Kinesis Firehose Data Transformation with AWS Lambda   Amazon Kinesis Data Streams  Under the hood: Scaling your Kinesis data streams  Scale Amazon Kinesis Data Streams with AWS Application Auto Scaling   Amazon Kinesis Data Analytics  Streaming ETL with Apache Flink and Amazon Kinesis Data Analytics   Amazon QuickSight  10 visualizations to try in Amazon QuickSight with sample data  Visualize over 200 years of global climate data using Amazon Athena and Amazon QuickSight  Advanced analytics with table calculations in Amazon QuickSight   Etc  Optimize downstream data processing with Amazon Kinesis Data Firehose and Amazon EMR running Apache Spark  Serverless Scaling for Ingesting, Aggregating, and Visualizing Apache Logs with Amazon Kinesis Firehose, AWS Lambda, and Amazon Elasticsearch Service  Analyze Apache Parquet optimized data using Amazon Kinesis Data Firehose, Amazon Athena, and Amazon Redshift  Our data lake story: How Woot.com built a serverless data lake on AWS   "
+},
+{
+	"uri": "/en/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/en/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/en/credits/",
+	"title": "크레딧",
+	"tags": [],
+	"description": "",
+	"content": "패키지와 라이브러리  mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services\u0026hellip; horsey - Progressive and customizable autocomplete component clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don\u0026rsquo;t support  도구  Netlify - Continuous deployement and hosting of this documentation Hugo   제작: Sungmin Kim\n"
+}]

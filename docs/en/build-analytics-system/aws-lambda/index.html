@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.68.1" />
+    <meta name="description" content="">
+<meta name="author" content="Sungmin Kim">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>AWS Lambda :: </title>
+
+    
+    <link href="/css/nucleus.css?1585211763" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1585211763" rel="stylesheet">
+    <link href="/css/hybrid.css?1585211763" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1585211763" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1585211763" rel="stylesheet">
+    <link href="/css/auto-complete.css?1585211763" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1585211763" rel="stylesheet">
+    <link href="/css/theme.css?1585211763" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1585211763" rel="stylesheet">
+    
+      <link href="/css/theme-aws.css?1585211763" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1585211763"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/en/build-analytics-system/aws-lambda/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/" style="margin:auto;width:60%;padding:10px;">
+	<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1585211763"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1585211763"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/en";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1585211763"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/introduction/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/introduction/">
+          <b>1. </b>Introduction
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/lab-setup/" title="Lab setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/lab-setup/">
+          <b>2. </b>Lab setup
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/lab-setup/iam-user/" title="Creating an IAM User" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/lab-setup/iam-user/">
+          <b>2-1 </b>Creating an IAM User
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/lab-setup/ec2-security-group/" title="Creating Security Groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/lab-setup/ec2-security-group/">
+          <b>2-2 </b>Creating Security Groups
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/lab-setup/ec2-launch/" title="Launch an EC2 Instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/lab-setup/ec2-launch/">
+          <b>2-3 </b>Launch an EC2 Instance
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/lab-setup/ec2-user-configuration/" title="Configuring your EC2 Instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/lab-setup/ec2-user-configuration/">
+          <b>2-4 </b>Configuring your EC2 Instance
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/" title="Build up Data Analytics System" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/en/build-analytics-system/">
+          <b>3. </b>Build up Data Analytics System
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/kinesis-data-streams/" title="Kinesis Data Streams" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/kinesis-data-streams/">
+          <b>3-1. </b>Kinesis Data Streams
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/kinesis-data-firehose/" title="Kinesis Data Firehose" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/kinesis-data-firehose/">
+          <b>3-2. </b>Kinesis Data Firehose
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/verify/" title="Verify" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/verify/">
+          <b>3-3. </b>Verify
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/athena/" title="Athena" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/athena/">
+          <b>3-4. </b>Athena
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/quicksight/" title="QuickSight" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/quicksight/">
+          <b>3-5. </b>QuickSight
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/athena-ctas/" title="Athena CTAS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/athena-ctas/">
+          <b>3-6. </b>Athena CTAS
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/amazon-es/" title="Amazon Elasticsearch Service" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/amazon-es/">
+          <b>3-7. </b>Amazon Elasticsearch Service
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/aws-lambda/" title="AWS Lambda" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/en/build-analytics-system/aws-lambda/">
+          <b>3-8. </b>AWS Lambda
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/build-analytics-system/kibana/" title="Kibana" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/build-analytics-system/kibana/">
+          <b>3-9. </b>Kibana
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/recap/" title="Recap and Review" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/recap/">
+          <b>4. </b>Recap and Review
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/resources/" title="Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/resources/">
+          <b>5. </b>Resources
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/reference/" title="Reference" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/reference/">
+          <b>5. </b>Reference
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://aws.amazon.com/"><i class='fab fa-aws'></i> AWS Homepage</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://aws.amazon.com/blogs/aws/"><i class='fas fa-blog'></i> AWS Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awskrug/"><i class='fab fa-facebook-square'></i> Facebook</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ko" value="/ko/build-analytics-system/aws-lambda/">한국어</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="en" value="/en/build-analytics-system/aws-lambda/" selected>English</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    <section class="copyright">&copy; 2020 Amazon Web Services, Inc. or its Affiliates. All rights reserved.<section>
+</left>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/en/'>Analytics on AWS</a> > <a href='/en/build-analytics-system/'>Build up Data Analytics System</a> > AWS Lambda
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#aws-lambda-function을-이용해서-실시간-데이터를-elasticsearch에-수집하기">AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기</a>
+      <ul>
+        <li><a href="#lambda-함수에서-사용할-공통-라이브러를-layers에-추가하려면">Lambda 함수에서 사용할 공통 라이브러를 Layers에 추가하려면,</a></li>
+        <li><a href="#lambda-함수를-생성하려면">Lambda 함수를 생성하려면,</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              AWS Lambda
+            </h1>
+          
+
+        
+
+
+
+
+	<p><img src="/images/aws-analytics-system-build-steps.png" alt="aws-analytics-system-build-steps"></p>
+<h2 id="aws-lambda-function을-이용해서-실시간-데이터를-elasticsearch에-수집하기">AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기</h2>
+<p>Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인할 수 있습니다.
+이번 실습에서는 AWS Lambda 콘솔을 사용하여 Lambda 함수를 생성합니다.</p>
+<h3 id="lambda-함수에서-사용할-공통-라이브러를-layers에-추가하려면">Lambda 함수에서 사용할 공통 라이브러를 Layers에 추가하려면,</h3>
+<ol>
+<li><strong>AWS Lambda 콘솔</strong> 을 엽니다.</li>
+<li><strong>Layers</strong> 메뉴에 들어가서 <strong>[Create layer]</strong> 을 선택합니다.</li>
+<li>Name에 <code>es-lib</code> 를 입력합니다.</li>
+<li><code>Upload a file from Amazon S3</code> 를 선택하고, 라이브러리 코드가 저장된 s3 link url 또는 압축한 라이브러리 코드 파일을 입력합니다.
+이번 실습에서는 <code>resources/es-lib.zip</code> 파일을 사용합니다. <code>es-lib.zip</code> 생성 방법은
+<a href="/en/reference/">AWS Lambda Layer에 등록할 Python 패키지 생성 예제</a>
+ 를 참고하세요.</li>
+<li><code>Compatible runtimes</code> 에서 <code>Python 3.8</code> 을 선택합니다.
+<img src="/images/aws-lambda-create-layer.png" alt="aws-lambda-create-layer"></li>
+</ol>
+<h3 id="lambda-함수를-생성하려면">Lambda 함수를 생성하려면,</h3>
+<ol>
+<li><strong>AWS Lambda 콘솔</strong> 을 엽니다.</li>
+<li><strong>[Create a function]</strong> 을 선택합니다.</li>
+<li>Function name(함수 이름)에 <code>UpsertToES</code> 을 입력합니다.</li>
+<li>Runtime 에서 <code>Python 3.8</code> 을 선택합니다.</li>
+<li><strong>[Create a function]</strong> 을 선택합니다.
+<img src="/images/aws-lambda-create-function.png" alt="aws-lambda-create-function"></li>
+<li>Designer(디자이너) 에서 layers를 선택합니다. Layers에서 Add a layer를 선택합니다.</li>
+<li>Layer selection에서 <code>Select from list of runtime compatible layers</code>을 클릭하고,
+Compatiable layers에서 Name과 Version으로 앞서 생성한 layer의 Name과 Version을 선택합니다.
+<img src="/images/aws-lambda-add-layer-to-function.png" alt="aws-lambda-add-layer-to-function">
+Layer의 runtime 버전과 Lambda function의 runtime이 버전이 다른 경우, Layer selection의 Compatiable layers에 필요한 layer가
+목록에 보이지 않을 수 있습니다.
+이러한 경우, Layer selection에서 <code>Provide a layer version ARN</code>을 클릭하고,
+layer의 arn을 직접 입력하면 됩니다.
+<img src="/images/aws-lambda-add-layer-to-function-layer-version-arn.png" alt="aws-lambda-add-layer-to-function-layer-version-arn"></li>
+<li><strong>[Add]</strong> 클릭합니다.</li>
+<li>Designer(디자이너) 에서 <code>UpsertToES</code> 을 선택하여 함수의 코드 및 구성으로 돌아갑니다.</li>
+<li>Function code의 코드 편집기에 <code>upsert_to_es.py</code> 파일의 코드를 복사해서 붙여넣습니다.</li>
+<li>Environment variables 에서 <strong>[Edit]</strong> 를 클릭합니다.</li>
+<li><strong>[Add environment variables]</strong> 를 클릭해서 아래 4개의 Environment variables을 등록합니다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ES_HOST<span style="color:#f92672">=</span>&lt;elasticsearch service domain&gt;
+REQUIRED_FIELDS<span style="color:#f92672">=</span>&lt;primary key로 사용될 column 목록&gt;
+REGION_NAME<span style="color:#f92672">=</span>&lt;region-name&gt;
+DATE_TYPE_FIELDS<span style="color:#f92672">=</span>&lt;column 중, date 또는 timestamp 데이터 타입의 column&gt;
+</code></pre></div><p>예를 들어, 다음과 같이 Environment variables을 설정합니다.</p>
+<pre><code class="language-buildoutcfg" data-lang="buildoutcfg">ES_HOST=vpc-retail-xkl5jpog76d5abzhg4kyfilymq.us-west-1.es.amazonaws.com
+REQUIRED_FIELDS=Invoice,StockCode,Customer_ID
+REGION_NAME=us-west-2
+DATE_TYPE_FIELDS=InvoiceDate
+</code></pre></li>
+<li><strong>[Save]</strong> 선택합니다.</li>
+<li>lambda 함수를 VPC 내에서 실행 하고, Kinesis Data Streams에서 데이터를 읽기 위해서,
+lamba 함수 실행에 필요한 Execution role에 필요한 IAM Policy를 추가햐야 합니다.
+IAM Role 수정을 위해서 <code>View the UpsertToES-role-XXXXXXXX role on the IAM console.</code> 을 클릭 합니다.
+<img src="/images/aws-lambda-execution-iam-role.png" alt="aws-lambda-execution-iam-role"></li>
+<li>IAM Role의 <strong>[Permissions]</strong> 탭에서 <strong>[Attach policies]</strong> 버튼을 클릭 후,
+<strong>AWSLambdaVPCAccessExecutionRole</strong>, <strong>AmazonKinesisReadOnlyAccess</strong> 를 차례로 추가 합니다.
+<img src="/images/aws-lambda-iam-role-policies.png" alt="aws-lambda-iam-role-policies"></li>
+<li>VPC 항목에서 <strong>[Edit]</strong> 버튼을 클릭해서 Edit VPC 화면으로 이동 한다. VPC connection 에서 <code>Custom VPC</code> 를 선택합니다.
+Elasticsearch service의 도메인을 생성한 VPC와 subnets을 선택하고, Elasticsearch service 도메인에 접근이 허용된
+security groups을 선택합니다.</li>
+<li>Basic settings에서 <strong>[Edit]</strong> 선택합니다. Memory와 Timeout을 알맞게 조정합니다. 이 실습에서는 Timout을 <code>5 min</code> 으로 설정합니다.</li>
+<li>다시 Designer 탭으로 돌아가서 <strong>[Add trigger]</strong> 를 선택합니다.</li>
+<li><strong>Trigger configuration</strong> 의 <code>Select a trigger</code> 에서 <strong>Kinesis</strong> 를 선택 합니다.</li>
+<li>Kinesis stream 에서 앞서 생성한 Kinesis Data Stream(<code>retail-trans</code>)을 선택합니다.</li>
+<li><strong>[Add]</strong> 를 선택합니다.
+<img src="/images/aws-lambda-kinesis.png" alt="aws-lambda-kinesis"></li>
+</ol>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/en/build-analytics-system/amazon-es/" title="Amazon Elasticsearch Service"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/en/build-analytics-system/kibana/" title="Kibana" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1585211763"></script>
+    <script src="/js/perfect-scrollbar.min.js?1585211763"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1585211763"></script>
+    <script src="/js/jquery.sticky.js?1585211763"></script>
+    <script src="/js/featherlight.min.js?1585211763"></script>
+    <script src="/js/highlight.pack.js?1585211763"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1585211763"></script>
+    <script src="/js/learn.js?1585211763"></script>
+    <script src="/js/hugo-learn.js?1585211763"></script>
+
+    <link href="/mermaid/mermaid.css?1585211763" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1585211763"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
