@@ -12,20 +12,20 @@
     <title>Athena CTAS :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1585557443" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1585557443" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1585562321" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1585562321" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1585557443" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1585562321" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1585557443"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1585562321"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1585557443"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1585557443"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1585562321"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1585562321"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/ko";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1585557443"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1585562321"></script>
 
     
   </div>
@@ -741,7 +741,7 @@
 
 
 
-	<p><img src="/images/aws-analytics-system-build-steps-extra.png" alt="aws-analytics-system-build-steps"></p>
+	<p><img src="/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png" alt="aws-analytics-system-build-steps"></p>
 <h2 id="aws-lambda-function을-이용해서-s3에-저장된-작은-파일들을-큰-파일로-합치기">AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기</h2>
 <p>실시간으로 들어오는 데이터를 Kinesis Data Firehose를 이용해서 S3에 저장할 경우, 데이터 사이즈가 작은 파일들이 생성됩니다.
 Amazon Athena의 쿼리 성능 향상을 위해서 작은 파일들을 하나의 큰 파일로 합쳐주는 것이 좋습니다.
@@ -752,13 +752,13 @@ Amazon Athena의 쿼리 성능 향상을 위해서 작은 파일들을 하나의
 <li>Function name(함수 이름)에 <code>MergeSmallFiles</code> 을 입력합니다.</li>
 <li>Runtime 에서 <code>Python 3.8</code> 을 선택합니다.</li>
 <li><strong>[Create a function]</strong> 을 선택합니다.
-<img src="/images/aws-athena-ctas-lambda-create-function.png" alt="aws-athena-ctas-lambda-create-function"></li>
+<img src="/analytics-on-aws/images/aws-athena-ctas-lambda-create-function.png" alt="aws-athena-ctas-lambda-create-function"></li>
 <li>Designer 탭에 <strong>[Add trigger]</strong> 를 선택합니다.</li>
 <li><strong>Trigger configuration</strong> 의 <code>Select a trigger</code> 에서 <strong>CloudWatch Events/EventBridge</strong> 를 선택 합니다.
 Rule에서 <code>Create a new rule</code> 선택하고, Rule name에 적절한 rule name(예: <code>MergeSmallFilesEvent</code>)을 입력 합니다.
 Rule type으로 <code>Schedule expression</code>을 선택하고, Schedule expression에 매시각 5분 마다 작업이 실행되도록,
 <code>cron(5 * * * *)</code> 입력합니다.
-<img src="/images/aws-athena-ctas-lambda-add-trigger.png" alt="aws-athena-ctas-lambda-add-trigger"></li>
+<img src="/analytics-on-aws/images/aws-athena-ctas-lambda-add-trigger.png" alt="aws-athena-ctas-lambda-add-trigger"></li>
 <li><strong>Trigger configuration</strong> 에서 <strong>[Add]</strong> 를 클릭합니다.</li>
 <li>Function code의 코드 편집기에 <code>athena_ctas.py</code> 파일의 코드를 복사해서 붙여넣습니다.</li>
 <li><strong>[Add environment variables]</strong> 를 클릭해서 다음 Environment variables을 등록합니다.
@@ -782,10 +782,10 @@ COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_i
 </code></pre></li>
 <li>Athena 쿼리를 수행하는데 필요한 IAM Policy를 추가하기 위해서 Execution role에서
 <code>View the MergeSmallFiles-role-XXXXXXXX role on the IAM console.</code> 을 클릭 해서 IAM Role을 수정합니다.
-<img src="/images/aws-athena-ctas-lambda-execution-iam-role.png" alt="aws-athena-ctas-lambda-execution-iam-role"></li>
+<img src="/analytics-on-aws/images/aws-athena-ctas-lambda-execution-iam-role.png" alt="aws-athena-ctas-lambda-execution-iam-role"></li>
 <li>IAM Role의 <strong>[Permissions]</strong> 탭에서 <strong>[Attach policies]</strong> 버튼을 클릭 후,
 <strong>AmazonAthenaFullAccess</strong>, <strong>AmazonS3FullAccess</strong> 를 차례로 추가 합니다.
-<img src="/images/aws-athena-ctas-lambda-iam-role-policies.png" alt="aws-athena-ctas-lambda-iam-role-policies"></li>
+<img src="/analytics-on-aws/images/aws-athena-ctas-lambda-iam-role-policies.png" alt="aws-athena-ctas-lambda-iam-role-policies"></li>
 <li>Basic settings에서 <strong>[Edit]</strong> 선택합니다. Memory와 Timeout을 알맞게 조정합니다.
 이 실습에서는 Timout을 <code>5 min</code> 으로 설정합니다.</li>
 </ol>
@@ -1165,19 +1165,19 @@ COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_i
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1585557443"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1585562321"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/learn.js?1585557443"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1585557443"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/learn.js?1585562321"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1585562321"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1585557443" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1585557443"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1585562321" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1585562321"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
