@@ -10,15 +10,32 @@ pre: "<b>3-9. </b>"
 
 Amazon Elasticsearch Service에서 수집된 데이터를 Kibana를 이용해서 시각화 작업을 합니다.
 
-1. Elasticsearch Cluster에 접속하기 위해서 ssh config에 ssh 설정을 한다.
+1. Elasticsearch Cluster에 접속하기 위해서 개인 Local PC의 ssh config 파일에 아래와 같이 ssh tunnel 설정을 추가 한다.
     ```shell script
     # Elasticsearch Tunnel
     Host estunnel
-      HostName <EC2 Public IP>
+      HostName <EC2 Public IP of Bastion Host>
       User ec2-user
       IdentitiesOnly yes
       IdentityFile ~/.ssh/analytics-hol.pem
       LocalForward 9200 <Elasticsearch Endpoint>:443
+    ```
+  + **EC2 Public IP of Bastion Host** 은 **실습 환경 구성** 단계에서 생성한 EC2 인스턴스의 Public IP 를 사용한다.
+  + 예)
+    ```shell script
+    ~$ ls -1 .ssh/
+    analytics-hol.pem
+    config
+    id_rsa
+    ~$ tail .ssh/config
+    # Elasticsearch Tunnel
+    Host estunnel
+      HostName 214.132.71.219
+      User ubuntu
+      IdentitiesOnly yes
+      IdentityFile ~/.ssh/analytics-hol.pem
+      LocalForward 9200 vpc-retail-qvwlxanar255vswqna37p2l2cy.us-west-2.es.amazonaws.com:443
+    ~$
     ```
 2. Terminal 에서 `ssh -N estunnel` 를 실행합니다.
 3. Web browser에서 `https://localhost:9200/_plugin/kibana/` 으로 접속합니다.

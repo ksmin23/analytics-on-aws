@@ -20,7 +20,8 @@ tag:
 ![aws-ec2-choose-ami](/analytics-on-aws/images/aws-ec2-choose-ami.png)
 5. Step 2 : Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. **\[Next: Configure Instance Details\]** 을 클릭합니다.
 ![aws-ec2-choose-instance-type](/analytics-on-aws/images/aws-ec2-choose-instance-type.png)
-6. Step 3: Configure Instance Details 화면에서 **\[Next: Add Storage\]** 을 클릭합니다.
+6. Step 3: Configure Instance Details 화면에서 **Auto-assign Public IP** 를 **Enable** 선택하고, **\[Next: Add Storage\]** 을 클릭합니다.
+![aws-ec2-configure-instance-details](/analytics-on-aws/images/aws-ec2-configure-instance-details.png)
 7. Step 4: Add Storage 화면에서 기본값을 그대로 두고 **\[Next: Add Tags\]** 를 클릭합니다.
 8. Step 5: Add Tags 화면에서 **\[Next: Configure Security Group\]** 을 클릭합니다.
 9. Step 6: Configure Security Group 화면에서 Assign a security group 에서 Select an **existing** security group를 선택하고,

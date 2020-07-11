@@ -12,20 +12,20 @@
     <title>Kibana :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1585629099" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1585629099" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1594489386" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1594489386" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1585629099" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1594489386" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1585629099"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1594489386"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1585629099"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1585629099"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1594489386"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1594489386"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/ko";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1585629099"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1594489386"></script>
 
     
   </div>
@@ -745,15 +745,35 @@
 <h2 id="kibana를-이용한-데이터-시각화">Kibana를 이용한 데이터 시각화</h2>
 <p>Amazon Elasticsearch Service에서 수집된 데이터를 Kibana를 이용해서 시각화 작업을 합니다.</p>
 <ol>
-<li>Elasticsearch Cluster에 접속하기 위해서 ssh config에 ssh 설정을 한다.
+<li>Elasticsearch Cluster에 접속하기 위해서 개인 Local PC의 ssh config 파일에 아래와 같이 ssh tunnel 설정을 추가 한다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Elasticsearch Tunnel</span>
 Host estunnel
-  HostName &lt;EC2 Public IP&gt;
+  HostName &lt;EC2 Public IP of Bastion Host&gt;
   User ec2-user
   IdentitiesOnly yes
   IdentityFile ~/.ssh/analytics-hol.pem
   LocalForward <span style="color:#ae81ff">9200</span> &lt;Elasticsearch Endpoint&gt;:443
 </code></pre></div></li>
+</ol>
+<ul>
+<li><strong>EC2 Public IP of Bastion Host</strong> 은 <strong>실습 환경 구성</strong> 단계에서 생성한 EC2 인스턴스의 Public IP 를 사용한다.</li>
+<li>예)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">~$ ls -1 .ssh/
+analytics-hol.pem
+config
+id_rsa
+~$ tail .ssh/config
+<span style="color:#75715e"># Elasticsearch Tunnel</span>
+Host estunnel
+  HostName 214.132.71.219
+  User ubuntu
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/analytics-hol.pem
+  LocalForward <span style="color:#ae81ff">9200</span> vpc-retail-qvwlxanar255vswqna37p2l2cy.us-west-2.es.amazonaws.com:443
+~$
+</code></pre></div></li>
+</ul>
+<ol start="2">
 <li>Terminal 에서 <code>ssh -N estunnel</code> 를 실행합니다.</li>
 <li>Web browser에서 <code>https://localhost:9200/_plugin/kibana/</code> 으로 접속합니다.</li>
 <li>(Home) Add Data to Kibana 에서 <strong>[Use Elasticsearch data / Connect to your Elasticsearch index]</strong> 클릭한다.
@@ -1161,19 +1181,19 @@ Time Filter field name에 <code>InvoiceDate</code> 를 선택합니다.
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1585629099"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1594489386"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/learn.js?1585629099"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1585629099"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/learn.js?1594489386"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1594489386"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1585629099" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1585629099"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1594489386" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1594489386"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
