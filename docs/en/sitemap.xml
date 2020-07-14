@@ -284,6 +284,20 @@
   </url>
   
   <url>
+    <loc>https://ksmin23.github.io/analytics-on-aws/en/appendix/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://ksmin23.github.io/analytics-on-aws/ko/appendix/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ksmin23.github.io/analytics-on-aws/en/appendix/"
+                />
+  </url>
+  
+  <url>
     <loc>https://ksmin23.github.io/analytics-on-aws/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
