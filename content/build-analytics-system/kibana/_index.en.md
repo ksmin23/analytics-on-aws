@@ -8,7 +8,7 @@ pre: "<b>3-9. </b>"
 
 ## Data visualization with Kibana
 
-Amazon Elasticsearch Service에서 수집된 데이터를 Kibana를 이용해서 시각화 작업을 합니다.
+Visualize data collected from Amazon Elasticsearch Service using Kibana.
 
 1. To access the Elasticsearch Cluster, add the ssh tunnel configuration to the ssh config file of the personal local PC as follows.
     ```shell script
@@ -52,7 +52,7 @@ Amazon Elasticsearch Service에서 수집된 데이터를 Kibana를 이용해서
 ![kibana-03-discover](/analytics-on-aws/images/kibana-03-discover.png)
 10.  (Discover) Let's visualize the `Quantity` by `InvoicdDate`. Select **invoicdDate** from **Available fields** on the left, and click **Visualize** at the bottom.
 ![kibana-04-discover-visualize](/analytics-on-aws/images/kibana-04-discover-visualize.png)
-11. (Visualize) 아래와 같이 Data 탭의 Metrics에서 Y-Axis를 Aggregation은 `Sum`, Field는 `Quantity`를 선택 후 적용 합니다.
+11. (Visualize) After selecting **Y-Axis** in **Metrics** on the Data tab, apply `Sum` for **Aggregation**, and `Quantity` for **Field** as shown below.
 ![kibana-05-discover-change-metrics](/analytics-on-aws/images/kibana-05-discover-change-metrics.png)
 12. (Visualize) Click **\[Save\]** in the upper left corner, write down the name of the graph you saved, and then click **\[Confirm Save\]**.
 ![kibna-08-visualize-save](/analytics-on-aws/images/kibana-08-visualize-save.png)
