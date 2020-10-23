@@ -12,20 +12,20 @@
     <title>Athena CTAS :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1603452499" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603463190" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1603452499" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603463190" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603452499"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603463190"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603452499"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603452499"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603463190"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603463190"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603452499"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603463190"></script>
 
     
   </div>
@@ -738,7 +738,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#aws-lambda-function을-이용해서-s3에-저장된-작은-파일들을-큰-파일로-합치기">AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기</a></li>
+    <li><a href="#combining-small-files-stored-in-s3-into-large-files-using-aws-lambda-function">Combining small files stored in S3 into large files using AWS Lambda Function</a></li>
   </ul>
 </nav>
     </div>
@@ -766,26 +766,25 @@
 
 
 	<p><img src="/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png" alt="aws-analytics-system-build-steps"></p>
-<h2 id="aws-lambda-function을-이용해서-s3에-저장된-작은-파일들을-큰-파일로-합치기">AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기</h2>
-<p>실시간으로 들어오는 데이터를 Kinesis Data Firehose를 이용해서 S3에 저장할 경우, 데이터 사이즈가 작은 파일들이 생성됩니다.
-Amazon Athena의 쿼리 성능 향상을 위해서 작은 파일들을 하나의 큰 파일로 합쳐주는 것이 좋습니다.
-이러한 작업을 주기적으로 실행하기 위해서Athena의 CTAS(Create Table As Select) 쿼리를 실행하는 AWS Lambda function 함수를 생성하고자 합니다.</p>
+<h2 id="combining-small-files-stored-in-s3-into-large-files-using-aws-lambda-function">Combining small files stored in S3 into large files using AWS Lambda Function</h2>
+<p>When real-time incoming data is stored in S3 using Kinesis Data Firehose, files with small data size are created.
+To improve the query performance of Amazon Athena, it is recommended to combine small files into one large file.
+To run these tasks periodically, I want to create an AWS Lambda function function that executes Athena&rsquo;s Create Table As Select (CTAS) query.</p>
 <ol>
-<li><strong>AWS Lambda 콘솔</strong> 을 엽니다.</li>
-<li><strong>[Create a function]</strong> 을 선택합니다.</li>
-<li>Function name(함수 이름)에 <code>MergeSmallFiles</code> 을 입력합니다.</li>
-<li>Runtime 에서 <code>Python 3.8</code> 을 선택합니다.</li>
-<li><strong>[Create a function]</strong> 을 선택합니다.
+<li>Open the <strong>AWS Lambda Console</strong>.</li>
+<li>Select <strong>[Create a function]</strong>.</li>
+<li>Enter <code>MergeSmallFiles</code> for Function name.</li>
+<li>Select <code>Python 3.8</code> in Runtime.</li>
+<li>Select <strong>[Create a function]</strong>.
 <img src="/analytics-on-aws/images/aws-athena-ctas-lambda-create-function.png" alt="aws-athena-ctas-lambda-create-function"></li>
-<li>Designer 탭에 <strong>[Add trigger]</strong> 를 선택합니다.</li>
-<li><strong>Trigger configuration</strong> 의 <code>Select a trigger</code> 에서 <strong>CloudWatch Events/EventBridge</strong> 를 선택 합니다.
-Rule에서 <code>Create a new rule</code> 선택하고, Rule name에 적절한 rule name(예: <code>MergeSmallFilesEvent</code>)을 입력 합니다.
-Rule type으로 <code>Schedule expression</code>을 선택하고, Schedule expression에 매시각 5분 마다 작업이 실행되도록,
-<code>cron(5 * * * *)</code> 입력합니다.
+<li>Select <strong>[Add trigger]</strong> in the Designer tab.</li>
+<li>Select <strong>CloudWatch Events/EventBridge</strong> in <code>Select a trigger</code> of <strong>Trigger configuration</strong>.
+Select <code>Create a new rule</code> in Rule and enter the appropriate rule name (eg <code>MergeSmallFilesEvent</code>) in Rule name.
+Select <code>Schedule expression</code> as the rule type, and enter <code>cron(5 * * * *)</code> for running the task every 5 minutes in the schedule expression.
 <img src="/analytics-on-aws/images/aws-athena-ctas-lambda-add-trigger.png" alt="aws-athena-ctas-lambda-add-trigger"></li>
-<li><strong>Trigger configuration</strong> 에서 <strong>[Add]</strong> 를 클릭합니다.</li>
-<li>Function code의 코드 편집기에 <code>athena_ctas.py</code> 파일의 코드를 복사해서 붙여넣습니다.</li>
-<li><strong>[Add environment variables]</strong> 를 클릭해서 다음 Environment variables을 등록합니다.
+<li>In <strong>Trigger configuration</strong>, click <strong>[Add]</strong>.</li>
+<li>Copy and paste the code from the <code>athena_ctas.py</code> file into the code editor of the Function code.</li>
+<li>Click <strong>[Add environment variables]</strong> to register the following environment variables.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">OLD_DATABASE<span style="color:#f92672">=</span>&lt;source database&gt;
 OLD_TABLE_NAME<span style="color:#f92672">=</span>&lt;source table&gt;
 NEW_DATABASE<span style="color:#f92672">=</span>&lt;destination database&gt;
@@ -794,7 +793,7 @@ WORK_GROUP<span style="color:#f92672">=</span>&lt;athena workgroup&gt;
 OUTPUT_PREFIX<span style="color:#f92672">=</span>&lt;destination s3 prefix&gt;
 STAGING_OUTPUT_PREFIX<span style="color:#f92672">=</span>&lt;staging s3 prefix used by athena&gt;
 COLUMN_NAMES<span style="color:#f92672">=</span>&lt;columns of source table excluding partition keys&gt;
-</code></pre></div><p>예를 들어, 다음과 같이 Environment variables을 설정합니다.</p>
+</code></pre></div><p>For example, set Environment variables as follows:</p>
 <pre><code class="language-buildoutcfg" data-lang="buildoutcfg">OLD_DATABASE=mydatabase
 OLD_TABLE_NAME=retail_trans_json
 NEW_DATABASE=mydatabase
@@ -804,14 +803,11 @@ OUTPUT_PREFIX=s3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans
 STAGING_OUTPUT_PREFIX=s3://aws-analytics-immersion-day-xxxxxxxx/tmp
 COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_id,country
 </code></pre></li>
-<li>Athena 쿼리를 수행하는데 필요한 IAM Policy를 추가하기 위해서 Execution role에서
-<code>View the MergeSmallFiles-role-XXXXXXXX role on the IAM console.</code> 을 클릭 해서 IAM Role을 수정합니다.
+<li>To add the IAM Policy required to execute Athena queries, click <code>View the MergeSmallFiles-role-XXXXXXXX role on the IAM console.</code> in the Execution role and modify the IAM Role.
 <img src="/analytics-on-aws/images/aws-athena-ctas-lambda-execution-iam-role.png" alt="aws-athena-ctas-lambda-execution-iam-role"></li>
-<li>IAM Role의 <strong>[Permissions]</strong> 탭에서 <strong>[Attach policies]</strong> 버튼을 클릭 후,
-<strong>AmazonAthenaFullAccess</strong>, <strong>AmazonS3FullAccess</strong> 를 차례로 추가 합니다.
+<li>After clicking the <strong>[Attach policies]</strong> button in the <strong>[Permissions]</strong> tab of IAM Role, add <strong>AmazonAthenaFullAccess</strong> and <strong>AmazonS3FullAccess</strong> in order.
 <img src="/analytics-on-aws/images/aws-athena-ctas-lambda-iam-role-policies.png" alt="aws-athena-ctas-lambda-iam-role-policies"></li>
-<li>Basic settings에서 <strong>[Edit]</strong> 선택합니다. Memory와 Timeout을 알맞게 조정합니다.
-이 실습에서는 Timout을 <code>5 min</code> 으로 설정합니다.</li>
+<li>Select <strong>[Edit]</strong> in Basic settings. Adjust Memory and Timeout appropriately. In this lab, we set Timout to <code>5 min</code>.</li>
 </ol>
 
 
@@ -1205,19 +1201,19 @@ COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_i
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1603452499"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603463190"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/learn.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1603452499"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603463190"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1603452499" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1603452499"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603463190" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603463190"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

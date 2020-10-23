@@ -12,20 +12,20 @@
     <title>QuickSight :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1603452499" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1603452499" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603463190" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603463190" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1603452499" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603463190" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603452499"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603463190"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603452499"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603452499"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603463190"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603463190"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603452499"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603463190"></script>
 
     
   </div>
@@ -738,7 +738,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#quicksight를-이용한-데이터-시각화">QuickSight를 이용한 데이터 시각화</a></li>
+    <li><a href="#data-visualization-with-quicksight">Data visualization with QuickSight</a></li>
   </ul>
 </nav>
     </div>
@@ -766,44 +766,40 @@
 
 
 	<p><img src="/analytics-on-aws/images/aws-analytics-system-build-steps.png" alt="aws-analytics-system-build-steps"></p>
-<h2 id="quicksight를-이용한-데이터-시각화">QuickSight를 이용한 데이터 시각화</h2>
-<p>이번에는 Amazon QuickSight를 통해 데이터 시각화 작업을 합니다.</p>
+<h2 id="data-visualization-with-quicksight">Data visualization with QuickSight</h2>
+<p>At this time, let&rsquo;s use Amazon QuickSight to visualize the data.</p>
 <ol>
-<li><a href="https://quicksight.aws.amazon.com" target="_blank">QuickSight 콘솔</a>
-로 이동합니다.</li>
-<li>QuickSight에 가입하기 위해 <strong>[Sign up for QuickSight]</strong> 버튼을 클릭합니다.</li>
-<li>Standard Edition을 선택한 후 <strong>[Continue]</strong> 버튼을 클릭합니다.</li>
-<li>QuickSight account name은 임의로 지정(중복될 경우 계정이 생성되지 않습니다) 하고,
-Notification email address는 개인 Email 주소를 입력합니다.
-QuckSight가 S3에 Access해야 하므로, <strong>[Choose S3 buckets]</strong> 를 클릭하여,
-<code>aws-analytics-immersion-day-xxxxxxxx</code> 를 선택한 후 <strong>[Finish]</strong> 를 클릭합니다.</li>
-<li>계정이 생성된 후 <strong>[Go to Amazon QuickSight]</strong> 버튼을 클릭합니다.</li>
-<li>우측 상단에 region이 데이터를 저장하고 있는 S3 bucket의 region과 동일하게 설정한 후,
-좌측 상단 <strong>[New Analysis]</strong> 를 클릭합니다.</li>
-<li><strong>[New Data Set]</strong> 버튼을 클릭합니다.
+<li>Go to <a href="https://quicksight.aws.amazon.com" target="_blank">QuickSight Console</a>
+.</li>
+<li>Click the <strong>[Sign up for QuickSight]</strong> button to sign up for QuickSight.</li>
+<li>Select Standard Edition and click the <strong>[Continue]</strong> button.</li>
+<li>Specify the QuickSight account name randomly (in case of duplicate, the account will not be created), and enter your personal email address for Notification email address.
+QuckSight needs to access S3 so that click <strong>[Choose S3 buckets]</strong>. Select <code>aws-analytics-immersion-day-xxxxxxxx</code> and click <strong>[Finish]</strong>.</li>
+<li>After the account is created, click the <strong>[Go to Amazon QuickSight]</strong> button.</li>
+<li>After setting the <strong>region</strong> in the upper right corner as the region of the S3 bucket storing data, click <strong>[New Analysis]</strong> in the upper left corner.</li>
+<li>Click <strong>[New Data Set]</strong> button.
 <img src="/analytics-on-aws/images/aws-quicksight-new_data_sets.png" alt="aws-quicksight-new_data_sets"></li>
-<li><code>Athena</code> 를 클릭하고 팝업 창의 Data source name에 <code>retail-quicksight</code> 를 입력(임의의 값 입력 가능)하고,
-<strong>[Validate connection]</strong> 을 클릭 해서 <code>Validated</code> 상태로 변경되면, <strong>[Create data source]</strong> 버튼을 클릭합니다.
+<li>Click <code>Athena</code> and enter <code>retail-quicksight</code> in the Data source name in the pop-up window (any value can be entered).
+Click <strong>[Validate connection]</strong> to change to <code>Validated</code>, then click the <strong>[Create data source]</strong> button.
 <img src="/analytics-on-aws/images/aws-quicksight-athena_data_source.png" alt="aws-quicksight-athena_data_source"></li>
-<li>Choose your table 화면에서 Database는 <code>mydatabase</code> (앞서 생성한 Athena 데이터베이스),
-Tables 에서 <code>retail_trans_json</code> 를 선택하고 Select 버튼을 클릭합니다.
+<li>In the Choose your table screen, Database is <code>mydatabase</code> (the Athena database created earlier), and then Select <code>retail_trans_json</code> from Tables and click the Select button.
 <img src="/analytics-on-aws/images/aws-quicksight-athena-choose_your_table.png" alt="aws-quicksight-athena-choose_your_table"></li>
-<li>Finish data set creation 화면에서 <strong>[Visualize]</strong> 버튼을 클릭 합니다.
-<code>retail_trans_json</code> 테이블 데이터가 QuickSight SPICE 엔진에 로딩 되었는지 확인합니다.</li>
-<li><code>InvoicdDate</code> 별 <code>Quantity</code>, <code>Price</code>를 시각화 해 보겠습니다. 좌측 Fields list에서 <code>invoicedate</code>, <code>price</code>, <code>quantity</code> field를 차례대로 선택합니다.
-Visual types는 세로 막대 그래프를 선택합니다.
+<li>Click the <strong>[Visualize]</strong> button on the Finish data set creation screen.
+Check if the <code>retail_trans_json</code> table data is loaded into the QuickSight SPICE engine.</li>
+<li>Let&rsquo;s visualize the <code>Quantity</code> and <code>Price</code> by ʻInvoicdDate<code>. Select the ʻinvoicedate</code>, <code>price</code>, and <code>quantity</code> fields in order from the left Fields list.
+Select vertical bar graph as Visual types.
 <img src="/analytics-on-aws/images/aws-quicksight-bar-chart.png" alt="aws-quicksight-bar-chart"></li>
-<li>방금 만든 Dashboard를 다른 사용자에게 공유해 보겠습니다. 좌측 상단 유저 아이콘을 클릭하고 [Manage QuickSight] 를 클릭합니다.</li>
-<li>Invite users 버튼을 클릭한 후 임의의 사용자 계정명(BI_user01)을 입력한 후 우측 <strong>[+]</strong> 버튼을 클릭합니다.
-Email은 다른 사용자의 Email 주소를 입력하고 Role은 AUTHOR, IAM User는 NO를 선택한 후 Invite 버튼을 클릭합니다.
+<li>Let&rsquo;s share the Dashboard we just created with other users. Click the user icon in the upper left corner and click [Manage QuickSight].</li>
+<li>Click the Invite users button, enter a random user account name (BI_user01), and click the <strong>[+]</strong> button on the right.
+Enter the email address of another user for Email, select AUTHOR for Role, and NO for IAM User, and click the Invite button.
 <img src="/analytics-on-aws/images/aws-quicksight-user-invitation.png" alt="aws-quicksight-user-invitation"></li>
-<li>사용자는 다음과 같은 Invitation Email을 받고 Click to accept invitation을 클릭하면 계정 생성 메뉴에서 비밀번호를 변경할 수 있습니다.
+<li>Users receive the following Invitation Email and click Click to accept invitation to change their password in the Create Account menu.
 <img src="/analytics-on-aws/images/aws-quicksight-user-email.png" alt="aws-quicksight-user-email"></li>
-<li>QuickSight 화면으로 돌아가서 우측 상단의 <strong>Share &gt; Share analysis</strong> 를 클릭합니다.
+<li>Return to the QuickSight screen and click <strong>Share&gt; Share analysis</strong> in the upper right.
 <img src="/analytics-on-aws/images/aws-quicksight-share-analysis.png" alt="aws-quicksight-share-analysis.png"></li>
-<li>BI_user01을 선택한 후 Share 버튼을 클릭합니다.
+<li>Select BI_user01 and click the Share button.
 <img src="/analytics-on-aws/images/aws-quicksight-share-analysis-users.png" alt="aws-quicksight-share-analysis-users"></li>
-<li>사용자는 다음과 같은 Email을 수신합니다. <strong>[Click to View]</strong> 를 클릭하여 분석결과를 확인할 수 있습니다.
+<li>Users receive the following email: You can check the analysis results by clicking <strong>[Click to View]</strong>.
 <img src="/analytics-on-aws/images/aws-quicksight-user-email-click-to-view.png" alt="aws-quicksight-user-email-click-to-view"></li>
 </ol>
 
@@ -1198,19 +1194,19 @@ Email은 다른 사용자의 Email 주소를 입력하고 Role은 AUTHOR, IAM Us
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1603452499"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603463190"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/learn.js?1603452499"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1603452499"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603463190"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603463190"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1603452499" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1603452499"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603463190" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603463190"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
