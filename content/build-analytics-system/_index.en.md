@@ -18,4 +18,4 @@ In this lab, you will perform the following steps to build a data analysis syste
 - [3-6. (Optional) Combine small files stored in S3 into large files using AWS Lambda Function](/en/build-analytics-system/athena-ctas/)
 - [3-7. Create Amazon Elasticsearch Service for Real-Time Data Analysis](/analytics-on-aws/en/build-analytics-system/amazon-es/)
 - [3-8. Ingest real-time data into ElasticSearch using AWS Lambda Functions](/analytics-on-aws/en/build-analytics-system/aws-lambda/)
-- [3-8. Data visualization with Kibana](/analytics-on-aws/en/build-analytics-system/kibana/)
+- [3-9. Data visualization with Kibana](/analytics-on-aws/en/build-analytics-system/kibana/)

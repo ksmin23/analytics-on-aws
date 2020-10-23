@@ -18,4 +18,4 @@ pre: "<b>3. </b>"
 - [3-6. (Optional) AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기](/analytics-on-aws/ko/build-analytics-system/athena-ctas/)
 - [3-7. 실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기](/analytics-on-aws/ko/build-analytics-system/amazon-es/)
 - [3-8. AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기](/analytics-on-aws/ko/build-analytics-system/aws-lambda/)
-- [3-8. Kibana를 이용한 데이터 시각화](/analytics-on-aws/ko/build-analytics-system/kibana/)
+- [3-9. Kibana를 이용한 데이터 시각화](/analytics-on-aws/ko/build-analytics-system/kibana/)
