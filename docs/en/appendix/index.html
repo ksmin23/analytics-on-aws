@@ -12,20 +12,20 @@
     <title>Appendix :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1603422426" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603428452" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1603422426" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603428452" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603428452"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603422426"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603422426"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603428452"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603428452"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603422426"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603428452"></script>
 
     
   </div>
@@ -765,20 +765,20 @@
 
 
 	
-<div class="notices note" ><p>이 실습을 마치면 사용한 AWS 계정에 비용이 추가로 발생하지 않도록 사용한 리소스를 삭제해야 합니다.</p>
+<div class="notices note" ><p>At the end of this lab, you should delete the resources you used to avoid incurring additional charges for the AWS account you used.</p>
 </div>
 
-<p>AWS CDK를 이용해서 배포하는 방법을 소개 합니다.</p>
+<p>Introducing how to deploy using the AWS CDK.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ol>
 <li>
-<p>AWS CDK Toolkit을 설치합니다.</p>
+<p>Install AWS CDK Toolkit.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install -g aws-cdk
 </code></pre></div></li>
 <li>
-<p>cdk가 정상적으로 설치되었는지, 다음 명령어를 실행해서 확인합니다.</p>
+<p>Verify that cdk is installed properly by running the following command:</p>
 <pre><code>cdk --version
-</code></pre><p>예)</p>
+</code></pre><p>ex)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cdk --version
 1.51.0 <span style="color:#f92672">(</span>build 8c2d53c<span style="color:#f92672">)</span>
 </code></pre></div></li>
@@ -792,14 +792,13 @@
 <li><code>cdk docs</code>        open CDK documentation</li>
 </ul>
 <h3 id="deployment">Deployment</h3>
-<p>CDK로 배포할 경우, 아래 아키텍처 그림의 <code>1(a), 1(b), 1(c), 1(f), 2(b), 2(a)</code>가 자동으로 생성됩니다.</p>
+<p>When deployed as CDK, <code>1(a), 1(b), 1(c), 1(f), 2(b), 2(a)</code> in the architecture diagram below are automatically created.</p>
 <p><img src="/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png" alt="aws-analytics-system-build-steps-extra"></p>
 <ol>
 <li>
-<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html" target="_blank">Getting Started With the AWS CDK</a>
-를 참고해서 cdk를 설치하고,
-cdk를 실행할 때 사용할 IAM User를 생성한 후, <code>~/.aws/config</code>에 등록합니다.
-예를 들어서, cdk_user라는 IAM User를 생성 한 후, 아래와 같이 <code>~/.aws/config</code>에 추가로 등록합니다.</p>
+<p>Refer to <a href="https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html" target="_blank">Getting Started With the AWS CDK</a>
+ to install cdk. 
+Create an IAM User to be used when running cdk and register it in <code>~/.aws/config</code>.For example, after creating an IAM User called cdk_user, add it to <code>~/.aws/config</code> as shown below.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat ~/.aws/config
 <span style="color:#f92672">[</span>profile cdk_user<span style="color:#f92672">]</span>
 aws_access_key_id<span style="color:#f92672">=</span>AKIAI44QH8DHBEXAMPLE
@@ -807,15 +806,14 @@ aws_secret_access_key<span style="color:#f92672">=</span>je7MtGbClwBF/2Zp9Utk/h3
 region<span style="color:#f92672">=</span>us-east-1
 </code></pre></div></li>
 <li>
-<p>Lambda Layer에 등록할 Python 패키지를 생성해서 s3 bucket에 저장함
-에를 들어, elasticsearch 패키지를 Lambda Layer에 등록 할 수 있도록 <code>lambda-layer-resources</code>라는 이름의 s3 bucket을 생성 후, 아래와 같이 저장합니다.</p>
+<p>Create a Python package to register in the Lambda Layer and store it in the s3 bucket. For example, create an s3 bucket named <code>lambda-layer-resources</code> so that you can save the elasticsearch package to register in the Lambda Layer as follows.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ aws s3 ls s3://lambda-layer-resources/var/
 2019-10-25 08:38:50          0
 2019-10-25 08:40:28    <span style="color:#ae81ff">1294387</span> es-lib.zip
 </code></pre></div></li>
 <li>
-<p>소스 코드를 git에서 다운로드 받은 후, <code>S3_BUCKET_LAMBDA_LAYER_LIB</code> 라는 환경 변수에 lambda layer에 등록할 패키지가 저장된 s3 bucket 이름을
-설정 한 후, <code>cdk deploy</code> 명령어를 이용해서 배포합니다.</p>
+<p>After downloading the source code from git, enter the s3 bucket name where the package to be registered in the lambda layer is stored in an environment variable called <code>S3_BUCKET_LAMBDA_LAYER_LIB</code>.
+After setting, deploy using the <code>cdk deploy</code> command.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git clone https://github.com/ksmin23/aws-analytics-immersion-day.git
 $ cd aws-analytics-immersion-day
 $ python3 -m venv .env
@@ -824,7 +822,7 @@ $ source .env/bin/activate
 <span style="color:#f92672">(</span>.env<span style="color:#f92672">)</span> $ S3_BUCKET_LAMBDA_LAYER_LIB<span style="color:#f92672">=</span>lambda-layer-resources cdk --profile cdk_user deploy
 </code></pre></div></li>
 <li>
-<p>배포한 애플리케이션을 삭제하려면, <code>cdk destroy</code> 명령어를 아래와 같이 실행 합니다.</p>
+<p>To delete the deployed application, execute the <code>cdk destroy</code> command as follows.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>.env<span style="color:#f92672">)</span> $ cdk --profile cdk_user destroy
 </code></pre></div></li>
 </ol>
@@ -1213,19 +1211,19 @@ $ source .env/bin/activate
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603428452"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/learn.js?1603422426"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603428452"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1603422426" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1603422426"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603428452" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603428452"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
