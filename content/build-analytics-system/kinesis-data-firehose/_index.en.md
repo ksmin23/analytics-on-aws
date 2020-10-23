@@ -10,7 +10,7 @@ pre: "<b>3-2. </b>"
 With Kinesis Data Firehose, you can collect data in real time to destinations such as S3, Redshift, and ElasticSearch.
 {{% /notice %}}
 
-Select the Kinesis services the AWS Management Console.
+Select Kinesis services the AWS Management Console.
 
 1. Click **Get Started** button.
 2. Click **\[Create delivery stream\]** on **Deliver streaming data with Kinesis Firehose delivery streams** menu.<br/>
