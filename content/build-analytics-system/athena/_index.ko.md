@@ -21,12 +21,12 @@ Amazon Athena를 이용해서 S3에 저장된 데이터를 기반으로 테이�
 문자열 입니다.)
 ![aws-athena-setup-query-results-location-02](/analytics-on-aws/images/aws-athena-setup-query-results-location-02.png)
 처음 방문하는 경우가 아니라면, Athena 쿼리 편집기가 열립니다.
-3. Athena 쿼리 편집기에서 예제 쿼리가 있는 쿼리 창을 볼 수 있습니다. 쿼리 창의 아무 곳에나 쿼리를 입력하기 시작합니다.
-4. `mydatabase` 라는 데이터베이스를 생성하려면 다음 CREATE DATABASE 문을 입력한 다음, **\[Run Query\]** 를 선택합니다.
+4. Athena 쿼리 편집기에서 예제 쿼리가 있는 쿼리 창을 볼 수 있습니다. 쿼리 창의 아무 곳에나 쿼리를 입력하기 시작합니다.
+5. `mydatabase` 라는 데이터베이스를 생성하려면 다음 CREATE DATABASE 문을 입력한 다음, **\[Run Query\]** 를 선택합니다.
     ```buildoutcfg
     CREATE DATABASE mydatabase
     ```
-5. 카탈로그 디스플레이가 새로 고쳐지고 왼쪽 **\[Catalog\]** 대시보드의 **\[DATABASE\]** 목록에 `mydatabase`가 표시되는지 확인합니다.
+6. 카탈로그 디스플레이가 새로 고쳐지고 왼쪽 **\[Catalog\]** 대시보드의 **\[DATABASE\]** 목록에 `mydatabase`가 표시되는지 확인합니다.
 
 ### 2단계: 테이블 생성
 1. **\[DATABASE\]** 에 `mydatabase`가 선택되었는지 확인한 후 **\[New Query\]** 를 선택합니다.
@@ -62,7 +62,7 @@ Amazon Athena를 이용해서 S3에 저장된 데이터를 기반으로 테이�
     ```
 
 ### 3단계: 데이터 쿼리
-1. **\[New Query\]** 를 선택하고 쿼리 창의 아무 곳에나 다음 문을 입력한 다음 **\[Run Query\]** 를 선택합니다.
+1. **\[New Query\]** 를 선택하고 쿼리 창의 아무 곳에나 다음 쿼리문을 입력한 다음 **\[Run Query\]** 를 선택합니다.
     ```buildoutcfg
     SELECT *
     FROM retail_trans_json
