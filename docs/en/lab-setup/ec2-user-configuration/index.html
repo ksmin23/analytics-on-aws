@@ -12,20 +12,20 @@
     <title>Configuring your EC2 Instance :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1594700079" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603422426" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1594700079" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603422426" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603422426"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1594700079"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603422426"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603422426"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603422426"></script>
 
     
   </div>
@@ -761,29 +761,28 @@
 
 
 
-	<p>생성한 EC2 인스턴스가 다른 AWS 리소스에 접근 및 제어할 수 있도록 다음과 같이 구성합니다.</p>
+	<p>Configure the EC2 instances to access and control other AWS resources as follows:</p>
 <ol>
 <li>
-<p>생성한 인스턴스의 Public IP로 SSH 접속을 합니다.</p>
+<p>Log into the EC2 instance by ssh.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh -i <span style="color:#e6db74">&#34;&lt;Key pair name&gt;&#34;</span> ec2-user@&lt;Public IP&gt;
 </code></pre></div></li>
 <li>
-<p>ssh로 접속한 EC2 인스턴스에서 다음 작업을 순서대로 수행 합니다.</p>
-<p>(1) 소소 코드를 다운로드 받는다.</p>
+<p>Perform the following actions in order on the EC2 instance connected with ssh.</p>
+<p>(1) Download the source code.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget <span style="color:#e6db74">&#39;https://github.com/ksmin23/aws-analytics-immersion-day/archive/master.zip&#39;</span>
-</code></pre></div><p>(2) 다운로드 받은 소스 코드의 압축을 해제한다.</p>
+</code></pre></div><p>(2) Extract the downloaded source code.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">unzip -u master.zip
-</code></pre></div><p>(3) 실습 환경 설정 스크립트에 실행 권한을 부여한다.</p>
+</code></pre></div><p>(3) Grant execution authority to the practice environment setting script.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod +x ./aws-analytics-immersion-day-master/set-up-hands-on-lab.sh
-</code></pre></div><p>(4) 실습 환경 설정 스크립트를 실행한다.</p>
+</code></pre></div><p>(4) Execute the setup script to set the lab environment.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./aws-analytics-immersion-day-master/set-up-hands-on-lab.sh
-</code></pre></div><p>(5) 실습 환경 설정 스크립트 실행 후, 실습에 필요한 파일들이 정상적으로 생성되었는지 확인한다.
-예를 들어 아래와 같이 소스 코드와 필요한 파일들이 존재하는지 확인하다.</p>
-<p><img src="/analytics-on-aws/images/aws-ec2-setup-hands-on-lab.png" alt="aws-ec2-setup-hands-on-lab"></p>
+</code></pre></div><p>(5) Make sure the files necessary for the lab are normally created after running the configuration script. For example, check if the source code and necessary files exist as shown below.
+<img src="/analytics-on-aws/images/aws-ec2-setup-hands-on-lab.png" alt="aws-ec2-setup-hands-on-lab"></p>
 </li>
 <li>
-<p>AWS의 다른 리소스 접근을 위해 AWS Configure를 진행합니다. 이때 앞서 생성한 IAM User 데이터를 활용합니다.
-이전에 다운로드 받은 .csv 파일을 열어 <code>Access key ID</code>와 <code>Secret access key</code>를 확인하고 입력합니다.</p>
+<p>Perform <code>aws configure</code> to access other AWS resources. At this time, the IAM User data created earlier is used.
+Open the previously downloaded <strong>.csv</strong> file, check the <code>Access key ID</code> and <code>Secret access key</code>, and enter them.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ aws configure
 AWS Access Key ID <span style="color:#f92672">[</span>None<span style="color:#f92672">]</span>: &lt;Access key ID&gt;
 AWS Secret Access Key <span style="color:#f92672">[</span>None<span style="color:#f92672">]</span>: &lt;Secret access key&gt;
@@ -791,7 +790,7 @@ Default region name <span style="color:#f92672">[</span>None<span style="color:#
 Default output format <span style="color:#f92672">[</span>None<span style="color:#f92672">]</span>: 
 </code></pre></div></li>
 <li>
-<p>설정이 완료 되었다면 다음과 같이 입력하신 정보가 마스킹 되어 보이게 됩니다.</p>
+<p>If the setting is complete, the information entered as follows will be masked.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ aws configure
 AWS Access Key ID <span style="color:#f92672">[</span>****************EETA<span style="color:#f92672">]</span>:
 AWS Secret Access Key <span style="color:#f92672">[</span>****************CixY<span style="color:#f92672">]</span>:
@@ -1191,19 +1190,19 @@ Default output format <span style="color:#f92672">[</span>None<span style="color
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603422426"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/learn.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603422426"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1594700079" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1594700079"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603422426" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603422426"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,20 +12,20 @@
     <title>Creating an IAM User :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1594700079" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603422426" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1594700079" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603422426" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603422426"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1594700079"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603422426"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603422426"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603422426"></script>
 
     
   </div>
@@ -762,19 +762,18 @@
 
 
 	
-<div class="notices info" ><p>실습 하는 동안 사용할 IAM User를 생성합니다.</p>
+<div class="notices info" ><p>Let&rsquo;s create an IAM User to use during the lab.</p>
 </div>
 
 <ol>
-<li>AWS Management Console에 로그인 한 뒤 IAM 서비스에 접속합니다.</li>
-<li>왼쪽 메뉴에서 Users를 선택합니다.</li>
-<li>Add user 버튼을 클릭하여 사용자 추가 페이지로 들어갑니다.</li>
-<li>User name에 <code>&lt;사용자 이름&gt;</code> 을 입력하고, Access type에 Programmatic access와
-AWS Management Console access 둘 모두를 선택합니다. Console password에 <code>&lt;패스워드&gt;</code> 를 입력하고,
-마지막 Require password reset의 체크는 해제합니다.</li>
-<li><strong>[Next: Permissions]</strong> 버튼을 클릭하고 Attach existing policies directly를 선택한 뒤 AdministratorAccess 권한을 추가해줍니다.</li>
-<li><strong>[Next: Review]</strong> 버튼을 클릭하고 정보를 확인한 뒤 Create user 버튼을 클릭하여 사용자 생성을 완료합니다.</li>
-<li>Download.csv 버튼을 클릭하여 생성한 사용자의 정보를 다운 받습니다. EC2 설정에 꼭 필요한 파일이므로 기억하기 쉬운 위치에 저장합니다.</li>
+<li>Log in to the AWS Management Console and access the IAM service.</li>
+<li>Select <strong>Users</strong> from the left menu.</li>
+<li>Click the <strong>Add user</strong> button to enter the Add User page.</li>
+<li>Enter <code>&lt;user name&gt;</code> in User name, and then choose both <strong>Programmatic access</strong> and <strong>AWS Management Console access</strong>. Next, enter <code>&lt;password&gt;</code> in <strong>Console password</strong>,
+In last, uncheck <strong>Require password reset</strong>.</li>
+<li>Click the <strong>[Next: Permissions]</strong> button, select <strong>Attach existing policies directly</strong>, and add <strong>AdministratorAccess</strong> privileges.</li>
+<li>Click the <strong>[Next: Review]</strong> button, check the information, and click the <strong>Create user</strong> button.</li>
+<li>Click the <strong>Download.csv</strong> button to download the new user&rsquo;s information. This file is essential for setting up EC2, so save it in a location that is easy to remember.</li>
 </ol>
 
 
@@ -1165,19 +1164,19 @@ AWS Management Console access 둘 모두를 선택합니다. Console password에
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603422426"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/learn.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603422426"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1594700079" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1594700079"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603422426" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603422426"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

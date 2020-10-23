@@ -12,20 +12,20 @@
     <title>Launch an EC2 Instance :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1594700079" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603422426" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1594700079" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603422426" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603422426"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1594700079"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603422426"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603422426"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603422426"></script>
 
     
   </div>
@@ -762,40 +762,38 @@
 
 
 	
-<div class="notices info" ><p>실습은 <strong>us-west-1 (오레곤) 리전을 선택</strong>합니다.</p>
+<div class="notices info" ><p>For this lab, we will use the <strong>us-west-1 (Oregon) region</strong>.</p>
 </div>
 
-<p>실습에 필요한 데이터를 실시간으로 발생시킬 EC2 인스턴스를 생성합니다.</p>
+<p>Create an EC2 instance that will generate the data needed for the lab in real time.</p>
 <ol>
-<li>AWS Management Console에서 EC2 서비스에 접속합니다.</li>
-<li>우측 상단에서 Region은 US West (Oregon)를 선택합니다.</li>
-<li>좌측 <strong>INSTANCES</strong> 메뉴에서 <strong>Instances</strong> 를 선택한 후, <strong>[Launch Instance]</strong> 를 클릭 해서 새로운 인스턴스 생성을 시작합니다.
+<li>Connect to EC2 service in AWS Management Console.</li>
+<li>In the upper right, select <strong>US West (Oregon)</strong> for Region.</li>
+<li>Select <strong>Instances</strong> from the left <strong>INSTANCES</strong> menu and click <strong>[Launch Instance]</strong> to start creating a new instance.
 <img src="/analytics-on-aws/images/aws-ec2-launch-instance.png" alt="aws-ec2-launch-instance"></li>
-<li>Step 1: Choose an Amazon Machine Image (AMI) 화면에서 <strong>Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type</strong> 을 선택합니다.
+<li>Step 1: On the <strong>Choose an Amazon Machine Image (AMI)</strong> screen, choose <strong>Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type</strong>.
 <img src="/analytics-on-aws/images/aws-ec2-choose-ami.png" alt="aws-ec2-choose-ami"></li>
-<li>Step 2 : Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. <strong>[Next: Configure Instance Details]</strong> 을 클릭합니다.
+<li>Step 2: On the <strong>Choose an Instance Type</strong> screen, select t2.micro as the instance type. Click <strong>[Next: Configure Instance Details]</strong>.
 <img src="/analytics-on-aws/images/aws-ec2-choose-instance-type.png" alt="aws-ec2-choose-instance-type"></li>
-<li>Step 3: Configure Instance Details 화면에서 <strong>Auto-assign Public IP</strong> 를 <strong>Enable</strong> 선택하고, <strong>[Next: Add Storage]</strong> 을 클릭합니다.
+<li>Step 3: On the <strong>Configure Instance Details</strong> screen, select <strong>Enable</strong> for <strong>Auto-assign Public IP</strong>, and click <strong>[Next: Add Storage]</strong>.
 <img src="/analytics-on-aws/images/aws-ec2-configure-instance-details.png" alt="aws-ec2-configure-instance-details"></li>
-<li>Step 4: Add Storage 화면에서 기본값을 그대로 두고 <strong>[Next: Add Tags]</strong> 를 클릭합니다.</li>
-<li>Step 5: Add Tags 화면에서 <strong>[Next: Configure Security Group]</strong> 을 클릭합니다.</li>
-<li>Step 6: Configure Security Group 화면에서 Assign a security group 에서 Select an <strong>existing</strong> security group를 선택하고,
-Security Group 중에서 Name이 <code>bastion</code>과 <code>use-es-cluster-sg</code> 를 선택 한 후 <strong>[Review and Launch]</strong> 를 클릭합니다.
+<li>Step 4: On the <strong>Add Storage</strong> screen, leave the defaults and click <strong>[Next: Add Tags]</strong>.</li>
+<li>Step 5: On the <strong>Add Tags</strong> screen, click <strong>[Next: Configure Security Group]</strong>.</li>
+<li>Step 6: On the <strong>Configure Security Group</strong> screen, select <strong>Select an existing security group</strong> from <strong>Assign a security group</strong>, and then select <code>bastion</code> and <code>use-es-cluster-sg</code> from the <strong>Security Group</strong> and click <strong>[Review and Launch]</strong>.
 <img src="/analytics-on-aws/images/aws-ec2-configure-security-group.png" alt="aws-ec2-configure-security-group"></li>
-<li>Step 7: Review Instance Launch 화면에서 <strong>[Launch]</strong> 를 클릭합니다.</li>
-<li>EC2 Instance에 접속하기 위한 Key pair를 생성합니다.
-Create a new key pair를 선택하고 Key pair name은 <code>analytics-hol</code> 을 입력한 후 Download Key Pair를 클릭합니다.
-Key Pair를 PC의 임의 위치에 저장한 후 <strong>[Launch Instances]</strong> 를 클릭합니다. (인스턴스 기동에 몇 분이 소요될 수 있습니다.)
+<li>Step 7: click <strong>[Launch]</strong> on the <strong>Review Instance Launch</strong> screen.</li>
+<li>Create a key pair to access EC2 Instance.
+Select Create a new key pair, enter <code>analytics-hol</code> as the Key pair name, and click <strong>Download Key Pair</strong>.
+Save the Key Pair to any location on your PC and click <strong>[Launch Instances]</strong>. (EC2 Instance startup may take several minutes.)
 <img src="/analytics-on-aws/images/aws-ec2-select-keypair.png" alt="aws-ec2-select-keypair"></li>
-<li>(MacOS 사용자) 다운로드 받은 Key Pair 파일의 File Permission을 400으로 변경합니다.
+<li>For MacOS users, Change the File Permission of the downloaded Key Pair file to 400.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ chmod <span style="color:#ae81ff">400</span> ./analytics-hol.pem 
 $ ls -lat analytics-hol.pem 
 -r--------  <span style="color:#ae81ff">1</span> ******  ******  <span style="color:#ae81ff">1692</span> Jun <span style="color:#ae81ff">25</span> 11:49 analytics-hol.pem
-</code></pre></div><p>Windows OS 사용자의 경우, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html" target="_blank">PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결</a>
-
-를 참고하십시요.</p>
-</li>
+</code></pre></div></li>
 </ol>
+<p>For Windows OS users, Please refer to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html" target="_blank">Use PuTTY to connect to your Linux instance from Windows</a>
+.</p>
 
 
 
@@ -1188,19 +1186,19 @@ $ ls -lat analytics-hol.pem
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603422426"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/learn.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603422426"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1594700079" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1594700079"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603422426" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603422426"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -312,20 +312,6 @@
   </url>
   
   <url>
-    <loc>https://ksmin23.github.io/analytics-on-aws/en/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://ksmin23.github.io/analytics-on-aws/ko/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://ksmin23.github.io/analytics-on-aws/en/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>https://ksmin23.github.io/analytics-on-aws/en/credits/</loc>
     <xhtml:link
                 rel="alternate"
@@ -336,6 +322,20 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://ksmin23.github.io/analytics-on-aws/en/credits/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://ksmin23.github.io/analytics-on-aws/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://ksmin23.github.io/analytics-on-aws/ko/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ksmin23.github.io/analytics-on-aws/en/tags/"
                 />
   </url>
   

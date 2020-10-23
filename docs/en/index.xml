@@ -11,12 +11,12 @@
     
     
     <item>
-      <title>크레딧</title>
+      <title>Credit</title>
       <link>https://ksmin23.github.io/analytics-on-aws/en/credits/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ksmin23.github.io/analytics-on-aws/en/credits/</guid>
-      <description>패키지와 라이브러리  mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services&amp;hellip; horsey - Progressive and customizable autocomplete component clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don&amp;rsquo;t support  도구  Netlify - Continuous deployement and hosting of this documentation Hugo   제작: Sungmin Kim</description>
+      <description>Packages and Libraries  mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services&amp;hellip; horsey - Progressive and customizable autocomplete component clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don&amp;rsquo;t support  Tools  Netlify - Continuous deployement and hosting of this documentation Hugo   Author: Sungmin Kim</description>
     </item>
     
   </channel>

@@ -12,20 +12,20 @@
     <title>Creating Security Groups :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1594700079" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1594700079" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603422426" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603422426" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1594700079" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603422426" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603422426"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1594700079"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603422426"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603422426"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1594700079"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603422426"></script>
 
     
   </div>
@@ -738,8 +738,8 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#bastion-host로-사용할-ec2-인스턴스를-위한-security-groups-생성">bastion host로 사용할 EC2 인스턴스를 위한 Security Groups 생성</a></li>
-    <li><a href="#elasicsearch-service에서-사용할-security-groups-생성">Elasicsearch Service에서 사용할 Security Groups 생성</a></li>
+    <li><a href="#security-groups-to-create-an-ec2-instance-for-a-bastion-host">Security Groups to create an EC2 instance for a bastion host</a></li>
+    <li><a href="#security-groups-created-for-use-in-elasticsearch-service">Security Groups created for use in Elasticsearch Service</a></li>
   </ul>
 </nav>
     </div>
@@ -766,20 +766,20 @@
 
 
 
-	<h2 id="bastion-host로-사용할-ec2-인스턴스를-위한-security-groups-생성">bastion host로 사용할 EC2 인스턴스를 위한 Security Groups 생성</h2>
-<p>실습용 EC2 인스턴에서 사용할 security group을 생성하고 구성합니다.</p>
+	<h2 id="security-groups-to-create-an-ec2-instance-for-a-bastion-host">Security Groups to create an EC2 instance for a bastion host</h2>
+<p>Create and configure a security group of EC2 instance.</p>
 <ol>
 <li>
-<p>AWS Management Console에서 EC2 서비스에 접속합니다.</p>
+<p>Connect to the EC2 service in the AWS Management Console.</p>
 </li>
 <li>
-<p><strong>NETWORK &amp; SECURITY</strong> 메뉴에서 <strong>Security Groups</strong> 항목을 선택합니다.</p>
+<p>Select the <strong>Security Groups</strong> item from the <strong>NETWORK &amp; SECURITY</strong> menu.</p>
 </li>
 <li>
-<p><strong>[Create Security Group]</strong> 을 클릭합니다.</p>
+<p>Click <strong>[Create Security Group]</strong>.</p>
 </li>
 <li>
-<p>Create Security Group 화면에서 Security Group에 필요한 정보를 입력한 후, 새로운 security group을  <strong>[Create]</strong> 합니다.</p>
+<p>On the <strong>Create Security Group</strong> screen, enter the necessary information for the <strong>Security Group</strong>, and then <strong>[Create]</strong> a new security group.</p>
 <ul>
 <li>Security group name : bastion</li>
 <li>Description : security group for bastion</li>
@@ -794,35 +794,34 @@
 <p><img src="/analytics-on-aws/images/aws-ec2-security-group-for-bastion.png" alt="aws-ec2-security-group-for-bastion"></p>
 </li>
 </ol>
-<h2 id="elasicsearch-service에서-사용할-security-groups-생성">Elasicsearch Service에서 사용할 Security Groups 생성</h2>
-<p>Elasticsearch Service을 위한 security group을 생성하고 구성합니다.</p>
+<h2 id="security-groups-created-for-use-in-elasticsearch-service">Security Groups created for use in Elasticsearch Service</h2>
+<p>Create and configure a security group for Elasticsearch Service.</p>
 <ol>
 <li>
-<p>AWS Management Console에서 EC2 서비스에 접속합니다.</p>
+<p>Connect to EC2 service in AWS Management Console.</p>
 </li>
 <li>
-<p><strong>NETWORK &amp; SECURITY</strong> 메뉴에서 <strong>Security Groups</strong> 항목을 선택합니다.</p>
+<p>Select the <strong>Security Groups</strong> item from the <strong>NETWORK &amp; SECURITY</strong> menu.</p>
 </li>
 <li>
-<p><strong>[Create Security Group]</strong> 을 클릭합니다.</p>
+<p>Click <strong>[Create Security Group]</strong>.</p>
 </li>
 <li>
-<p>Create Security Group 화면에서 Security Group에 필요한 정보를 입력한 후, 새로운 security group을  <strong>[Create]</strong> 합니다.</p>
+<p>On the <strong>Create Security Group</strong> screen, enter the necessary information for the Security Group, and then <strong>[Create]</strong> a new security group.</p>
 <ul>
 <li>Security group name : use-es-cluster-sg</li>
 <li>Description : security group for an es client</li>
 </ul>
-<p>Security group rules의 <strong>Inbound</strong> 은 아무것도 입력하지 않습니다.</p>
+<p>Enter nothing in <strong>Inbound</strong> of the security group rules.</p>
 <p><img src="/analytics-on-aws/images/aws-ec2-security-group-for-es-client.png" alt="aws-ec2-security-group-for-es-client"></p>
 </li>
 <li>
-<p>다시 <strong>[Create Security Group]</strong> 클릭해서 Create Security Group 화면으로 이동합니다.
-Security Group에 필요한 정보를 입력한 후, 새로운 security group을 <strong>[Create]</strong> 합니다.</p>
+<p>Click <strong>[Create Security Group]</strong> again to go to the <strong>Create Security Group</strong> screen. After entering the necessary information for the security group, <strong>[Create]</strong> a new security group.</p>
 <ul>
 <li>Security group name : es-cluster-sg</li>
 <li>Description : security group for an es cluster</li>
 </ul>
-<p>Security group rules의 <strong>Inbound</strong> 에 아래 내용을 입력합니다.</p>
+<p>Enter the following in <strong>Inbound</strong> of the security group rules.</p>
 <ul>
 <li>Type : All TCP</li>
 <li>Protocol : TCP</li>
@@ -1224,19 +1223,19 @@ Security Group에 필요한 정보를 입력한 후, 새로운 security group을
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603422426"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/learn.js?1594700079"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1594700079"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603422426"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603422426"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1594700079" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1594700079"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603422426" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603422426"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
