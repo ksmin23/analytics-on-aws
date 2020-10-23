@@ -13,16 +13,16 @@ pre: "<b>6. </b>"
 + [Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
 + [Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/welcome.html)
 + [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html#configuration-layers-path)
-    + AWS Lambda Layer에 등록할 Python 패키지 생성 예제: **elasticsearch** 
+    + Example of creating a Python package to register with AWS Lambda layer: **elasticsearch** 
     ```
-    $ python3 -m venv es-lib # virtual environments을 생성함
+    $ python3 -m venv es-lib
     $ cd es-lib
     $ source bin/activate
-    $ mkdir -p python_modules # 필요한 패키지를 저장할 디렉터리 생성
-    $ pip install elasticsearch -t python_modules # 필요한 패키지를 사용자가 지정한 패키지 디렉터리에 저장함
-    $ mv python_modules python # 사용자가 지정한 패키지 디렉터리 이름을 python으로 변경함 (python 디렉터리에 패키지를 설치할 경우 에러가 나기 때문에 다른 이름의 디렉터리에 패키지를 설치 후, 디렉터리 이름을 변경함)
-    $ zip -r es-lib.zip python/ # 필요한 패키지가 설치된 디렉터리를 압축함
-    $ aws s3 cp es-lib.zip s3://my-lambda-layer-packages/python/ # 압축한 패키지를 s3에 업로드 한 후, lambda layer에 패키지를 등록할 때, s3 위치를 등록하면 됨
+    $ mkdir -p python_modules
+    $ pip install elasticsearch -t python_modules
+    $ mv python_modules python
+    $ zip -r es-lib.zip python/
+    $ aws s3 cp es-lib.zip s3://my-lambda-layer-packages/python/
     ```
 
 ### Further readings

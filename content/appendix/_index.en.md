@@ -5,23 +5,23 @@ pre: "<b>7. </b>"
 ---
 
 {{% notice note %}}
-이 실습을 마치면 사용한 AWS 계정에 비용이 추가로 발생하지 않도록 사용한 리소스를 삭제해야 합니다.
+At the end of this lab, you should delete the resources you used to avoid incurring additional charges for the AWS account you used.
 {{% /notice %}}
 
-AWS CDK를 이용해서 배포하는 방법을 소개 합니다.
+Introducing how to deploy using the AWS CDK.
 
 ### Prerequisites
-1. AWS CDK Toolkit을 설치합니다.
+1. Install AWS CDK Toolkit.
 
     ```shell script
     npm install -g aws-cdk
     ```
 
-2. cdk가 정상적으로 설치되었는지, 다음 명령어를 실행해서 확인합니다.
+2. Verify that cdk is installed properly by running the following command:
     ```
     cdk --version
     ```
-   예)
+    ex)
     ```shell script
     $ cdk --version
     1.51.0 (build 8c2d53c)
@@ -37,13 +37,12 @@ AWS CDK를 이용해서 배포하는 방법을 소개 합니다.
 
 ### Deployment
 
-CDK로 배포할 경우, 아래 아키텍처 그림의 `1(a), 1(b), 1(c), 1(f), 2(b), 2(a)`가 자동으로 생성됩니다.
+When deployed as CDK, `1(a), 1(b), 1(c), 1(f), 2(b), 2(a)` in the architecture diagram below are automatically created.
 
 ![aws-analytics-system-build-steps-extra](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png)
 
-1. [Getting Started With the AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)를 참고해서 cdk를 설치하고,
-cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등록합니다.
-예를 들어서, cdk_user라는 IAM User를 생성 한 후, 아래와 같이 `~/.aws/config`에 추가로 등록합니다.
+1. Refer to [Getting Started With the AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to install cdk. 
+Create an IAM User to be used when running cdk and register it in `~/.aws/config`.For example, after creating an IAM User called cdk_user, add it to `~/.aws/config` as shown below.
 
     ```shell script
     $ cat ~/.aws/config
@@ -53,8 +52,7 @@ cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등
     region=us-east-1
     ```
 
-2. Lambda Layer에 등록할 Python 패키지를 생성해서 s3 bucket에 저장함
-에를 들어, elasticsearch 패키지를 Lambda Layer에 등록 할 수 있도록 `lambda-layer-resources`라는 이름의 s3 bucket을 생성 후, 아래와 같이 저장합니다.
+1. Create a Python package to register in the Lambda Layer and store it in the s3 bucket. For example, create an s3 bucket named `lambda-layer-resources` so that you can save the elasticsearch package to register in the Lambda Layer as follows.
 
     ```shell script
     $ aws s3 ls s3://lambda-layer-resources/var/
@@ -62,8 +60,8 @@ cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등
     2019-10-25 08:40:28    1294387 es-lib.zip
     ```
 
-3. 소스 코드를 git에서 다운로드 받은 후, `S3_BUCKET_LAMBDA_LAYER_LIB` 라는 환경 변수에 lambda layer에 등록할 패키지가 저장된 s3 bucket 이름을
-설정 한 후, `cdk deploy` 명령어를 이용해서 배포합니다.
+2. After downloading the source code from git, enter the s3 bucket name where the package to be registered in the lambda layer is stored in an environment variable called `S3_BUCKET_LAMBDA_LAYER_LIB`.
+After setting, deploy using the `cdk deploy` command.
 
     ```shell script
     $ git clone https://github.com/ksmin23/aws-analytics-immersion-day.git
@@ -74,8 +72,7 @@ cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등
     (.env) $ S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources cdk --profile cdk_user deploy
     ```
 
-4. 배포한 애플리케이션을 삭제하려면, `cdk destroy` 명령어를 아래와 같이 실행 합니다.
+4. To delete the deployed application, execute the `cdk destroy` command as follows.
     ```shell script
     (.env) $ cdk --profile cdk_user destroy
     ```
-

@@ -53,7 +53,7 @@ cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등
     region=us-east-1
     ```
 
-2. Lambda Layer에 등록할 Python 패키지를 생성해서 s3 bucket에 저장함
+2. Lambda Layer에 등록할 Python 패키지를 생성해서 s3 bucket에 저장합니다.
 에를 들어, elasticsearch 패키지를 Lambda Layer에 등록 할 수 있도록 `lambda-layer-resources`라는 이름의 s3 bucket을 생성 후, 아래와 같이 저장합니다.
 
     ```shell script
