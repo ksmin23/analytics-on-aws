@@ -12,20 +12,20 @@
     <title>Amazon Elasticsearch Service :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1603428452" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1603428452" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603432468" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1603428452" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603432468" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603432468"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603428452"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603428452"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603432468"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603432468"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603428452"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603432468"></script>
 
     
   </div>
@@ -738,7 +738,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#실시간-데이터-분석을-위한-amazon-elasticsearch-service-생성하기">실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기</a></li>
+    <li><a href="#creating-amazon-elasticsearch-service-for-real-time-data-analysis">Creating Amazon Elasticsearch Service for Real-Time Data Analysis</a></li>
   </ul>
 </nav>
     </div>
@@ -766,34 +766,31 @@
 
 
 	<p><img src="/analytics-on-aws/images/aws-analytics-system-build-steps.png" alt="aws-analytics-system-build-steps"></p>
-<h2 id="실시간-데이터-분석을-위한-amazon-elasticsearch-service-생성하기">실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기</h2>
-<p>실시간으로 데이터를 저장하고, 분석하기 위해서 Elasticsearch cluster를 생성합니다.
-Amazon ES 도메인은 Elasticsearch 클러스터와 동의어입니다. 도메인은 설정, 인스턴스 유형, 인스턴스 수, 스토리지 리소스를 지정한 설정입니다.</p>
+<h2 id="creating-amazon-elasticsearch-service-for-real-time-data-analysis">Creating Amazon Elasticsearch Service for Real-Time Data Analysis</h2>
+<p>An Elasticsearch cluster is created to store and analyze data in real time. Amazon ES domains are synonymous with Elasticsearch clusters. A domain is a setting that specifies a setting, instance type, number of instances, and storage resources.</p>
 <ol>
-<li>AWS Management Console에서 Analytics의 <strong>Elasticsearch</strong> 서비스를 선택합니다.</li>
-<li>(Step 1: Choose deployment type) <strong>Create a new domain(새 도메인 생성)</strong> 을 선택합니다.</li>
-<li><strong>Elasticsearch 도메인 생성</strong> 페이지에서 <strong>Deployment type(배포 유형)</strong> 에 대해 <strong>Production(프로덕션)</strong> 을 선택합니다.</li>
-<li><strong>버전</strong>에서 해당 도메인의 Elasticsearch 버전을 선택합니다. 지원되는 최신 버전을 선택하는 것이 좋습니다. 자세한 내용은 지원되는 Elasticsearch 버전 단원을 참조하십시오.</li>
-<li><strong>[Next]</strong> 를 선택합니다.</li>
-<li>(Step 2: Configure domain) 도메인의 이름을 입력합니다. 이 실에서는 이후에 다룰 <code>retail</code>를 예제 도메인 이름으로 사용합니다.</li>
-<li><strong>인스턴스 유형</strong> 에서 Amazon ES 도메인의 인스턴스 유형을 선택합니다. 이 실습에서는 테스트 목적에 적합한 소용량의 경제적인 인스턴스 유형
-<code>t2.medium.elasticsearch</code>를 사용하는 것이 좋습니다.</li>
-<li><strong>인스턴스 수</strong> 에 원하는 인스턴스 수를 입력합니다. 이 실습에서는 기본값 <code>1</code>을 사용합니다.</li>
-<li>스토리지 유형에서 EBS를 선택합니다.
+<li>In the AWS Management Console, select the <strong>Elasticsearch</strong> service in the Analytics category.</li>
+<li>(Step 1: Choose deployment type) Select <strong>Create a new domain</strong>.</li>
+<li>On the <strong>Create Elasticsearch domain</strong> page, select <strong>Production</strong> for <strong>Deployment type</strong>.</li>
+<li>For <strong>Version</strong>, choose the Elasticsearch version for your domain. We recommend that you choose the latest supported version. For more information, see <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/what-is-amazon-elasticsearch-service.html#aes-choosing-version" target="_blank">Supported Elasticsearch Versions</a>
+.</li>
+<li>Click <strong>[Next]</strong>.</li>
+<li>(Step 2: Configure domain) Enter the name of the domain. In this lab, <code>retail</code> will be used as the example domain name.</li>
+<li>For <strong>Instance type</strong>, choose the instance type of your Amazon ES domain. In this lab, it is recommended to use a small, economical instance type (<code>t2.medium.elasticsearch</code>) suitable for testing purposes.</li>
+<li>Enter the desired number of instances in <strong>Number of nodes</strong>. In this lab, we will use the default value of <code>1</code>.</li>
+<li>Select EBS for <strong>Data nodes storage type</strong>.
 <ul>
-<li>a. EBS volume type(EBS 볼륨 유형)에 일반용(SSD)을 선택합니다. 자세한 내용은 Amazon EBS 볼륨 유형을 참조하십시오.</li>
-<li>b. EBS volume size(EBS 볼륨 크기)에 각 데이터 노드용 외부 스토리지의 크기를 GiB 단위로 입력합니다. 이 실습에서는 기본값 <code>10</code>을 사용합니다.</li>
+<li>a. Select General Purpose (SSD) for the <strong>EBS volume type</strong>. For more information, see Amazon EBS Volume Types.</li>
+<li>b. In EBS volume size, enter the <strong>EBS storage size per node</strong> for each data node in GiB. In this lab, we will use the default value of <code>10</code>.</li>
 </ul>
 </li>
-<li>지금은 <strong>Dedicated master nodes(전용 마스터 노드), Snapshot configuration(스냅샷 구성)</strong> 및 <strong>Optional Elasticsearch cluster settings(선택적 Elasticsearch 클러스터 설정)</strong> 섹션을 무시할 수 있습니다.</li>
-<li><strong>[Next]</strong> 를 선택합니다.</li>
-<li>(Step 3: Configure access and security) <strong>Network configuration(네트워크 구성)</strong> 의 경우 <strong>VPC access</strong> 를 선택합니다.
-적절한 VPC와 subnet을 선택합니다. Security Groups으로 준비 단계에서 생성한 <code>es-cluster-sg</code>를 선택합니다.</li>
-<li>지금은 <strong>Amazon Cognito Authentication(Amazon Cognito 인증)</strong> 과 <strong>Fine–grained access control</strong> 을 disable 합니다.</li>
-<li><strong>Access policy(액세스 정책)</strong> 의 경우 <strong>Domain access policy(도메인 액세스 정책)</strong> 에서 <strong>JSON defined access policy(JSON 정의 액세스 정책)</strong> 선택한 다음,
-<strong>Add or edit the access policy(액세스 정책 추가 또는 편집)</strong> 에 다음 템플릿을 이용해서 <strong>JSON defined access policy</strong> 를 생성해서 입력 합니다.
+<li>For now, you can ignore the <strong>Dedicated master nodes, Snapshot configuration</strong> and <strong>Optional Elasticsearch cluster settings</strong> sections.</li>
+<li>Click <strong>[Next]</strong>.</li>
+<li>(Step 3: Configure access and security) For <strong>Network configuration</strong>, select <strong>VPC access</strong>. Choose the appropriate VPC and subnet. Select the <code>es-cluster-sg</code> created in the preparation step as Security Groups.</li>
+<li>For now, disable <strong>Amazon Cognito Authentication</strong> and <strong>Fine–grained access control</strong>.</li>
+<li>For <strong>Access policy</strong>, select <strong>JSON defined access policy</strong> from <strong>Domain access policy</strong>, and then create and enter a <strong>JSON defined access policy</strong> using the following template in <strong>Add or edit the access policy</strong>.
 <ul>
-<li>JSON defined access policy Template - <code>&lt;DOMAIN-NAME&gt;</code> 에 <strong>(Step 2: Configure domain)</strong> 에서 입력한 도메인 이름을 일력합니다.
+<li>JSON defined access policy Template - Enter the domain name entered in <strong>(Step 2: Configure domain)</strong> in <code>&lt;DOMAIN-NAME&gt;</code>.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
   <span style="color:#f92672">&#34;Statement&#34;</span>: [
@@ -813,7 +810,7 @@ Amazon ES 도메인은 Elasticsearch 클러스터와 동의어입니다. 도메�
   ]
 }
 </code></pre></div></li>
-<li>예) 이번 실습에서는 <code>retail</code> 을 도메인 이름으로 사용했기 때문에, 아래와 같이 JSON defined access policy 를 생성합니다.
+<li>ex) In this lab, we used <code>retail</code> as the domain name, so we create a JSON defined access policy as shown below.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
   <span style="color:#f92672">&#34;Statement&#34;</span>: [
@@ -835,9 +832,9 @@ Amazon ES 도메인은 Elasticsearch 클러스터와 동의어입니다. 도메�
 </code></pre></div></li>
 </ul>
 </li>
-<li><strong>Encryption(암호화)</strong> 에서 <strong>Require HTTPS for all traffic to the domain</strong> 만 허용하고, 다른 항목은 disable 합니다.</li>
-<li><strong>Encryption(암호화)</strong> 의 모든 기본값을 유지합니다. <strong>[Next]</strong> 를 선택합니다.</li>
-<li><strong>Review</strong> 페이지에서 도메인 구성을 검토한 다음 <strong>확인</strong>을 선택합니다.</li>
+<li><strong>Encryption</strong> only allows <strong>Require HTTPS for all traffic to the domain</strong>, and other items are disabled.</li>
+<li>Keep all default values ​​of <strong>Encryption</strong>. Select <strong>[Next]</strong>.</li>
+<li>On the <strong>Review</strong> page, review your domain configuration and then choose <strong>Confirm</strong>.</li>
 </ol>
 
 
@@ -1231,19 +1228,19 @@ Amazon ES 도메인은 Elasticsearch 클러스터와 동의어입니다. 도메�
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603432468"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/learn.js?1603428452"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1603428452"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603432468"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1603428452" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1603428452"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603432468" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603432468"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
