@@ -6,12 +6,12 @@ pre: "<b>3-3. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
-## 데이터 파이프라인 동작 확인 하기
+## Verify data pipeline operation
 
-샘플 데이터를 이용해서 `Kinesis Data Streams -> Kinesis Data Firehose -> S3` 로 데이터가 정상적으로 수집되는지 확인합니다.
+Using the sample data, check whether data is normally collected in `Kinesis Data Streams -> Kinesis Data Firehose -> S3`.
 
-1. 앞서 생성한 E2 인스턴스에 SSH 접속을 합니다.
-2. `gen_kinesis_data.py`을 실행합니다.
+1. Connect SSH to the previously created E2 instance.
+2. Run `gen_kinesis_data.py`.
     ```shell script
     $ python3 gen_kinesis_data.py --help
     usage: gen_kinesis_data.py [-h] [-I INPUT_FILE] [--out-format {csv,tsv,json}]
@@ -37,6 +37,5 @@ pre: "<b>3-3. </b>"
     --out-format json \
     --stream-name retail-trans
     ```
-3. 매 초 데이터가 발생하는 것을 확인합니다. 충분한 데이터 수집을 위해 실행 중인 상태로 다음 단계를 진행합니다.
-4. 몇 분 뒤 생성한 S3 bucket을 확인해 보면, 생성된 원본 데이터가 Kinesis Data Firehose를 통해 S3에 저장되는 것을 확인할 수 있습니다.
-
+3. Verify that data is generated every second. Proceed to the next step while running for sufficient data collection.
+4. If you check the S3 bucket you created a few minutes later, you can see that the original data generated is stored on S3 via **Kinesis Data Firehose**.
