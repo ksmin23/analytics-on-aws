@@ -24,7 +24,7 @@ Select `Create a new rule` in Rule and enter the appropriate rule name (eg `Merg
 Select `Schedule expression` as the rule type, and enter `cron(5 * * * *)` for running the task every 5 minutes in the schedule expression.
 ![aws-athena-ctas-lambda-add-trigger](/analytics-on-aws/images/aws-athena-ctas-lambda-add-trigger.png)
 8. In **Trigger configuration**, click **\[Add\]**.
-9. Copy and paste the code from the ʻathena_ctas.py` file into the code editor of the function code.
+9. Copy and paste the code from the `athena_ctas.py` file into the code editor of the Function code.
 10. Click **\[Add environment variables\]** to register the following environment variables.
     ```shell script
     OLD_DATABASE=<source database>

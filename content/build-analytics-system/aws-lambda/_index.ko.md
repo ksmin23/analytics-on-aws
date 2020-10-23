@@ -32,8 +32,7 @@ Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인
 7. Layer selection에서 `Select from list of runtime compatible layers`을 클릭하고, 
 Compatiable layers에서 Name과 Version으로 앞서 생성한 layer의 Name과 Version을 선택합니다.
 ![aws-lambda-add-layer-to-function](/analytics-on-aws/images/aws-lambda-add-layer-to-function.png)
-Layer의 runtime 버전과 Lambda function의 runtime이 버전이 다른 경우, Layer selection의 Compatiable layers에 필요한 layer가
-목록에 보이지 않을 수 있습니다. 
+Layer의 runtime 버전과 Lambda function의 runtime이 버전이 다른 경우, Layer selection의 Compatiable layers에 필요한 layer가 목록에 보이지 않을 수 있습니다.
 이러한 경우, Layer selection에서 `Provide a layer version ARN`을 클릭하고,
 layer의 arn을 직접 입력하면 됩니다.
 ![aws-lambda-add-layer-to-function-layer-version-arn](/analytics-on-aws/images/aws-lambda-add-layer-to-function-layer-version-arn.png)
