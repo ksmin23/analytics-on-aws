@@ -53,7 +53,7 @@
 	"title": "Data Analytics System 구축",
 	"tags": [],
 	"description": "",
-	"content": " 이번 실습에서는 AWS Analytics 서비스를 이용해서 데이터 분석 시스템을 구축하기 위해 다음 단계를 수행합니다.\n  3-1. 입력 데이터를 수신할 Kinesis Data Streams 생성하기  3-2. 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기  3-3. 데이터 파이프라인 동작 확인 하기  3-4. Athena를 이용해서 데이터 분석 하기  3-5. QuickSight를 이용한 데이터 시각화  3-6. (Optional) AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기  3-7. 실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기  3-8. AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기  3-8. Kibana를 이용한 데이터 시각화   "
+	"content": " 이번 실습에서는 AWS Analytics 서비스를 이용해서 데이터 분석 시스템을 구축하기 위해 다음 단계를 수행합니다.\n  3-1. 입력 데이터를 수신할 Kinesis Data Streams 생성하기  3-2. 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기  3-3. 데이터 파이프라인 동작 확인 하기  3-4. Athena를 이용해서 데이터 분석 하기  3-5. QuickSight를 이용한 데이터 시각화  3-6. (Optional) AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기  3-7. 실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기  3-8. AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기  3-9. Kibana를 이용한 데이터 시각화   "
 },
 {
 	"uri": "https://ksmin23.github.io/analytics-on-aws/ko/build-analytics-system/kinesis-data-streams/",
@@ -130,7 +130,7 @@
 	"title": "Resources",
 	"tags": [],
 	"description": "",
-	"content": " https://github.com/ksmin23/aws-analytics-immersion-day  https://www.slideshare.net/ksmin23/aws-analytics-immersion-day-build-bi-system-from-scratch-230492367   "
+	"content": " slide: AWS Analytics Immersion Day - Build BI System from Scratch  source code: https://github.com/ksmin23/aws-analytics-immersion-day   "
 },
 {
 	"uri": "https://ksmin23.github.io/analytics-on-aws/ko/reference/",
