@@ -6,6 +6,8 @@ pre: "<b>3-2. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
+## 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기
+
 {{% notice info %}}
 Kinesis Data Firehose를 이용해서 실시간으로 데이터를 S3, Redshift, ElasticSearch 등의 목적지에 수집할 수 있습니다.
 {{% /notice %}}

@@ -5,7 +5,7 @@ pre: "<b>3. </b>"
 ---
 
 {{% notice note %}}
-이번 실습에서는 Lake Formation의 기본 기능과 서로 다른 구성 요소들을 결합하여 AWS에서 데이터 레이크를 생성하는 방법, 엑세스를 제공하기 위해 다양한 보안 정책을 구성하는 방법 등을 설명하기 위해 다음 단계를 수행합니다.
+이번 실습에서는 AWS Analytics 서비스를 이용해서 데이터 분석 시스템을 구축하기 위해 다음 단계를 수행합니다.
 {{% /notice %}}
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)

@@ -5,17 +5,17 @@ pre: "<b>3. </b>"
 ---
 
 {{% notice note %}}
-이번 실습에서는 Lake Formation의 기본 기능과 서로 다른 구성 요소들을 결합하여 AWS에서 데이터 레이크를 생성하는 방법, 엑세스를 제공하기 위해 다양한 보안 정책을 구성하는 방법 등을 설명하기 위해 다음 단계를 수행합니다.
+In this lab, you will perform the following steps to build a data analysis system using the AWS Analytics services.
 {{% /notice %}}
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
-- [3-1. 입력 데이터를 수신할 Kinesis Data Streams 생성하기](/analytics-on-aws/en/build-analytics-system/kinesis-data-streams/)
-- [3-2. 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기](/analytics-on-aws/en/build-analytics-system/kinesis-data-firehose/)
-- [3-3. 데이터 파이프라인 동작 확인 하기](/analytics-on-aws/en/build-analytics-system/verify/)
-- [3-4. Athena를 이용해서 데이터 분석 하기](/analytics-on-aws/en/build-analytics-system/athena/)
-- [3-5. QuickSight를 이용한 데이터 시각화](/analytics-on-aws/en/build-analytics-system/quicksight/)
-- [3-6. (Optional) AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기](/en/build-analytics-system/athena-ctas/)
-- [3-7. 실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기](/analytics-on-aws/en/build-analytics-system/amazon-es/)
-- [3-8. AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기](/analytics-on-aws/en/build-analytics-system/aws-lambda/)
-- [3-8. Kibana를 이용한 데이터 시각화](/analytics-on-aws/en/build-analytics-system/kibana/)
+- [3-1. Create Kinesis Data Streams to receive input data](/analytics-on-aws/en/build-analytics-system/kinesis-data-streams/)
+- [3-2. Create Kinesis Data Firehose to store data in S3](/analytics-on-aws/en/build-analytics-system/kinesis-data-firehose/)
+- [3-3. Verify data pipeline operation](/analytics-on-aws/en/build-analytics-system/verify/)
+- [3-4. Analyzing data using Athena](/analytics-on-aws/en/build-analytics-system/athena/)
+- [3-5. Data visualization with QuickSight](/analytics-on-aws/en/build-analytics-system/quicksight/)
+- [3-6. (Optional) Combining small files stored in S3 into large files using AWS Lambda Function](/en/build-analytics-system/athena-ctas/)
+- [3-7. Creating Amazon Elasticsearch Service for Real-Time Data Analysis](/analytics-on-aws/en/build-analytics-system/amazon-es/)
+- [3-8. Ingesting real-time data into ElasticSearch using AWS Lambda Functions](/analytics-on-aws/en/build-analytics-system/aws-lambda/)
+- [3-8. Data visualization with Kibana](/analytics-on-aws/en/build-analytics-system/kibana/)

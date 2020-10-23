@@ -6,6 +6,8 @@ pre: "<b>3-1. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
+## 입력 데이터를 수신할 Kinesis Data Streams 생성하기
+
 AWS Management Console에서 Kinesis 서비스를 선택합니다.
 1. **Get Started** 버튼을 클릭합니다.
 2. **\[Create data stream\]** 버튼을 클릭합니다.
