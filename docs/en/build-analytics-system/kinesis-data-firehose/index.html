@@ -12,20 +12,20 @@
     <title>Kinesis Data Firehose :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1603432468" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1603432468" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1603447566" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1603447566" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1603432468" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1603447566" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603447566"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603432468"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603432468"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603447566"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603447566"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603432468"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603447566"></script>
 
     
   </div>
@@ -763,56 +763,53 @@
 
 	<p><img src="/analytics-on-aws/images/aws-analytics-system-build-steps.png" alt="aws-analytics-system-build-steps"></p>
 
-<div class="notices info" ><p>Kinesis Data Firehose를 이용해서 실시간으로 데이터를 S3, Redshift, ElasticSearch 등의 목적지에 수집할 수 있습니다.</p>
+<div class="notices info" ><p>With Kinesis Data Firehose, you can collect data in real time to destinations such as S3, Redshift, and ElasticSearch.</p>
 </div>
 
-<p>AWS Management Console에서 Kinesis 서비스를 선택합니다.</p>
+<p>Select the Kinesis services the AWS Management Console.</p>
 <ol>
 <li>
-<p>Get Started 버튼을 클릭합니다.</p>
+<p>Click <strong>Get Started</strong> button.</p>
 </li>
 <li>
-<p>Deliver streaming data with Kinesis Firehose delivery streams 메뉴의 <strong>[Create delivery stream]</strong> 을 클릭하여
-새로운 Firehose 전송 스트림 생성을 시작합니다.</p>
+<p>Click <strong>[Create delivery stream]</strong> on <strong>Deliver streaming data with Kinesis Firehose delivery streams</strong> menu.<!-- raw HTML omitted -->
+Start creating a new Firehose delivery stream.</p>
 </li>
 <li>
-<p>(Step 1: Name and source) Delivery stream name에 원하는 이름(예: <code>retail-trans</code>)를 입력합니다.</p>
+<p>(Step 1: Name and source) Enter the desired name (e.g. <code>retail-trans</code>) in <strong>Delivery stream name</strong>.</p>
 </li>
 <li>
-<p><strong>Choose a source</strong> 에서 <code>Kinesis Data Stream</code> 를 선택하고, 앞서 생성한 Kinesis Data Stream(예: <code>retail-trans</code>)을 선택 한 후,
-<strong>Next</strong>를 클릭합니다.</p>
+<p><strong>Next</strong>를 클릭합니다.Select <code>Kinesis Data Stream</code> from <strong>Choose a source</strong>, select Kinesis Data Stream (eg <code>retail-trans</code>) created earlier, and then click <strong>Next</strong>.</p>
 </li>
 <li>
-<p>(Step 2: Process records) <strong>Transform source records with AWS Lambda / Convert record format</strong> 은
-둘다 default 옵션 <code>Disabled</code>를 선택하고 <strong>Next</strong>를 클릭합니다.</p>
+<p>(Step 2: Process records) For <strong>Transform source records with AWS Lambda / Convert record format</strong>, both select the default option <code>Disabled</code> and click <strong>Next</strong>.</p>
 </li>
 <li>
-<p>(Step 3: Choose a destination) Destination은 Amazon S3를 선택하고, <code>Create new</code> 를 클릭해서 S3 bucket을 생성합니다.
-S3 bucket 이름은 이번 실습에서는 <code>aws-analytics-immersion-day-xxxxxxxx</code> 형식으로 <code>xxxxxxxx</code> 는 bucket 이름이 겹치지 않도록 임의의 숫자나
-문자를 입력 합니다.</p>
-<p>S3 prefix를 입력합니다. 예를 들어서 다음과 같이 입력 합니다.</p>
+<p>(Step 3: Choose a destination) Select Amazon S3 as <strong>Destination</strong> and click <code>Create new</code> to create an S3 bucket.
+The S3 bucket name is in the format of <code>aws-analytics-immersion-day-xxxxxxxx</code> in this lab, and <code>xxxxxxxx</code> is random numbers or characters so that the S3 bucket names do not overlap.</p>
+<p>Enter S3 prefix. For example, type as follows:</p>
 <pre><code class="language-buildoutcfg" data-lang="buildoutcfg">json-data/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/
-</code></pre><p>S3 error prefix를 입력합니다. 예를 들어서 다음과 같이 입력 합니다.</p>
+</code></pre><p>Enter S3 error prefix. For example, type as follows:</p>
 <pre><code class="language-buildoutcfg" data-lang="buildoutcfg">error-json/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}
-</code></pre><p>S3 prefix와 3 error prefix 입력을 완료한 후에, Next를 클릭합니다.
-(참고: <a href="https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html" target="_blank">https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html</a>
+</code></pre><p>After entering S3 prefix and 3 error prefix, click Next.
+(reference: <a href="https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html" target="_blank">https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html</a>
 )</p>
 </li>
 <li>
-<p>(Step 4: Configure settings) S3 buffer conditions에서 Buffer size는 <code>1MB</code>, Buffer interval은 <code>60</code> seconds로 설정합니다.</p>
+<p>(Step 4: Configure settings) Set buffer size to <code>1MB</code> and buffer interval to <code>60</code> seconds in <strong>S3 buffer conditions</strong>.</p>
 </li>
 <li>
-<p>아래 IAM role에서 <strong>[Create new, or Choose]</strong> 버튼을 클릭합니다.</p>
+<p>Click the <strong>[Create new, or Choose]</strong> button in the IAM role below.</p>
 </li>
 <li>
-<p>새로 열린 탭에서 필요한 정책이 포함된 IAM 역할 <code>firehose_delivery_role</code>을 자동으로 생성합니다. Allow 버튼을 클릭하여 진행합니다.
+<p>In the newly opened tab, it automatically creates the IAM role <code>firehose_delivery_role</code> with the required policy. Click <strong>Allow</strong> button to proceed.
 <img src="/analytics-on-aws/images/kfh_create_new_iam_role.png" alt="kfh_create_new_iam_role"></p>
 </li>
 <li>
-<p>새롭게 생성된 역할이 추가된 것을 확인한 뒤 Next 버튼을 클릭합니다.</p>
+<p>After confirming that the newly created role has been added, click <strong>Next</strong> button.</p>
 </li>
 <li>
-<p>(Step 5: Review) Review에서 입력한 정보를 확인한 뒤 틀린 부분이 없다면, <strong>[Create delivery stream]</strong> 버튼을 클릭하여 Firehose 생성을 완료합니다.</p>
+<p>(Step 5: Review) If there are no errors after checking the information entered in <strong>Review</strong>, click the <strong>[Create delivery stream]</strong> button to complete the <strong>Firehose</strong> creation.</p>
 </li>
 </ol>
 
@@ -1207,19 +1204,19 @@ S3 bucket 이름은 이번 실습에서는 <code>aws-analytics-immersion-day-xxx
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1603447566"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/learn.js?1603432468"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1603432468"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/learn.js?1603447566"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1603447566"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1603432468" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1603432468"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1603447566" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1603447566"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
