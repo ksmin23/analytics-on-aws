@@ -1,5 +1,5 @@
 # 변경 불필요
-anguageCode = "ko-KR"
+languageCode = "ko-KR"
 defaultContentLanguage = "ko"
 theme = "hugo-theme-learn"
 showHeaderLanguageChooser=true
