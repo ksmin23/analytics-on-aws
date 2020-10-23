@@ -6,7 +6,7 @@ pre: "<b>3-7. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
-## Creating Amazon Elasticsearch Service for Real-Time Data Analysis
+## Create Amazon Elasticsearch Service for Real-Time Data Analysis
 
 An Elasticsearch cluster is created to store and analyze data in real time. Amazon ES domains are synonymous with Elasticsearch clusters. A domain is a setting that specifies a setting, instance type, number of instances, and storage resources.
 

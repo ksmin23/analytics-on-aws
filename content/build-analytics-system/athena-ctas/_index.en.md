@@ -6,7 +6,7 @@ pre: "<b>3-6. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png)
 
-## Combining small files stored in S3 into large files using AWS Lambda Function
+## Combine small files stored in S3 into large files using AWS Lambda Function
 
 When real-time incoming data is stored in S3 using Kinesis Data Firehose, files with small data size are created.
 To improve the query performance of Amazon Athena, it is recommended to combine small files into one large file.

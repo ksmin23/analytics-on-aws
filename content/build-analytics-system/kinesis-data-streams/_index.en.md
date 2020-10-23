@@ -4,9 +4,9 @@ weight: 31
 pre: "<b>3-1. </b>"
 ---
 
-## Create Kinesis Data Streams to receive input data
-
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+
+## Create Kinesis Data Streams to receive input data
 
 Select Kinesis services the AWS Management Console.
 1. Click **Get Started** button.

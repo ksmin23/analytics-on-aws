@@ -6,7 +6,7 @@ pre: "<b>3-4. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
-## Analyzing data using Athena
+## Analyze data using Athena
 
 Using **Amazon Athena**, you can create tables based on data stored in S3, query tables, and view query results.
 First, create a database to query the data.

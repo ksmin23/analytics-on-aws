@@ -6,7 +6,7 @@ pre: "<b>3-8. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
-## Ingesting real-time data into ElasticSearch using AWS Lambda Functions
+## Ingest real-time data into ElasticSearch using AWS Lambda Functions
 
 You can index data into Amazon Elasticsearch Service in real time using a Lambda function.
 In this lab, you will create a Lambda function using the AWS Lambda console.
