@@ -6,13 +6,13 @@ tag:
   - Security_Group
 ---
 
-## bastion host로 사용할 EC2 인스턴스를 위한 Security Groups 생성
-실습용 EC2 인스턴에서 사용할 security group을 생성하고 구성합니다.
+## Security Groups to create an EC2 instance for a bastion host
+Create and configure a security group of EC2 instance.
 
-1. AWS Management Console에서 EC2 서비스에 접속합니다.
-2. **NETWORK & SECURITY** 메뉴에서 **Security Groups** 항목을 선택합니다.
-3. **\[Create Security Group\]** 을 클릭합니다.
-4. Create Security Group 화면에서 Security Group에 필요한 정보를 입력한 후, 새로운 security group을  **\[Create\]** 합니다.
+1. Connect to the EC2 service in the AWS Management Console.
+2. Select the **Security Groups** item from the **NETWORK & SECURITY** menu.
+3. Click **\[Create Security Group\]**.
+4. On the **Create Security Group** screen, enter the necessary information for the **Security Group**, and then **\[Create\]** a new security group.
     + Security group name : bastion
     + Description : security group for bastion
  
@@ -24,24 +24,24 @@ tag:
 
     ![aws-ec2-security-group-for-bastion](/analytics-on-aws/images/aws-ec2-security-group-for-bastion.png)
 
-## Elasicsearch Service에서 사용할 Security Groups 생성
-Elasticsearch Service을 위한 security group을 생성하고 구성합니다.
-1. AWS Management Console에서 EC2 서비스에 접속합니다.
-2. **NETWORK & SECURITY** 메뉴에서 **Security Groups** 항목을 선택합니다.
-3. **\[Create Security Group\]** 을 클릭합니다.
-4. Create Security Group 화면에서 Security Group에 필요한 정보를 입력한 후, 새로운 security group을  **\[Create\]** 합니다.
+## Security Groups created for use in Elasticsearch Service
+Create and configure a security group for Elasticsearch Service.
+
+1. Connect to EC2 service in AWS Management Console.
+2. Select the **Security Groups** item from the **NETWORK & SECURITY** menu.
+3. Click **\[Create Security Group\]**.
+4. On the **Create Security Group** screen, enter the necessary information for the Security Group, and then **\[Create\]** a new security group.
     + Security group name : use-es-cluster-sg
     + Description : security group for an es client
 
-    Security group rules의 **Inbound** 은 아무것도 입력하지 않습니다.
+    Enter nothing in **Inbound** of the security group rules.
     
     ![aws-ec2-security-group-for-es-client](/analytics-on-aws/images/aws-ec2-security-group-for-es-client.png)
-5. 다시 **\[Create Security Group\]** 클릭해서 Create Security Group 화면으로 이동합니다.
-Security Group에 필요한 정보를 입력한 후, 새로운 security group을 **\[Create\]** 합니다.
+5.  Click **\[Create Security Group\]** again to go to the **Create Security Group** screen. After entering the necessary information for the security group, **\[Create\]** a new security group.
     + Security group name : es-cluster-sg
     + Description : security group for an es cluster
  
-    Security group rules의 **Inbound** 에 아래 내용을 입력합니다.
+    Enter the following in **Inbound** of the security group rules.
     + Type : All TCP
     + Protocol : TCP
     + Port Range : 0-65535

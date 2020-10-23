@@ -7,7 +7,7 @@ tag:
 ---
 
 {{% notice info %}}
-실습은 **us-west-1 (오레곤) 리전을 선택**합니다.
+이 실습에서는 **us-west-1 (오레곤) 리전을 사용**합니다.
 {{% /notice %}}
 
 실습에 필요한 데이터를 실시간으로 발생시킬 EC2 인스턴스를 생성합니다.
@@ -18,7 +18,7 @@ tag:
 ![aws-ec2-launch-instance](/analytics-on-aws/images/aws-ec2-launch-instance.png)
 4. Step 1: Choose an Amazon Machine Image (AMI) 화면에서 **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type** 을 선택합니다.
 ![aws-ec2-choose-ami](/analytics-on-aws/images/aws-ec2-choose-ami.png)
-5. Step 2 : Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. **\[Next: Configure Instance Details\]** 을 클릭합니다.
+5. Step 2: Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. **\[Next: Configure Instance Details\]** 을 클릭합니다.
 ![aws-ec2-choose-instance-type](/analytics-on-aws/images/aws-ec2-choose-instance-type.png)
 6. Step 3: Configure Instance Details 화면에서 **Auto-assign Public IP** 를 **Enable** 선택하고, **\[Next: Add Storage\]** 을 클릭합니다.
 ![aws-ec2-configure-instance-details](/analytics-on-aws/images/aws-ec2-configure-instance-details.png)
@@ -32,12 +32,10 @@ Security Group 중에서 Name이 `bastion`과 `use-es-cluster-sg` 를 선택 한
 Create a new key pair를 선택하고 Key pair name은 `analytics-hol` 을 입력한 후 Download Key Pair를 클릭합니다.
 Key Pair를 PC의 임의 위치에 저장한 후 **\[Launch Instances\]** 를 클릭합니다. (인스턴스 기동에 몇 분이 소요될 수 있습니다.)
 ![aws-ec2-select-keypair](/analytics-on-aws/images/aws-ec2-select-keypair.png)
-12. (MacOS 사용자) 다운로드 받은 Key Pair 파일의 File Permission을 400으로 변경합니다.
+12. MacOS 사용자의 경우, 다운로드 받은 Key Pair 파일의 File Permission을 400으로 변경합니다.
     ```shell script
     $ chmod 400 ./analytics-hol.pem 
     $ ls -lat analytics-hol.pem 
     -r--------  1 ******  ******  1692 Jun 25 11:49 analytics-hol.pem
     ```
-    Windows OS 사용자의 경우, [PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
-    를 참고하십시요.
-
+    Windows OS 사용자의 경우, [PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)를 참고하십시요.
