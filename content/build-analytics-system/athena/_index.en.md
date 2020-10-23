@@ -6,31 +6,30 @@ pre: "<b>3-4. </b>"
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
 
-## Athena를 이용해서 데이터 분석 하기
+## Analyzing data using Athena
 
-Amazon Athena를 이용해서 S3에 저장된 데이터를 기반으로 테이블을 만들고, 테이블을 쿼리한 다음 쿼리 결과를 확인할 수 있습니다.
-먼저 데이터를 쿼리하기 위해서 데이터베이스를 생성합니다.
+Using **Amazon Athena**, you can create tables based on data stored in S3, query tables, and view query results.
+First, create a database to query the data.
 
-### 1단계: 데이터베이스 생성
-1. Athena 콘솔을 엽니다.
-2. Athena 콘솔을 처음 방문하면 시작하기 페이지로 이동합니다. **\[Get Started\]** 를 선택해 쿼리 편집기를 엽니다.
-3. 처음 방문 하는 경우라면, **set up a query result location in Amazon S3** 를 클릭해서 Athena의 쿼리 결과를 저장할 s3 위치를 설정합니다.
+### Step 1: Create a database
+1. Open Athena console.
+2. The first time you visit Athena console, you will be taken to the **\[Get Started\]** page. Select **\[Get Started\]** to open the query editor.
+3. If this is your first time visiting, click **set up a query result location in Amazon S3** to set the s3 location to save Athena's query results.
 ![aws-athena-setup-query-results-location-01](/analytics-on-aws/images/aws-athena-setup-query-results-location-01.png)
-이번 실습에서는 Kinesis Data Firehose 설정 단계에서 생성한 s3 bucket에 Athena의 쿼리 결과를 저장할 디렉터리를 생성합니다.
-예를 들어, `s3://aws-analytics-immersion-day-xxxxxxxx/athena-query-results/` (`xxxxxxxx` 는 bucket 이름이 겹치지 않도록 입력한 임의의 숫자나
-문자열 입니다.)
+In this lab, we will create a directory to store Athena's query results in the s3 bucket created in **Kinesis Data Firehose** setup step.
+For example, `s3://aws-analytics-immersion-day-xxxxxxxx/athena-query-results/` (`xxxxxxxx` is random numbers or characters entered so that the bucket names do not overlap)
 ![aws-athena-setup-query-results-location-02](/analytics-on-aws/images/aws-athena-setup-query-results-location-02.png)
-처음 방문하는 경우가 아니라면, Athena 쿼리 편집기가 열립니다.
-3. Athena 쿼리 편집기에서 예제 쿼리가 있는 쿼리 창을 볼 수 있습니다. 쿼리 창의 아무 곳에나 쿼리를 입력하기 시작합니다.
-4. `mydatabase` 라는 데이터베이스를 생성하려면 다음 CREATE DATABASE 문을 입력한 다음, **\[Run Query\]** 를 선택합니다.
+Unless you are visiting for the first time, Athena Query Editor is oppened.
+4. You can see a query window with sample queries in the Athena Query Editor. Start typing your query anywhere in the query window.
+5. To create a database called `mydatabase`, enter the following `CREATE DATABASE` statement, then select **\[Run Query\]**.
     ```buildoutcfg
     CREATE DATABASE mydatabase
     ```
-5. 카탈로그 디스플레이가 새로 고쳐지고 왼쪽 **\[Catalog\]** 대시보드의 **\[DATABASE\]** 목록에 `mydatabase`가 표시되는지 확인합니다.
+6. Confirm that the the database **\[Catalog\]** refreshes and `mydatabase` is displayed in the **\[DATABASE\]** list on the left **\[Catalog\]** dashboard.
 
-### 2단계: 테이블 생성
-1. **\[DATABASE\]** 에 `mydatabase`가 선택되었는지 확인한 후 **\[New Query\]** 를 선택합니다.
-2. 쿼리 창에 다음 CREATE TABLE 문을 입력한 후 **\[Run Query\]** 를 선택합니다.
+### Step 2: Create a table
+1. Make sure that `mydatabase` is selected in **\[DATABASE\]**, and then select **\[New Query\]**.
+2. Enter the following `CREATE TABLE` statement in the query window and select **\[Run Query\]**.
     ```buildoutcfg
     CREATE EXTERNAL TABLE `mydatabase.retail_trans_json`(
       `invoice` string COMMENT 'Invoice number', 
@@ -55,18 +54,18 @@ Amazon Athena를 이용해서 S3에 저장된 데이터를 기반으로 테이�
     LOCATION
       's3://aws-analytics-immersion-day-xxxxxxxx/json-data'
     ```
-    테이블 `retail_trans_json`가 생성되고 데이터베이스의 **\[Catalog\]** 대시보드에 표시됩니다.
-3. 테이블을 생성한 이후 **\[New Query\]** 를 선택하고 다음을 실행해서, 파티션의 데이터를 로드합니다.
+    The table `retail_trans_json` is created and displayed in the dashboard of the database **\[Catalog\]**.
+3. After creating the table, select **\[New Query\]** and run the following to load the partition data.
     ```buildoutcfg
     MSCK REPAIR TABLE mydatabase.retail_trans_json
     ```
 
-### 3단계: 데이터 쿼리
-1. **\[New Query\]** 를 선택하고 쿼리 창의 아무 곳에나 다음 문을 입력한 다음 **\[Run Query\]** 를 선택합니다.
+### Step 3: Query Data
+1. Select **\[New Query\]**; enter the following query statement anywhere in the query window, then select **\[Run Query\]**.
     ```buildoutcfg
     SELECT *
     FROM retail_trans_json
     LIMIT 10
     ```
-다음과 같은 형식의 결과가 반환됩니다.
+The result is returned in the following format:
 ![aws_athena_select_all_limit_10](/analytics-on-aws/images/aws_athena_select_all_limit_10.png)
