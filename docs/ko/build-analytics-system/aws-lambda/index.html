@@ -12,20 +12,20 @@
     <title>AWS Lambda :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1603497096" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1603497096" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1604327411" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1604327411" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1603497096" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1604327411" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1603497096"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1604327411"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1603497096"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1603497096"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1604327411"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1604327411"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/ko";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1603497096"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1604327411"></script>
 
     
   </div>
@@ -808,11 +808,15 @@ layer의 arn을 직접 입력하면 됩니다.
 <li>Environment variables 에서 <strong>[Edit]</strong> 를 클릭합니다.</li>
 <li><strong>[Add environment variables]</strong> 를 클릭해서 아래 4개의 Environment variables을 등록합니다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ES_HOST<span style="color:#f92672">=</span>&lt;elasticsearch service domain&gt;
+ES_INDEX<span style="color:#f92672">=</span>&lt;elasticsearch index name&gt;
+ES_TYPE<span style="color:#f92672">=</span>&lt;elasticsearch type name&gt;
 REQUIRED_FIELDS<span style="color:#f92672">=</span>&lt;primary key로 사용될 column 목록&gt;
 REGION_NAME<span style="color:#f92672">=</span>&lt;region-name&gt;
 DATE_TYPE_FIELDS<span style="color:#f92672">=</span>&lt;column 중, date 또는 timestamp 데이터 타입의 column&gt;
 </code></pre></div><p>예를 들어, 다음과 같이 Environment variables을 설정합니다.</p>
 <pre><code class="language-buildoutcfg" data-lang="buildoutcfg">ES_HOST=vpc-retail-xkl5jpog76d5abzhg4kyfilymq.us-west-1.es.amazonaws.com
+ES_INDEX=retail
+ES_TYPE=trans
 REQUIRED_FIELDS=Invoice,StockCode,Customer_ID
 REGION_NAME=us-west-2
 DATE_TYPE_FIELDS=InvoiceDate
@@ -1227,19 +1231,19 @@ security groups을 선택합니다.</li>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1603497096"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1604327411"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/learn.js?1603497096"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1603497096"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/learn.js?1604327411"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1604327411"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1603497096" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1603497096"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1604327411" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1604327411"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
