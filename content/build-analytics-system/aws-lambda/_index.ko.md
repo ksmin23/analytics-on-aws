@@ -43,6 +43,8 @@ layer의 arn을 직접 입력하면 됩니다.
 12. **\[Add environment variables\]** 를 클릭해서 아래 4개의 Environment variables을 등록합니다.
     ```shell script
     ES_HOST=<elasticsearch service domain>
+    ES_INDEX=<elasticsearch index name>
+    ES_TYPE=<elasticsearch type name>
     REQUIRED_FIELDS=<primary key로 사용될 column 목록>
     REGION_NAME=<region-name>
     DATE_TYPE_FIELDS=<column 중, date 또는 timestamp 데이터 타입의 column>
@@ -50,6 +52,8 @@ layer의 arn을 직접 입력하면 됩니다.
     예를 들어, 다음과 같이 Environment variables을 설정합니다.
     ```buildoutcfg
     ES_HOST=vpc-retail-xkl5jpog76d5abzhg4kyfilymq.us-west-1.es.amazonaws.com
+    ES_INDEX=retail
+    ES_TYPE=trans
     REQUIRED_FIELDS=Invoice,StockCode,Customer_ID
     REGION_NAME=us-west-2
     DATE_TYPE_FIELDS=InvoiceDate

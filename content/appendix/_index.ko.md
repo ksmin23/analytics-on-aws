@@ -71,10 +71,14 @@ cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등
     $ python3 -m venv .env
     $ source .env/bin/activate
     (.env) $ pip install -r requirements.txt
-    (.env) $ S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources cdk --profile cdk_user deploy
+    (.env) $ export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+    (.env) $ export CDK_DEFAULT_REGION=us-west-2
+    (.env) $ cdk bootstrap aws://${CDK_DEFAULT_ACCOUNT}/${CDK_DEFAULT_REGION}
+    (.env) $ export S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources
+    (.env) $ cdk --profile cdk_user deploy
     ```
 
-4. 배포한 애플리케이션을 삭제하려면, `cdk destroy` 명령어를 아래와 같이 실행 합니다.
+1. 배포한 애플리케이션을 삭제하려면, `cdk destroy` 명령어를 아래와 같이 실행 합니다.
     ```shell script
     (.env) $ cdk --profile cdk_user destroy
     ```

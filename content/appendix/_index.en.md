@@ -69,10 +69,14 @@ After setting, deploy using the `cdk deploy` command.
     $ python3 -m venv .env
     $ source .env/bin/activate
     (.env) $ pip install -r requirements.txt
-    (.env) $ S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources cdk --profile cdk_user deploy
+    (.env) $ export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+    (.env) $ export CDK_DEFAULT_REGION=us-west-2
+    (.env) $ cdk bootstrap aws://${CDK_DEFAULT_ACCOUNT}/${CDK_DEFAULT_REGION}
+    (.env) $ export S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources
+    (.env) $ cdk --profile cdk_user deploy
     ```
 
-4. To delete the deployed application, execute the `cdk destroy` command as follows.
+1. To delete the deployed application, execute the `cdk destroy` command as follows.
     ```shell script
     (.env) $ cdk --profile cdk_user destroy
     ```

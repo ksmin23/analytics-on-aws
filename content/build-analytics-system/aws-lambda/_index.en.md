@@ -40,6 +40,8 @@ In this case, click `Provide a layer version ARN` in **Layer selection**, and en
 12. Click **\[Add environment variables\]** to register the following 4 environment variables.
     ```shell script
     ES_HOST=<elasticsearch service domain>
+    ES_INDEX=<elasticsearch index name>
+    ES_TYPE=<elasticsearch type name>
     REQUIRED_FIELDS=<primary key로 사용될 column 목록>
     REGION_NAME=<region-name>
     DATE_TYPE_FIELDS=<column 중, date 또는 timestamp 데이터 타입의 column>
@@ -47,6 +49,8 @@ In this case, click `Provide a layer version ARN` in **Layer selection**, and en
     For example, set Environment variables as follows:
     ```buildoutcfg
     ES_HOST=vpc-retail-xkl5jpog76d5abzhg4kyfilymq.us-west-1.es.amazonaws.com
+    ES_INDEX=retail
+    ES_TYPE=trans
     REQUIRED_FIELDS=Invoice,StockCode,Customer_ID
     REGION_NAME=us-west-2
     DATE_TYPE_FIELDS=InvoiceDate
