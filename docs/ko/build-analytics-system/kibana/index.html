@@ -12,20 +12,20 @@
     <title>Kibana :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1604372160" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1604372160" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1604471184" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1604372160" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1604471184" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1604372160"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1604471184"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1604372160"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1604372160"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1604471184"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1604471184"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/ko";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1604372160"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1604471184"></script>
 
     
   </div>
@@ -811,6 +811,8 @@ Time Filter field name에 <code>InvoiceDate</code> 를 선택합니다.
 <img src="/analytics-on-aws/images/kibana-02b-create-index-pattern-configure-settings.png" alt="kibana-02b-create-index-pattern-configure-settings"></li>
 <li>(Management / Create index pattern) <strong>[Create index pattern]</strong> 을 클릭합니다.
 <img src="/analytics-on-aws/images/kibana-02c-create-index-pattern-review.png" alt="kibana-02c-create-index-pattern-review"></li>
+<li>(Management / Advanced Settings) 왼쪽 사이드바 메뉴에서 <strong>[Advanced Settings]</strong> 를 선택한 후, <strong>Timezone for date formatting</strong>을 <code>Etc/UTC</code> 로 설정합니다. 테스트용 데이터의 로그 생성 시간이 <code>UTC</code> 기준이기 때문에 Kibana의 Timezone 역시 <code>UTC</code>로 설정합니다.
+<img src="/analytics-on-aws/images/kibana-02d-management-advanced-setting.png" alt="kibana-02d-management-advanced-setting"></li>
 <li>(Discover) Index pattern 생성을 완료 후, Discover를 선택해서 Elasticsearch 수집된 데이터를 확인합니다.
 <img src="/analytics-on-aws/images/kibana-03-discover.png" alt="kibana-03-discover"></li>
 <li>(Discover) <code>InvoicdDate</code> 별 <code>Quantity</code>를 시각화 해 보겠습니다. 좌측의 Available fields에서 invoicdDate를
@@ -1221,19 +1223,19 @@ Time Filter field name에 <code>InvoiceDate</code> 를 선택합니다.
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1604372160"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1604471184"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/learn.js?1604372160"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1604372160"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/learn.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1604471184"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1604372160" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1604372160"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1604471184" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1604471184"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
