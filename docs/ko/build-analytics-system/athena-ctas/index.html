@@ -12,20 +12,20 @@
     <title>Athena CTAS :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1606054261" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1604471184" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1606054261" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1606054261"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1604471184"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1604471184"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1606054261"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1606054261"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/ko";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1604471184"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1606054261"></script>
 
     
   </div>
@@ -738,7 +738,12 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#aws-lambda-function을-이용해서-s3에-저장된-작은-파일들을-큰-파일로-합치기">AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기</a></li>
+    <li><a href="#aws-lambda-function을-이용해서-s3에-저장된-작은-파일들을-큰-파일로-합치기">AWS Lambda Function을 이용해서 S3에 저장된 작은 파일들을 큰 파일로 합치기</a>
+      <ul>
+        <li><a href="#1단계-ctas-쿼리-결과를-저장하는-테이블-생성하기">1단계: CTAS 쿼리 결과를 저장하는 테이블 생성하기</a></li>
+        <li><a href="#2단계-aws-lambda-함수-생성하기">2단계: AWS Lambda 함수 생성하기</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -770,6 +775,42 @@
 <p>실시간으로 들어오는 데이터를 Kinesis Data Firehose를 이용해서 S3에 저장할 경우, 데이터 사이즈가 작은 파일들이 생성됩니다.
 Amazon Athena의 쿼리 성능 향상을 위해서 작은 파일들을 하나의 큰 파일로 합쳐주는 것이 좋습니다.
 이러한 작업을 주기적으로 실행하기 위해서Athena의 CTAS(Create Table As Select) 쿼리를 실행하는 AWS Lambda function 함수를 생성하고자 합니다.</p>
+<h3 id="1단계-ctas-쿼리-결과를-저장하는-테이블-생성하기">1단계: CTAS 쿼리 결과를 저장하는 테이블 생성하기</h3>
+<ol>
+<li><strong>Athena 콘솔</strong> 에 접속해서 Athena 쿼리 편집기로 이동합니다.</li>
+<li><strong>[DATABASE]</strong> 에서 mydatabase를 선택하고, <strong>[New Query]</strong> 를 선택합니다.</li>
+<li>쿼리 창에 다음 CREATE TABLE 문을 입력한 후 <strong>[Run Query]</strong> 를 선택합니다.<!-- raw HTML omitted -->
+이번 실습에서는 <code>retal_tran_json</code> 테이블의 json 포맷 데이터를 parquet 포맷으로 변경해서 <code>ctas_retail_trans_parquet</code> 이라는 테이블에 저장할 것 입니다.<!-- raw HTML omitted -->
+<code>ctas_retail_trans_parquet</code> 테이블의 데이터는 앞서 생성한 S3 bucket의 <code>s3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans</code> 위치에 저장할 것 입니다.
+<pre><code class="language-buildoutcfg" data-lang="buildoutcfg">CREATE EXTERNAL TABLE `mydatabase.ctas_retail_trans_parquet`(
+  `invoice` string COMMENT 'Invoice number', 
+  `stockcode` string COMMENT 'Product (item) code', 
+  `description` string COMMENT 'Product (item) name', 
+  `quantity` int COMMENT 'The quantities of each product (item) per transaction', 
+  `invoicedate` timestamp COMMENT 'Invoice date and time', 
+  `price` float COMMENT 'Unit price', 
+  `customer_id` string COMMENT 'Customer number', 
+  `country` string COMMENT 'Country name')
+PARTITIONED BY ( 
+  `year` int, 
+  `month` int, 
+  `day` int, 
+  `hour` int)
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION
+  's3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans'
+TBLPROPERTIES (
+  'has_encrypted_data'='false', 
+  'parquet.compression'='SNAPPY')
+;
+</code></pre></li>
+</ol>
+<h3 id="2단계-aws-lambda-함수-생성하기">2단계: AWS Lambda 함수 생성하기</h3>
 <ol>
 <li><strong>AWS Lambda 콘솔</strong> 을 엽니다.</li>
 <li><strong>[Create a function]</strong> 을 선택합니다.</li>
@@ -1205,19 +1246,19 @@ COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_i
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1606054261"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/learn.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/learn.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1606054261"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1604471184" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1604471184"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1606054261" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1606054261"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

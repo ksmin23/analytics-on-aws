@@ -12,20 +12,20 @@
     <title>Athena CTAS :: </title>
 
     
-    <link href="/analytics-on-aws/css/nucleus.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hybrid.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/featherlight.min.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/auto-complete.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/theme.css?1604471184" rel="stylesheet">
-    <link href="/analytics-on-aws/css/hugo-theme.css?1604471184" rel="stylesheet">
+    <link href="/analytics-on-aws/css/nucleus.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/fontawesome-all.min.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hybrid.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/featherlight.min.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/perfect-scrollbar.min.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/auto-complete.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/atom-one-dark-reasonable.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/theme.css?1606054261" rel="stylesheet">
+    <link href="/analytics-on-aws/css/hugo-theme.css?1606054261" rel="stylesheet">
     
-      <link href="/analytics-on-aws/css/theme-aws.css?1604471184" rel="stylesheet">
+      <link href="/analytics-on-aws/css/theme-aws.css?1606054261" rel="stylesheet">
     
 
-    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/jquery-3.3.1.min.js?1606054261"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1604471184"></script>
-<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1604471184"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/lunr.min.js?1606054261"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/auto-complete.js?1606054261"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ksmin23.github.io\/analytics-on-aws\/\/en";
     
 </script>
-<script type="text/javascript" src="/analytics-on-aws/js/search.js?1604471184"></script>
+<script type="text/javascript" src="/analytics-on-aws/js/search.js?1606054261"></script>
 
     
   </div>
@@ -738,7 +738,12 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#combine-small-files-stored-in-s3-into-large-files-using-aws-lambda-function">Combine small files stored in S3 into large files using AWS Lambda Function</a></li>
+    <li><a href="#combine-small-files-stored-in-s3-into-large-files-using-aws-lambda-function">Combine small files stored in S3 into large files using AWS Lambda Function</a>
+      <ul>
+        <li><a href="#step-1-create-a-table-to-store-ctas-query-results">Step 1: Create a table to store CTAS query results</a></li>
+        <li><a href="#step-2-create-an-aws-lambda-function">Step 2: Create an AWS Lambda Function</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -770,6 +775,42 @@
 <p>When real-time incoming data is stored in S3 using Kinesis Data Firehose, files with small data size are created.
 To improve the query performance of Amazon Athena, it is recommended to combine small files into one large file.
 To run these tasks periodically, I want to create an AWS Lambda function function that executes Athena&rsquo;s Create Table As Select (CTAS) query.</p>
+<h3 id="step-1-create-a-table-to-store-ctas-query-results">Step 1: Create a table to store CTAS query results</h3>
+<ol>
+<li>Access <strong>Athena Console</strong> and go to the Athena Query Editor.</li>
+<li>Select mydatabase from <strong>[DATABASE]</strong> and navigate to <strong>[New Query]</strong>.</li>
+<li>Enter the following CREATE TABLE statement in the query window and select <strong>[Run Query]</strong>.<!-- raw HTML omitted -->
+In this exercise, we will change the json format data of the <code>retal_tran_json</code> table into parquet format and store it in a table called <code>ctas_retail_trans_parquet</code>.<!-- raw HTML omitted -->
+The data in the <code>ctas_retail_trans_parquet</code> table will be saved in the location <code>s3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans</code> of the S3 bucket created earlier.
+<pre><code class="language-buildoutcfg" data-lang="buildoutcfg">CREATE EXTERNAL TABLE `mydatabase.ctas_retail_trans_parquet`(
+  `invoice` string COMMENT 'Invoice number', 
+  `stockcode` string COMMENT 'Product (item) code', 
+  `description` string COMMENT 'Product (item) name', 
+  `quantity` int COMMENT 'The quantities of each product (item) per transaction', 
+  `invoicedate` timestamp COMMENT 'Invoice date and time', 
+  `price` float COMMENT 'Unit price', 
+  `customer_id` string COMMENT 'Customer number', 
+  `country` string COMMENT 'Country name')
+PARTITIONED BY ( 
+  `year` int, 
+  `month` int, 
+  `day` int, 
+  `hour` int)
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION
+  's3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans'
+TBLPROPERTIES (
+  'has_encrypted_data'='false', 
+  'parquet.compression'='SNAPPY')
+;
+</code></pre></li>
+</ol>
+<h3 id="step-2-create-an-aws-lambda-function">Step 2: Create an AWS Lambda Function</h3>
 <ol>
 <li>Open the <strong>AWS Lambda Console</strong>.</li>
 <li>Select <strong>[Create a function]</strong>.</li>
@@ -1201,19 +1242,19 @@ COLUMN_NAMES=invoice,stockcode,description,quantity,invoicedate,price,customer_i
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/analytics-on-aws/js/clipboard.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/jquery.sticky.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/featherlight.min.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/highlight.pack.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/clipboard.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/perfect-scrollbar.jquery.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/jquery.sticky.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/featherlight.min.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/highlight.pack.js?1606054261"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/learn.js?1604471184"></script>
-    <script src="/analytics-on-aws/js/hugo-learn.js?1604471184"></script>
+    <script src="/analytics-on-aws/js/modernizr.custom-3.6.0.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/learn.js?1606054261"></script>
+    <script src="/analytics-on-aws/js/hugo-learn.js?1606054261"></script>
 
-    <link href="/analytics-on-aws/mermaid/mermaid.css?1604471184" rel="stylesheet" />
-    <script src="/analytics-on-aws/mermaid/mermaid.js?1604471184"></script>
+    <link href="/analytics-on-aws/mermaid/mermaid.css?1606054261" rel="stylesheet" />
+    <script src="/analytics-on-aws/mermaid/mermaid.js?1606054261"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
