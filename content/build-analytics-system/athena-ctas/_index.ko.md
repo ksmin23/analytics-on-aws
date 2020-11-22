@@ -12,6 +12,42 @@ pre: "<b>3-6. </b>"
 Amazon Athena의 쿼리 성능 향상을 위해서 작은 파일들을 하나의 큰 파일로 합쳐주는 것이 좋습니다.
 이러한 작업을 주기적으로 실행하기 위해서Athena의 CTAS(Create Table As Select) 쿼리를 실행하는 AWS Lambda function 함수를 생성하고자 합니다.
 
+### 1단계: CTAS 쿼리 결과를 저장하는 테이블 생성하기
+1. **Athena 콘솔** 에 접속해서 Athena 쿼리 편집기로 이동합니다.
+2. **\[DATABASE\]** 에서 mydatabase를 선택하고, **\[New Query\]** 를 선택합니다.
+3. 쿼리 창에 다음 CREATE TABLE 문을 입력한 후 **\[Run Query\]** 를 선택합니다.<br/>
+이번 실습에서는 `retal_tran_json` 테이블의 json 포맷 데이터를 parquet 포맷으로 변경해서 `ctas_retail_trans_parquet` 이라는 테이블에 저장할 것 입니다.<br/>
+`ctas_retail_trans_parquet` 테이블의 데이터는 앞서 생성한 S3 bucket의 `s3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans` 위치에 저장할 것 입니다.
+    ```buildoutcfg
+    CREATE EXTERNAL TABLE `mydatabase.ctas_retail_trans_parquet`(
+      `invoice` string COMMENT 'Invoice number', 
+      `stockcode` string COMMENT 'Product (item) code', 
+      `description` string COMMENT 'Product (item) name', 
+      `quantity` int COMMENT 'The quantities of each product (item) per transaction', 
+      `invoicedate` timestamp COMMENT 'Invoice date and time', 
+      `price` float COMMENT 'Unit price', 
+      `customer_id` string COMMENT 'Customer number', 
+      `country` string COMMENT 'Country name')
+    PARTITIONED BY ( 
+      `year` int, 
+      `month` int, 
+      `day` int, 
+      `hour` int)
+    ROW FORMAT SERDE 
+      'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+    STORED AS INPUTFORMAT 
+      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat' 
+    OUTPUTFORMAT 
+      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+    LOCATION
+      's3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans'
+    TBLPROPERTIES (
+      'has_encrypted_data'='false', 
+      'parquet.compression'='SNAPPY')
+    ;
+    ```
+
+### 2단계: AWS Lambda 함수 생성하기
 1. **AWS Lambda 콘솔** 을 엽니다.
 2. **\[Create a function\]** 을 선택합니다.
 3. Function name(함수 이름)에 `MergeSmallFiles` 을 입력합니다.

@@ -12,6 +12,42 @@ When real-time incoming data is stored in S3 using Kinesis Data Firehose, files 
 To improve the query performance of Amazon Athena, it is recommended to combine small files into one large file.
 To run these tasks periodically, I want to create an AWS Lambda function function that executes Athena's Create Table As Select (CTAS) query.
 
+### Step 1: Create a table to store CTAS query results
+1. Access **Athena Console** and go to the Athena Query Editor.
+2. Select mydatabase from **\[DATABASE\]** and navigate to **\[New Query\]**.
+3. Enter the following CREATE TABLE statement in the query window and select **\[Run Query\]**.<br/>
+In this exercise, we will change the json format data of the `retal_tran_json` table into parquet format and store it in a table called `ctas_retail_trans_parquet`.<br/>
+The data in the `ctas_retail_trans_parquet` table will be saved in the location `s3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans` of the S3 bucket created earlier.
+    ```buildoutcfg
+    CREATE EXTERNAL TABLE `mydatabase.ctas_retail_trans_parquet`(
+      `invoice` string COMMENT 'Invoice number', 
+      `stockcode` string COMMENT 'Product (item) code', 
+      `description` string COMMENT 'Product (item) name', 
+      `quantity` int COMMENT 'The quantities of each product (item) per transaction', 
+      `invoicedate` timestamp COMMENT 'Invoice date and time', 
+      `price` float COMMENT 'Unit price', 
+      `customer_id` string COMMENT 'Customer number', 
+      `country` string COMMENT 'Country name')
+    PARTITIONED BY ( 
+      `year` int, 
+      `month` int, 
+      `day` int, 
+      `hour` int)
+    ROW FORMAT SERDE 
+      'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+    STORED AS INPUTFORMAT 
+      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat' 
+    OUTPUTFORMAT 
+      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+    LOCATION
+      's3://aws-analytics-immersion-day-xxxxxxxx/parquet-retail-trans'
+    TBLPROPERTIES (
+      'has_encrypted_data'='false', 
+      'parquet.compression'='SNAPPY')
+    ;
+    ```
+
+### Step 2: Create an AWS Lambda Function
 1. Open the **AWS Lambda Console**.
 2. Select **\[Create a function\]**.
 3. Enter `MergeSmallFiles` for Function name.
