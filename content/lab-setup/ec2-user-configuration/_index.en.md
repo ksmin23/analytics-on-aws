@@ -7,11 +7,14 @@ tag:
 ---
 
 Configure the EC2 instances to access and control other AWS resources as follows:
-1. Log into the EC2 instance by ssh.
-    ```shell script
-    ssh -i "<Key pair name>" ec2-user@<Public IP>
-    ```
-2. Perform the following actions in order on the EC2 instance connected with ssh.
+
+1. Go to [EC2 console](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Instances:), and click the instance you just created. Then click **Connect**.
+    ![](/analytics-on-aws/images/ec2-connect.png)
+
+2. You will see the connection option page like the following screen shot. Click Connect to ssh into the instance.
+
+    ![](/analytics-on-aws/images/ec2-ssm.png)
+3. Perform the following actions in order on the EC2 instance connected with ssh.
 
     (1) Download the source code. 
     ```shell script
@@ -32,7 +35,7 @@ Configure the EC2 instances to access and control other AWS resources as follows
     (5) Make sure the files necessary for the lab are normally created after running the configuration script. For example, check if the source code and necessary files exist as shown below.
     ![aws-ec2-setup-hands-on-lab](/analytics-on-aws/images/aws-ec2-setup-hands-on-lab.png)
 
-3. Perform `aws configure` to access other AWS resources. At this time, the IAM User data created earlier is used.
+4. Perform `aws configure` to access other AWS resources. At this time, the IAM User data created earlier is used.
 Open the previously downloaded **.csv** file, check the `Access key ID` and `Secret access key`, and enter them.
     ```shell script
     $ aws configure
