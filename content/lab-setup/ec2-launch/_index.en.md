@@ -12,10 +12,8 @@ For this lab, we will use the **us-west-1 (Oregon) region**.
 
 Create an EC2 instance that will generate the data needed for the lab in real time.
 
-1. Connect to EC2 service in AWS Management Console.
-2. In the upper right, select **US West (Oregon)** for Region.
-3. Select **Instances** from the left **INSTANCES** menu and click **\[Launch Instance\]** to start creating a new instance.
-![aws-ec2-launch-instance](/analytics-on-aws/images/aws-ec2-launch-instance.png)
+1. Click [this link](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:) to start creating a new instance.
+
 4. Step 1: On the **Choose an Amazon Machine Image (AMI)** screen, choose **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type**.
 ![aws-ec2-choose-ami](/analytics-on-aws/images/aws-ec2-choose-ami.png)
 5. Step 2: On the **Choose an Instance Type** screen, select t2.micro as the instance type. Click **\[Next: Configure Instance Details\]**.
