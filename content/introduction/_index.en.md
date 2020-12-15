@@ -11,4 +11,4 @@ You can experience how you can build it.
 
 In this lab, we are going to implement the following Businesss Intelligence System (BI System) using AWS Analytics Services.
 
-![aws-analytics-system-architecture](/analytics-on-aws/images/aws-analytics-system-arch.png)
+![aws-analytics-system-architecture](/analytics-on-aws/images/aws-analytics-system-arch.svg)

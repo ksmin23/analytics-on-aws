@@ -8,7 +8,7 @@ pre: "<b>3. </b>"
 In this lab, you will perform the following steps to build a data analysis system using the AWS Analytics services.
 {{% /notice %}}
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 - [3-1. Create Kinesis Data Streams to receive input data](/analytics-on-aws/en/build-analytics-system/kinesis-data-streams/)
 - [3-2. Create Kinesis Data Firehose to store data in S3](/analytics-on-aws/en/build-analytics-system/kinesis-data-firehose/)

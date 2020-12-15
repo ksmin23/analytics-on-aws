@@ -4,7 +4,7 @@ weight: 33
 pre: "<b>3-3. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## Verify data pipeline operation
 

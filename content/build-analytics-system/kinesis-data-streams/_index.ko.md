@@ -4,7 +4,7 @@ weight: 31
 pre: "<b>3-1. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## 입력 데이터를 수신할 Kinesis Data Streams 생성하기
 

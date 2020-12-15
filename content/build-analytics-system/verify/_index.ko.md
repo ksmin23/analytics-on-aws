@@ -4,7 +4,7 @@ weight: 33
 pre: "<b>3-3. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## 데이터 파이프라인 동작 확인 하기
 

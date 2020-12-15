@@ -39,7 +39,7 @@ AWS CDK를 이용해서 배포하는 방법을 소개 합니다.
 
 CDK로 배포할 경우, 아래 아키텍처 그림의 `1(a), 1(b), 1(c), 1(f), 2(b), 2(a)`가 자동으로 생성됩니다.
 
-![aws-analytics-system-build-steps-extra](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png)
+![aws-analytics-system-build-steps-extra](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.svg)
 
 1. [Getting Started With the AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)를 참고해서 cdk를 설치하고,
 cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등록합니다.

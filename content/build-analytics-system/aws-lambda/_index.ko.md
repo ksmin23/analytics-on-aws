@@ -4,7 +4,7 @@ weight: 38
 pre: "<b>3-8. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## AWS Lambda Function을 이용해서 실시간 데이터를 ElasticSearch에 수집하기
 

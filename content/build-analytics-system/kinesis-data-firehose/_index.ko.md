@@ -4,7 +4,7 @@ weight: 32
 pre: "<b>3-2. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기
 

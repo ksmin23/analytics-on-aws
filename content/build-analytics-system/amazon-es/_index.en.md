@@ -4,7 +4,7 @@ weight: 37
 pre: "<b>3-7. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## Create Amazon Elasticsearch Service for Real-Time Data Analysis
 

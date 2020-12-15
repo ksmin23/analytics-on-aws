@@ -8,7 +8,7 @@ pre: "<b>3. </b>"
 이번 실습에서는 AWS Analytics 서비스를 이용해서 데이터 분석 시스템을 구축하기 위해 다음 단계를 수행합니다.
 {{% /notice %}}
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 - [3-1. 입력 데이터를 수신할 Kinesis Data Streams 생성하기](/analytics-on-aws/ko/build-analytics-system/kinesis-data-streams/)
 - [3-2. 데이터를 S3에 저장하기 위한 Kinesis Data Firehose 생성하기](/analytics-on-aws/ko/build-analytics-system/kinesis-data-firehose/)

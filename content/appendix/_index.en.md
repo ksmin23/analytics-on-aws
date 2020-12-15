@@ -39,7 +39,7 @@ Introducing how to deploy using the AWS CDK.
 
 When deployed as CDK, `1(a), 1(b), 1(c), 1(f), 2(b), 2(a)` in the architecture diagram below are automatically created.
 
-![aws-analytics-system-build-steps-extra](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png)
+![aws-analytics-system-build-steps-extra](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.svg)
 
 1. Refer to [Getting Started With the AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to install cdk. 
 Create an IAM User to be used when running cdk and register it in `~/.aws/config`.For example, after creating an IAM User called cdk_user, add it to `~/.aws/config` as shown below.

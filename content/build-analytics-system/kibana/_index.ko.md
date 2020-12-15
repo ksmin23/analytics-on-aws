@@ -4,7 +4,7 @@ weight: 39
 pre: "<b>3-9. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## Kibana를 이용한 데이터 시각화
 

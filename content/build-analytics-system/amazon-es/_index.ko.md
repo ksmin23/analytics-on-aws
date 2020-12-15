@@ -4,7 +4,7 @@ weight: 37
 pre: "<b>3-7. </b>"
 ---
 
-![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.png)
+![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps.svg)
 
 ## 실시간 데이터 분석을 위한 Amazon Elasticsearch Service 생성하기
 

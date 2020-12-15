@@ -11,4 +11,4 @@ pre: "<b>1. </b>"
 
 이 실습에서는 다음과 같은 Businesss Intelligence System(BI System)을 aws의 analytics 서비스를 활용해서 구현할 예정 입니다.
 
-![aws-analytics-system-architecture](/analytics-on-aws/images/aws-analytics-system-arch.png)
+![aws-analytics-system-architecture](/analytics-on-aws/images/aws-analytics-system-arch.svg)
