@@ -20,17 +20,8 @@ tag:
     (1) 소소 코드를 다운로드 받는다. 
     ```shell script
     wget 'https://github.com/ksmin23/aws-analytics-immersion-day/archive/main.zip'
-    ```
-    (2) 다운로드 받은 소스 코드의 압축을 해제한다.
-    ```shell script
     unzip -u main.zip
-    ```
-    (3) 실습 환경 설정 스크립트에 실행 권한을 부여한다.
-    ```shell script
     chmod +x ./aws-analytics-immersion-day-main/set-up-hands-on-lab.sh
-    ```
-    (4) 실습 환경 설정 스크립트를 실행한다.
-    ```shell script
     ./aws-analytics-immersion-day-main/set-up-hands-on-lab.sh
     ```
     (5) 실습 환경 설정 스크립트 실행 후, 실습에 필요한 파일들이 정상적으로 생성되었는지 확인한다. 
