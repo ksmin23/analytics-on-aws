@@ -48,7 +48,9 @@ AWS Management Console에서 Kinesis 서비스를 선택합니다.
 
 1. (Step 4: Configure settings) 이 단계에서 아래와 같은 설정을 합니다.
    1. S3 buffer conditions에서 Buffer size는 `1MB`, Buffer interval은 `60` seconds로 설정합니다.
+      ![](/analytics-on-aws/images/firehose-buffer.png)
    2. 아래 IAM role에서 **\[Create or update IAM Role\]** 버튼을 클릭합니다.
+      ![](/analytics-on-aws/images/firehose-role.png)
    3. Next 버튼을 클릭합니다.
 2.  (Step 5: Review) Review에서 입력한 정보를 확인한 뒤 틀린 부분이 없다면, **\[Create delivery stream\]** 버튼을 클릭하여 Firehose 생성을 완료합니다.
 
