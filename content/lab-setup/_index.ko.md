@@ -15,7 +15,7 @@ tag:
 
 AWS 계정 생성 및 활성화 가이드는 다음 [링크](https://aws.amazon.com/ko/premiumsupport/knowledge-center/create-and-activate-aws-account/)를 참조하시기 바랍니다.  
 
-- [2-1. IAM User 생성](/analytics-on-aws/ko/lab-setup/iam-user)
-- [2-2. Security Groups 생성](/analytics-on-aws/ko/lab-setup/ec2-security-group)
-- [2-3. EC2 생성](/analytics-on-aws/ko/lab-setup/ec2-launch)
-- [2-4. EC2 설정](/analytics-on-aws/ko/lab-setup/ec2-user-configuration)
+<!-- - [2-1. IAM User 생성](/analytics-on-aws/ko/lab-setup/iam-user) -->
+- [2-1. Security Groups 생성](/analytics-on-aws/ko/lab-setup/ec2-security-group)
+- [2-2. EC2 생성](/analytics-on-aws/ko/lab-setup/ec2-launch)
+- [2-3. EC2 설정](/analytics-on-aws/ko/lab-setup/ec2-user-configuration)
