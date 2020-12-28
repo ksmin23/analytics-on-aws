@@ -12,7 +12,7 @@ tag:
 
 실습에 필요한 데이터를 실시간으로 발생시킬 EC2 인스턴스를 생성합니다.
 
-1. [이 링크](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:)를 클릭하여 새로운 인스턴스 생성을 시작합니다. 이때 우측 상단에서 리전이 **us-west-2** 로 잘 설정되어 있는지 확인하십시오.
+1. [이 링크](https://console.aws.amazon.com/ec2/v2/home#LaunchInstanceWizard:)를 클릭하여 새로운 인스턴스 생성을 시작합니다. 이때 우측 상단에서 리전이 **us-west-2** 로 잘 설정되어 있는지 확인하십시오.
 
 2. Step 1: Choose an Amazon Machine Image (AMI) 화면에서 **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type** 을 선택합니다.
 ![aws-ec2-choose-ami](/analytics-on-aws/images/aws-ec2-choose-ami.png)

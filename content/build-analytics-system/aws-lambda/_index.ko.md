@@ -14,15 +14,15 @@ Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인
 ### Lambda 함수에서 사용할 공통 라이브러리를 Layers에 추가하기
 1. [이 링크](https://github.com/ksmin23/aws-analytics-immersion-day/raw/main/resources/es-lib.zip)를 클릭하여 파이썬 패키지 파일을 다운 받습니다. `es-lib.zip` 생성 방법은 
 [AWS Lambda Layer에 등록할 Python 패키지 생성 예제](/ko/reference/) 를 참고하세요.
-2. **[AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home?region=us-west-2)** 을 엽니다.
-3. **Layers** 메뉴에 들어가서 **\[Create layer\]** 을 선택합니다.
-4. Name에 `es-lib` 를 입력합니다.
-5. **Upload a .zip file** 를 선택하고, **Upload** 버튼을 클릭하여 다운 받은 es-lib.zip 파일을 지정합니다.
-6. `Compatible runtimes` 에서 `Python 3.8` 을 선택합니다.
+1. **[AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home)** 을 엽니다.
+2. **Layers** 메뉴에 들어가서 **\[Create layer\]** 을 선택합니다.
+3. Name에 `es-lib` 를 입력합니다.
+4. **Upload a .zip file** 를 선택하고, **Upload** 버튼을 클릭하여 다운 받은 es-lib.zip 파일을 지정합니다.
+5. `Compatible runtimes` 에서 `Python 3.8` 을 선택합니다.
 ![aws-lambda-create-layer](/analytics-on-aws/images/aws-lambda-create-layer.png)
 
 ### 이 Lambda Layer를 사용하는 Lambda 함수를 생성하기
-1. **[AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home?region=us-west-2)** 을 엽니다.
+1. **[AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home)** 을 엽니다.
 2. **\[Create function\]** 을 선택합니다.
    * Function name(함수 이름)에 `UpsertToES` 을 입력합니다.
    * Runtime 에서 `Python 3.8` 을 선택합니다.

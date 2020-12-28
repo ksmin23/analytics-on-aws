@@ -14,7 +14,7 @@ Kinesis Data Firehose를 이용해서 실시간으로 데이터를 S3, Redshift,
 
 AWS Management Console에서 Kinesis 서비스를 선택합니다.
 
-1. [이 링크](https://us-west-2.console.aws.amazon.com/firehose/home?region=us-west-2#/wizard/nameAndSource)를 클릭하여 새로운 Firehose 전송 스트림 생성을 시작합니다.
+1. [이 링크](https://console.aws.amazon.com/firehose/home#/wizard/nameAndSource)를 클릭하여 새로운 Firehose 전송 스트림 생성을 시작합니다.
 2. (Step 1: Name and source) Delivery stream name에 원하는 이름(예: `retail-trans`)를 입력합니다.
 3. **Choose a source** 에서 `Kinesis Data Stream` 를 선택하고, 앞서 생성한 Kinesis Data Stream(예: `retail-trans`)을 선택 한 후,
 **Next**를 클릭합니다.
