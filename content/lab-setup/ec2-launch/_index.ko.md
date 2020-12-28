@@ -1,7 +1,7 @@
 ---
 title: "EC2 생성"
 weight: 23
-pre: "<b>2-3 </b>"
+pre: "<b>2-2 </b>"
 tag:
   - EC2_Launch
 ---

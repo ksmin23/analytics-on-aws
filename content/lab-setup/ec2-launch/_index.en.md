@@ -1,7 +1,7 @@
 ---
 title: "Launch an EC2 Instance"
 weight: 23
-pre: "<b>2-3 </b>"
+pre: "<b>2-2 </b>"
 tag:
   - EC2_Launch
 ---

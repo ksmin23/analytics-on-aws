@@ -1,7 +1,7 @@
 ---
 title: "Security Groups 생성"
 weight: 22
-pre: "<b>2-2 </b>"
+pre: "<b>2-1 </b>"
 tag:
   - Security_Group
 ---

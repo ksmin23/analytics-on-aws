@@ -1,7 +1,7 @@
 ---
 title: "EC2 설정"
 weight: 24
-pre: "<b>2-4 </b>"
+pre: "<b>2-3 </b>"
 tag:
   - EC2_Configuration
 ---

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "IAM User 생성"
 weight: 21
 pre: "<b>2-1 </b>"
@@ -24,4 +24,4 @@ AWS Management Console access 둘 모두를 선택합니다. Console password에
 6. **\[Next: Review\]** 버튼을 클릭하고 정보를 확인한 뒤 Create user 버튼을 클릭하여 사용자 생성을 완료합니다.
 7. Download.csv 버튼을 클릭하여 생성한 사용자의 정보를 다운 받습니다. EC2 설정에 꼭 필요한 파일이므로 기억하기 쉬운 위치에 저장합니다.
   ![](/analytics-on-aws/images/iam-user-download.png)
-
+ -->
