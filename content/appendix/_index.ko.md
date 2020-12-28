@@ -53,60 +53,58 @@ cdk를 실행할 때 사용할 IAM User를 생성한 후, `~/.aws/config`에 등
     region=us-east-1
     ```
 
-2. Lambda Layer에 등록할 Python 패키지를 생성해서 s3 bucket에 저장합니다.
-이에 필요한 `lambda-layer-resources-USERNAME`라는 이름의 s3 bucket을 생성합니다. USERNAME을 사용자의 ID로 대체하십시오.
+2. Lambda Layer에 등록할 Python 패키지를 생성한 뒤 S3 버킷에 업로드 합니다. [이 링크](https://serverless-bi-system-from-scratch.workshop.aws/ko/reference.html)의 절차를 따라 수행하십시오. 
+    <!--3. 생성된 Python 패키지를 업로드 할 s3 bucket을 생성합니다.`lambda-layer-resources-xxxxxxxx`라는 이름의 s3 bucket을 생성합니다. `xxxxxxxx` 는 다른 s3 bucket 이름이 겹치지 않도록 임의의 숫자나 문자를 입력 합니다. 아래 스크립트의 xxxxxxxx 부분을 입력한 임의의 값으로 대체하십시오.
 
     ```
-    aws s3 mb s3://lambda-layer-resources-<<USERNAME>>
-    python3 -m venv es-lib # virtual environments을 생성함
-    cd es-lib
-    source bin/activate
-    mkdir -p python_modules # 필요한 패키지를 저장할 디렉터리 생성
-    pip install elasticsearch -t python_modules # 필요한 패키지를 사용자가 지정한 패키지 디렉터리에 저장함
-    mv python_modules python # 사용자가 지정한 패키지 디렉터리 이름을 python으로 변경함 (python 디렉터리에 패키지를 설치할 경우 에러가 나기 때문에 다른 이름의 디렉터리에 패키지를 설치 후, 디렉터리 이름을 변경함)
-    zip -r es-lib.zip python/ # 필요한 패키지가 설치된 디렉터리를 압축함
+    aws s3 mb s3://lambda-layer-resources-xxxxxxxx
+
     aws s3 cp es-lib.zip s3://lambda-layer-resources-<<USERNAME>>/var/ # 압축한 패키지를 s3에 업로드 한 후, lambda layer에 패키지를 등록할 때, s3 위치를 등록하면 됨
 
     ```
-    
-
-    <!-- ```shell script
+    ```shell script
     $ aws s3 ls s3://lambda-layer-resources/var/
     2019-10-25 08:38:50          0
     2019-10-25 08:40:28    1294387 es-lib.zip
     ``` -->
 
-1. ES 도메인을 최초 생성하는 경우, [Service Linked Role](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/slr-es.html) 을 생성해주어야 합니다. 아래 명령어를 수행하여 생성하십시오.
+1. ES 도메인을 최초 생성하는 경우, [Service Linked Role](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/slr-es.html) 을 생성해주어야 합니다. 아래 명령어를 수행하여 생성하십시오. 
     ```
     aws iam create-service-linked-role --aws-service-name es.amazonaws.com 
     ```
+    이 과정이 사전에 수행되지 않으면 아래와 같은 에러가 발생하면서 cdk 스택 배포가 실패하게 됩니다.
+
+     ```
+      Search Before you can proceed, you must enable a service-linked role to give Amazon ES permissions to access your VPC. (Service: AWSElasticsearch; Status Code: 400; Error Code: ValidationException;)
+     ```
+
 2. 소스 코드를 git에서 다운로드 받은 후, `S3_BUCKET_LAMBDA_LAYER_LIB` 라는 환경 변수에 lambda layer에 등록할 패키지가 저장된 s3 bucket 이름을
-설정 한 후, `cdk deploy` 명령어를 이용해서 배포합니다.
+설정 한 후, `cdk deploy` 명령어를 이용해서 배포합니다. 아래 
 
     ```shell script
-    git clone https://github.com/ksmin23/aws-analytics-immersion-day.git
-    cd aws-analytics-immersion-day
-    python3 -m venv .env
-    source .env/bin/activate
-    pip install -r requirements.txt
-    export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
-    export CDK_DEFAULT_REGION=us-west-2
-    cdk bootstrap aws://${CDK_DEFAULT_ACCOUNT}/${CDK_DEFAULT_REGION}
-    export S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources-USERNAME
-    cdk deploy
+    $ git clone https://github.com/ksmin23/aws-analytics-immersion-day.git
+    $ cd aws-analytics-immersion-day
+    $ python3 -m venv .env
+    $ source .env/bin/activate
+    (.env) $ pip install -r requirements.txt
+    (.env) $ export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+    (.env) $ export CDK_DEFAULT_REGION=us-west-2
+    (.env) $ cdk bootstrap aws://${CDK_DEFAULT_ACCOUNT}/${CDK_DEFAULT_REGION}
+    (.env) $ export S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources
+    (.env) $ cdk --profile cdk_user deploy
     ```
 
    :white_check_mark: `cdk bootstrap ...` 명령어는 CDK toolkit stack 배포를 위해 최초 한번만 실행 하고, 이후에 배포할 때는 CDK toolkit stack 배포 없이 `cdk deploy` 명령어만 수행하면 됩니다.
 
     ```shell script
-    export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
-    export CDK_DEFAULT_REGION=us-west-2
-    export S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources
-    cdk deploy
+    (.env) $ export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+    (.env) $ export CDK_DEFAULT_REGION=us-west-2
+    (.env) $ export S3_BUCKET_LAMBDA_LAYER_LIB=lambda-layer-resources
+    (.env) $ cdk --profile cdk_user deploy
     ```
 
 1. 배포한 애플리케이션을 삭제하려면, `cdk destroy` 명령어를 아래와 같이 실행 합니다.
     ```shell script
-    cdk destroy
+    (.env) $ cdk --profile cdk_user destroy
     ```
 
