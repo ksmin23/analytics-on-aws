@@ -9,11 +9,11 @@ tag:
 Configure the EC2 instances to access and control other AWS resources as follows:
 
 1. Go to [EC2 console](https://console.aws.amazon.com/ec2/v2/home#Instances:), and click the instance you just created. Then click **Connect**.
-    ![](/analytics-on-aws/images/ec2-connect.png)
+    ![ec2-connect](/analytics-on-aws/images/ec2-connect.png)
 
 2. You will see the connection option page like the following screen shot. Click Connect to ssh into the instance.
 
-    ![](/analytics-on-aws/images/ec2-ssm.png)
+    ![ec2-ssm](/analytics-on-aws/images/ec2-ssm.png)
 3. Perform the following actions in order on the EC2 instance connected with ssh.
 
     (1) Download the source code. 

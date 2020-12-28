@@ -19,18 +19,18 @@ AWS Management Console에서 Kinesis 서비스를 선택합니다.
 3. **Choose a source** 에서 `Kinesis Data Stream` 를 선택하고, 앞서 생성한 Kinesis Data Stream(예: `retail-trans`)을 선택 한 후,
 **Next**를 클릭합니다.
 
-    ![](/analytics-on-aws/images/kinesis-firehose-source.png)
+    ![kinesis-firehose-source](/analytics-on-aws/images/kinesis-firehose-source.png)
 
 5. (Step 2: Process records) **Transform source records with AWS Lambda / Convert record format** 은 
 둘다 default 옵션 `Disabled`를 선택하고 **Next**를 클릭합니다.
 6. (Step 3: Choose a destination) Destination은 Amazon S3를 선택하고, `Create new` 를 클릭해서 S3 bucket을 생성합니다.
 
-    ![](/analytics-on-aws/images/kinesis-firehose-dest.png)
+    ![kinesis-firehose-dest](/analytics-on-aws/images/kinesis-firehose-dest.png)
 
 
 
     S3 bucket 이름은 이번 실습에서는 `aws-analytics-immersion-day-xxxxxxxx` 형식으로 `xxxxxxxx` 는 bucket 이름이 겹치지 않도록 임의의 숫자나 문자를 입력 합니다.
-        ![](/analytics-on-aws/images/kinesis-firehose-dest-s3.png)
+        ![kinesis-firehose-dest-s3](/analytics-on-aws/images/kinesis-firehose-dest-s3.png)
 
 
     S3 prefix를 다음과 같이 입력 합니다.
@@ -48,9 +48,9 @@ AWS Management Console에서 Kinesis 서비스를 선택합니다.
 
 1. (Step 4: Configure settings) 이 단계에서 아래와 같은 설정을 합니다.
    1. S3 buffer conditions에서 Buffer size는 `1MB`, Buffer interval은 `60` seconds로 설정합니다.
-      ![](/analytics-on-aws/images/firehose-buffer.png)
+      ![firehose-buffer](/analytics-on-aws/images/firehose-buffer.png)
    2. 아래 IAM role에서 **\[Create or update IAM Role\]** 버튼을 클릭합니다.
-      ![](/analytics-on-aws/images/firehose-role.png)
+      ![firehose-role](/analytics-on-aws/images/firehose-role.png)
    3. Next 버튼을 클릭합니다.
 2.  (Step 5: Review) Review에서 입력한 정보를 확인한 뒤 틀린 부분이 없다면, **\[Create delivery stream\]** 버튼을 클릭하여 Firehose 생성을 완료합니다.
 

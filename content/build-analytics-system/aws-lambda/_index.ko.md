@@ -32,12 +32,12 @@ Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인
 3. **\[Create function\]** 을 선택합니다.
 4. Designer 패널에서 중앙부에 있는 **Layers**를 클릭합니다. Layers 패널이 하단에 로드되면, **Add a layer**를 선택합니다.
 5. Custom layers 를 클릭하고 아래와 같이 앞서 생성한 es-lib 레이어를 선택합니다. 버전은 1로 선택합니다.
-   ![](/analytics-on-aws/images/lambda-layer.png)
+   ![lambda-layer](/analytics-on-aws/images/lambda-layer.png)
 
 6. **\[Add\]** 클릭합니다.
 7. Designer(디자이너) 에서 `UpsertToES` 을 선택하여 함수의 코드 및 구성으로 돌아갑니다.
 8.  Function code의 코드 편집기에 [이 링크](https://raw.githubusercontent.com/ksmin23/aws-analytics-immersion-day/main/src/main/python/UpsertToES/upsert_to_es.py)의 코드를 복사해서 붙여넣은 뒤 Deploy 를 클릭합니다.
-   ![](/analytics-on-aws/images/lambda-upsert-to-es.png)
+   ![lambda-upsert-to-es](/analytics-on-aws/images/lambda-upsert-to-es.png)
 
 9.  Environment variables 패널에서 **\[Edit\]** 를 클릭합니다.
 10. **\[Add environment variables\]** 를 클릭해서 아래의 Environment variables을 등록합니다.
@@ -60,7 +60,7 @@ Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인
     ```
     
 11. **\[Save\]** 선택합니다. Environment Variables 를 정상적으로 입력하면 아래와 같이 확인할 수 있습니다.
-    ![](/analytics-on-aws/images/lambda-upsert-env.png)
+    ![lambda-upsert-env](/analytics-on-aws/images/lambda-upsert-env.png)
 12. **Basic Setting** 패널에서 **[Edit]** 을 클릭합니다. 
     1.  lambda 함수를 VPC 내에서 실행 하고 Kinesis Data Streams에서 데이터를 읽기 위해서, lamba 함수 실행에 필요한 Execution role에 필요한 IAM Policy를 추가해야 합니다.
     IAM Role 수정을 위해서 최하단의 `View the UpsertToES-role-XXXXXXXX role on the IAM console.` 을 클릭 합니다.
@@ -69,19 +69,19 @@ Lambda function을 이용해서 Amazon ES에 데이터를 실시간으로 색인
     **AWSLambdaVPCAccessExecutionRole**, **AmazonKinesisReadOnlyAccess** 를 차례로 추가한 뒤 IAM 콘솔 페이지를 닫습니다.
     ![aws-lambda-iam-role-policies](/analytics-on-aws/images/aws-lambda-iam-role-policies.png)
     2. Memory와 Timeout을 알맞게 조정합니다. 이 실습에서는 Timout을 `5 min` 으로 설정합니다.
-    ![](/analytics-on-aws/images/lambda-upsert-timeout.png)
+    ![lambda-upsert-timeout](/analytics-on-aws/images/lambda-upsert-timeout.png)
     3. **Save** 를 클릭합니다.
 13. VPC 패널에서 **\[Edit\]** 버튼을 클릭해서 Edit VPC 화면으로 이동합니다. 
     * Elasticsearch service의 도메인을 생성한 VPC와 subnets을 선택합니다.
     * Elasticsearch service 도메인에 접근이 허용된 `use-es-cluster-sg`
 security groups을 선택합니다.
-    ![](/analytics-on-aws/images/lambda-upsert-vpc.png)
+    ![lambda-upsert-vpc](/analytics-on-aws/images/lambda-upsert-vpc.png)
 
 1.  **Save** 버튼을 클릭하여 다시 Configuration 탭으로 돌아갑니다.
 2.  Designer 패널에서 **\[Add trigger\]** 를 선택합니다.
 3.  **Trigger configuration** 의 `Select a trigger` 에서 **Kinesis** 를 선택 합니다.
 4.  Kinesis stream 에서 앞서 생성한 Kinesis Data Stream(`retail-trans`)을 선택합니다. 나머지는 기본 설정을 유지합니다.
-    ![](/analytics-on-aws/images/lambda-upsert-trigger.png)
+    ![lambda-upsert-trigger](/analytics-on-aws/images/lambda-upsert-trigger.png)
 
 5.  **\[Add\]** 를 선택합니다.
 ![aws-lambda-kinesis](/analytics-on-aws/images/aws-lambda-kinesis.png)

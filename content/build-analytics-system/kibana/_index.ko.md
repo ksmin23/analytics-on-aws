@@ -45,7 +45,7 @@ Amazon Elasticsearch Service에서 수집된 데이터를 Kibana를 이용해서
 4. 첫 페이지가 로드되면 **\[Use Elasticsearch data / Connect to your Elasticsearch index\]** 클릭합니다.
 ![kibana-01-add_data](/analytics-on-aws/images/kibana-01-add_data.png)
 1. Create index pattern 를 클릭합니다.
-![](/analytics-on-aws/images/kibana-01-create-index-pattern.png)
+![kibana-01-create-index-pattern](/analytics-on-aws/images/kibana-01-create-index-pattern.png)
 2. **Step 1 of 2: Define index pattern** 에서
 Index pattern에 `retail*` 을 입력합니다.
 ![kibana-02a-create-index-pattern](/analytics-on-aws/images/kibana-02a-create-index-pattern.png)
