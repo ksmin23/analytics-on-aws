@@ -25,14 +25,23 @@ AWS의 다른 리소스 접근을 위해 인스턴스가 사용할 IAM Role 을 
 ![EC2 Attach Role](/analytics-on-aws/images/ec2-role.png)
 
 ## EC2에 실습에 필요한 파일 설정
-1. [EC2 콘솔](https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running)에서 방금 생성한 인스턴스를 선택하고 **Connect** 를 클릭합니다.
+1. 생성된 EC2 인스턴스에 접근하는 데에는 세 가지 방법이 있습니다. 
+
+    (1) EC2 인스턴스 연결 브라우저 기반 클라이언트인 EC2 Instance Connect를 사용하여 연결합니다.
+
+    (2) AWS Systems Manager 의 Session Manager 기능을 사용해서 연결합니다. SSH 키 또는 배스천 호스트 없이 인스턴스에 연결하며, 연결 세션은 AWS Key Management Service 키를 사용하여 보호됩니다. 세션 명령 및 세부 정보를 S3 버킷이나 Cloudwatch Logs 로그 그룹에 기록할 수 있습니다.
+
+    (3) SSH 자체 클라이언트를 통해 접근합니다.
+
+    아래에는 EC2 Instance Connect 를 사용하는 방법을 설명합니다. SSH 클라이언트를 통해 접근하고자 하시면 [이 설명](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)에 따라주십시오.
+2. [EC2 콘솔](https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running)에서 방금 생성한 인스턴스를 선택하고 **Connect** 를 클릭합니다.
     ![EC2 Connect](/analytics-on-aws/images/ec2-connect.png)
 
-2. 아래와 같은 화면이 뜨면 Connect 를 눌러 인스턴스에 접속합니다. 
+3. 아래와 같은 화면이 뜨면 Connect 를 눌러 인스턴스에 접속합니다. 
 
     ![EC2 SSM Connect](/analytics-on-aws/images/ec2-ssm.png)
 
-3. ssh로 접속한 EC2 인스턴스에서 다음 작업을 순서대로 수행 합니다.
+4. ssh로 접속한 EC2 인스턴스에서 다음 작업을 순서대로 수행 합니다.
 
     (1) 소소 코드를 다운로드 받는다. 
     ```shell script
