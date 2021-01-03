@@ -33,25 +33,25 @@ AWS Management Console에서 Kinesis 서비스를 선택합니다.
         ![kinesis-firehose-dest-s3](/analytics-on-aws/images/kinesis-firehose-dest-s3.png)
 
 
-    S3 prefix를 다음과 같이 입력 합니다.
+    S3 prefix를 다음과 같이 입력 합니다. (참고: 실제 프로덕션 워크로드에서 사용할 때에는 다른 Prefix를 사용할 수도 있습니다.)
         
     ```buildoutcfg
     json-data/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/
     ```
 
-    S3 Error Prefix 를 다음과 같이 입력 합니다.
+    S3 Error Prefix 를 다음과 같이 입력 합니다. (참고: 실제 프로덕션 워크로드에서 사용할 때에는 다른 Error Prefix를 사용할 수도 있습니다.)
     ```buildoutcfg
     error-json/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}
     ```
     S3 prefix와 error prefix 입력을 완료한 후에, Next를 클릭합니다. 
     ([참고 링크](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html))
 
-1. (Step 4: Configure settings) 이 단계에서 아래와 같은 설정을 합니다.
+7. (Step 4: Configure settings) 이 단계에서 아래와 같은 설정을 합니다.
    1. S3 buffer conditions에서 Buffer size는 `1MB`, Buffer interval은 `60` seconds로 설정합니다.
       ![firehose-buffer](/analytics-on-aws/images/firehose-buffer.png)
    2. 아래 IAM role에서 **\[Create or update IAM Role\]** 버튼을 클릭합니다.
       ![firehose-role](/analytics-on-aws/images/firehose-role.png)
    3. Next 버튼을 클릭합니다.
-2.  (Step 5: Review) Review에서 입력한 정보를 확인한 뒤 틀린 부분이 없다면, **\[Create delivery stream\]** 버튼을 클릭하여 Firehose 생성을 완료합니다.
+8.  (Step 5: Review) Review에서 입력한 정보를 확인한 뒤 틀린 부분이 없다면, **\[Create delivery stream\]** 버튼을 클릭하여 Firehose 생성을 완료합니다.
 
 
