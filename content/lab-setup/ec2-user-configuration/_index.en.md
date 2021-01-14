@@ -18,19 +18,19 @@ Configure the EC2 instances to access and control other AWS resources as follows
 
     (1) Download the source code. 
     ```shell script
-    wget 'https://github.com/ksmin23/aws-analytics-immersion-day/archive/master.zip'
+    wget 'https://github.com/ksmin23/aws-analytics-immersion-day/archive/main.zip'
     ```
     (2) Extract the downloaded source code.
     ```shell script
-    unzip -u master.zip
+    unzip -u main.zip
     ```
     (3) Grant execution authority to the practice environment setting script.
     ```shell script
-    chmod +x ./aws-analytics-immersion-day-master/set-up-hands-on-lab.sh
+    chmod +x ./aws-analytics-immersion-day-main/set-up-hands-on-lab.sh
     ```
     (4) Execute the setup script to set the lab environment.
     ```shell script
-    ./aws-analytics-immersion-day-master/set-up-hands-on-lab.sh
+    ./aws-analytics-immersion-day-main/set-up-hands-on-lab.sh
     ```
     (5) Make sure the files necessary for the lab are normally created after running the configuration script. For example, check if the source code and necessary files exist as shown below.
     ![aws-ec2-setup-hands-on-lab](/analytics-on-aws/images/aws-ec2-setup-hands-on-lab.png)

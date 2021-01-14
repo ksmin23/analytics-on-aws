@@ -14,13 +14,19 @@ Using the sample data, check whether data is normally collected in `Kinesis Data
 2. Run `gen_kinesis_data.py`.
     ```shell script
     $ python3 gen_kinesis_data.py --help
-    usage: gen_kinesis_data.py [-h] [-I INPUT_FILE] [--out-format {csv,tsv,json}]
-                               [--service-name {kinesis,firehose}]
-                               [--stream-name STREAM_NAME] [--max-count MAX_COUNT]
-                               [--dry-run]
-    
+    usage: gen_kinesis_data.py [-h]
+               [--region-name REGION_NAME]
+               -I INPUT_FILE
+               [--out-format {csv,tsv,json}]
+               [--service-name {kinesis,firehose}]
+               [--stream-name STREAM_NAME]
+               [--max-count MAX_COUNT]
+               [--dry-run]
+
     optional arguments:
       -h, --help            show this help message and exit
+      --region-name REGION_NAME
+                            aws region name (default: us-east-1)
       -I INPUT_FILE, --input-file INPUT_FILE
                             The input file path ex)
                             ./resources/online_retail.csv
@@ -31,8 +37,9 @@ Using the sample data, check whether data is normally collected in `Kinesis Data
       --max-count MAX_COUNT
                             The max number of records to put.
       --dry-run
-    
+
     $ python3 gen_kinesis_data.py -I resources/online_retail.csv \
+    --region-name us-west-2 \
     --service-name kinesis \
     --out-format json \
     --stream-name retail-trans

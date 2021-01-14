@@ -1,7 +1,7 @@
 ---
 title: "Athena CTAS"
 weight: 36
-pre: "<b>3-6. </b>"
+pre: "<b>3-6. (Optional) </b>"
 ---
 
 ![aws-analytics-system-build-steps](/analytics-on-aws/images/aws-analytics-system-build-steps-extra.png)

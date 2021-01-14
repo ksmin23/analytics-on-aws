@@ -14,7 +14,7 @@ tag:
 
 1. [이 링크](https://console.aws.amazon.com/ec2/v2/home#LaunchInstanceWizard:)를 클릭하여 새로운 인스턴스 생성을 시작합니다. 이때 우측 상단에서 리전이 **us-west-2** 로 잘 설정되어 있는지 확인하십시오.
 
-2. Step 1: Choose an Amazon Machine Image (AMI) 화면에서 **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type** 을 선택합니다.
+2. Step 1: Choose an Amazon Machine Image (AMI) 화면에서 **Amazon Linux 2 AMI (HVM), SSD Volume Type** 을 선택합니다.
 ![aws-ec2-choose-ami](/analytics-on-aws/images/aws-ec2-choose-ami.png)
 5. Step 2: Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. **\[Next: Configure Instance Details\]** 을 클릭합니다.
 ![aws-ec2-choose-instance-type](/analytics-on-aws/images/aws-ec2-choose-instance-type.png)
