@@ -1,7 +1,7 @@
 ---
 title: "EC2 생성"
 weight: 23
-pre: "<b>2-3 </b>"
+pre: "<b>2-2 </b>"
 tag:
   - EC2_Launch
 ---
@@ -12,11 +12,9 @@ tag:
 
 실습에 필요한 데이터를 실시간으로 발생시킬 EC2 인스턴스를 생성합니다.
 
-1. AWS Management Console에서 EC2 서비스에 접속합니다.
-2. 우측 상단에서 Region은 US West (Oregon)를 선택합니다. 
-3. 좌측 **INSTANCES** 메뉴에서 **Instances** 를 선택한 후, **\[Launch Instance\]** 를 클릭 해서 새로운 인스턴스 생성을 시작합니다.
-![aws-ec2-launch-instance](/analytics-on-aws/images/aws-ec2-launch-instance.png)
-4. Step 1: Choose an Amazon Machine Image (AMI) 화면에서 **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type** 을 선택합니다.
+1. [이 링크](https://console.aws.amazon.com/ec2/v2/home#LaunchInstanceWizard:)를 클릭하여 새로운 인스턴스 생성을 시작합니다. 이때 우측 상단에서 리전이 **us-west-2** 로 잘 설정되어 있는지 확인하십시오.
+
+2. Step 1: Choose an Amazon Machine Image (AMI) 화면에서 **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type** 을 선택합니다.
 ![aws-ec2-choose-ami](/analytics-on-aws/images/aws-ec2-choose-ami.png)
 5. Step 2: Choose an Instance Type 화면에서 인스턴스 타입은 t2.micro를 선택합니다. **\[Next: Configure Instance Details\]** 을 클릭합니다.
 ![aws-ec2-choose-instance-type](/analytics-on-aws/images/aws-ec2-choose-instance-type.png)
